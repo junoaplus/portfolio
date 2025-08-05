@@ -11,31 +11,37 @@
 - **RAG (Retrieval Augmented Generation)** 시스템
 - **실시간 질의응답** 기능
 
-## 🛠️ 기술 스택
+## 🛠️ 기술 스택 및 선택 이유
 
 ### Frontend
-- **Next.js 14** (App Router)
+- **Next.js 14 (App Router)** 
+  - *선택 이유*: 포트폴리오는 SEO가 중요한데, Next.js의 SSR/SSG로 검색 엔진 최적화와 초기 로딩 속도를 동시에 해결. App Router는 복잡한 라우팅 구조(메인/챗봇/프로젝트 상세)를 더 직관적으로 관리할 수 있음.
 - **TypeScript**
-- **Tailwind CSS** + **shadcn/ui**
-- **Framer Motion** (애니메이션)
-- **React Hook Form**
+  - *선택 이유*: AI 시스템은 복잡한 데이터 구조를 다루므로 타입 안정성이 필수. 특히 LangGraph의 상태 관리와 에이전트 간 데이터 전달에서 런타임 에러를 방지하기 위함.
+- **Tailwind CSS + shadcn/ui**
+  - *선택 이유*: 포트폴리오는 빠른 프로토타이핑이 중요하면서도 일관된 디자인 시스템이 필요. shadcn/ui는 접근성과 사용성이 검증된 컴포넌트를 제공하여 개발 속도와 품질을 동시에 확보.
+- **Framer Motion**
+  - *선택 이유*: 기술적 역량을 시각적으로 어필하려면 미묘한 인터랙션이 중요. CSS 애니메이션보다 복잡한 시퀀싱과 제스처 기반 애니메이션을 선언적으로 구현 가능.
 
-### Backend
-- **Next.js API Routes**
-- **Supabase** (PostgreSQL + pgvector)
-- **OpenAI API** (GPT-4)
-- **LangGraph** (에이전트 오케스트레이션)
+### Backend Architecture
+- **Next.js API Routes (풀스택 접근)**
+  - *선택 이유*: 포트폴리오 특성상 트래픽이 예측 가능하고 AI API 호출이 주요 로직. 별도 백엔드 서버 운영비용과 복잡성을 피하면서도 서버리스의 확장성을 활용. 개발자 1인 프로젝트에서 DevOps 부담을 최소화.
+- **Supabase (PostgreSQL + pgvector)**
+  - *선택 이유*: 벡터 검색을 위해 Pinecone 같은 전용 서비스도 고려했지만, 관계형 데이터(프로젝트 메타데이터)와 벡터 데이터를 함께 관리해야 하는 상황. pgvector로 단일 데이터베이스에서 SQL과 벡터 검색을 모두 처리하여 데이터 일관성과 쿼리 성능을 최적화.
 
-### AI/ML
-- **LangGraph** (멀티 에이전트 시스템)
-- **RAG Pipeline** (벡터 검색 + 생성)
-- **OpenAI Embeddings**
-- **Vector Database** (pgvector)
+### AI/ML Architecture  
+- **LangGraph (멀티 에이전트 오케스트레이션)**
+  - *선택 이유*: 단순 RAG보다 더 지능적인 대화 경험을 원했음. 질문 유형에 따라 다른 전문성을 보여주려면 에이전트 분할이 필요. LangChain Expression Language보다 복잡한 조건부 플로우와 상태 관리에 적합하며, 향후 에이전트 추가/수정이 용이.
+- **OpenAI GPT-4 + Embeddings**
+  - *선택 이유*: Claude나 Gemini도 고려했지만, OpenAI가 개발자 생태계에서 가장 안정적이고 문서화가 잘 되어 있음. 특히 Function Calling과 JSON 모드는 구조화된 응답 생성에 필수적. Embeddings API는 한국어 처리 성능이 검증됨.
+- **RAG Pipeline (Custom Implementation)**  
+  - *선택 이유*: LlamaIndex나 기성 RAG 솔루션 대신 직접 구현한 이유는 포트폴리오 데이터 특성에 맞는 세밀한 컨트롤이 필요했기 때문. GitHub 커밋, 프로젝트 문서, 개인 경험 등 이질적인 데이터 소스를 하나의 파이프라인으로 처리하려면 커스텀 청킹과 메타데이터 전략이 필수.
 
 ### 배포 & 인프라
-- **Vercel** (프론트엔드 + API)
-- **Supabase** (데이터베이스)
-- **Vercel Edge Functions**
+- **Vercel (Frontend + Edge Functions)**
+  - *선택 이유*: Next.js의 제작사 플랫폼으로 최적화된 성능 보장. Edge Functions으로 AI API 호출 시 지연시간 최소화. GitHub Actions 대신 Vercel의 Git 통합으로 배포 파이프라인 단순화.
+- **Serverless Architecture**
+  - *선택 이유*: 포트폴리오는 간헐적 트래픽 패턴. 상시 서버 운영비용을 피하고 사용량 기반 과금으로 비용 효율성 극대화. 또한 글로벌 CDN으로 어디서든 빠른 접근 보장.
 
 ## 📋 개발 체크리스트
 
@@ -181,19 +187,53 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```
 
+## 🌳 브랜치 전략
+
+### 주요 브랜치
+- **`main`** - 프로덕션 릴리스 브랜치 (배포용)
+- **`develop`** - 개발 통합 브랜치 (피처 브랜치들이 여기로 merge)
+
+### 기능별 피처 브랜치
+- **`feature/project-setup`** - 프로젝트 초기 설정 (package.json, 기본 구조)
+- **`feature/nextjs-foundation`** - Next.js 앱 기본 틀 구성
+- **`feature/ui-design-system`** - Tailwind + shadcn/ui 디자인 시스템
+- **`feature/main-page-hero`** - 메인 페이지 Hero 섹션
+- **`feature/tech-stack-visualization`** - 기술 스택 인터랙티브 시각화
+- **`feature/projects-showcase`** - 프로젝트 쇼케이스 섹션 
+- **`feature/data-pipeline`** - 개인 데이터 수집/전처리 파이프라인
+- **`feature/vector-database`** - Supabase pgvector 설정 및 임베딩
+- **`feature/langgraph-agents`** - LangGraph 멀티 에이전트 시스템
+- **`feature/chatbot-ui`** - 챗봇 사용자 인터페이스
+- **`feature/rag-system`** - RAG 검색 및 응답 생성 로직
+- **`feature/performance-optimization`** - 성능 최적화 및 SEO
+
+### 워크플로우
+1. `develop`에서 피처 브랜치 생성
+2. 기능 완성 후 `develop`으로 PR
+3. 통합 테스트 후 `main`으로 릴리스
+
 ## 📁 프로젝트 구조
 ```
 portfolio/
 ├── app/                    # Next.js App Router
-│   ├── api/               # API Routes
-│   ├── chat/              # 챗봇 페이지
-│   ├── projects/          # 프로젝트 페이지
-│   └── page.tsx           # 메인 페이지
+│   ├── api/               # API Routes (AI 챗봇, 데이터)
+│   ├── chat/              # AI 챗봇 페이지
+│   ├── projects/          # 프로젝트 상세 페이지
+│   │   └── [slug]/        # 동적 라우팅
+│   ├── skills/            # 기술스택 상세 페이지
+│   └── page.tsx           # 메인 페이지 (원페이지 스타일)
 ├── components/            # 재사용 컴포넌트
+│   ├── ui/               # shadcn/ui 컴포넌트들
+│   ├── chat/             # 챗봇 관련 컴포넌트
+│   ├── projects/         # 프로젝트 쇼케이스 컴포넌트
+│   └── animations/       # Framer Motion 애니메이션
 ├── lib/                   # 유틸리티 함수
-├── data/                  # 정적 데이터
-├── public/                # 정적 파일
-└── styles/                # 스타일 파일
+│   ├── ai/               # AI/RAG 관련 로직
+│   ├── data/             # 데이터 처리 함수
+│   └── utils.ts          # 공통 유틸리티
+├── data/                  # 정적 데이터 (프로젝트 정보 등)
+├── public/                # 정적 파일 (이미지, 아이콘)
+└── styles/                # 글로벌 스타일
 ```
 
 ## 🎨 디자인 시스템
