@@ -6,6 +6,7 @@
 ## 🎯 프로젝트 개요
 
 이 프로젝트는 **최신 AI 기술**을 활용한 **인터랙티브 포트폴리오**입니다.
+
 - **Next.js 풀스택** 아키텍처
 - **LangGraph 기반 멀티 에이전트** AI 챗봇
 - **RAG (Retrieval Augmented Generation)** 시스템
@@ -46,14 +47,16 @@
 ## 📋 개발 체크리스트
 
 ### Phase 1: 기본 구조 설정
-- [ ] Next.js + TypeScript 프로젝트 초기화
-- [ ] Tailwind CSS + shadcn/ui 설정
-- [ ] 기본 폴더 구조 생성
-- [ ] ESLint & Prettier 설정
+
+- [x] Next.js + TypeScript 프로젝트 초기화
+- [x] Tailwind CSS + shadcn/ui 설정
+- [x] 기본 폴더 구조 생성
+- [x] ESLint & Prettier 설정
 - [ ] Vercel 배포 환경 구축
 - [ ] 환경변수 설정 (.env.local, .env.example)
 
 ### Phase 2: 메인 페이지 개발
+
 - [ ] Hero Section 구현
   - [ ] 타이핑 애니메이션 효과
   - [ ] 프로필 이미지/영상
@@ -72,6 +75,7 @@
   - [ ] 이력서 다운로드
 
 ### Phase 3: AI 챗봇 시스템
+
 - [ ] 데이터 수집 및 전처리
   - [ ] 개인 이력서 텍스트 추출
   - [ ] GitHub API 연동 (repos, commits, issues)
@@ -99,6 +103,7 @@
   - [ ] 모바일 최적화
 
 ### Phase 4: 상세 페이지 개발
+
 - [ ] 프로젝트 상세 페이지 (/projects/[slug])
   - [ ] 동적 라우팅 구현
   - [ ] 프로젝트 메타데이터
@@ -116,6 +121,7 @@
   - [ ] 목표와 비전
 
 ### Phase 5: 성능 최적화 & 배포
+
 - [ ] 성능 최적화
   - [ ] 이미지 최적화 (next/image)
   - [ ] 코드 스플리팅
@@ -145,6 +151,7 @@
   - [ ] 성능 모니터링
 
 ### Phase 6: 콘텐츠 & 마케팅
+
 - [ ] 콘텐츠 제작
   - [ ] 프로젝트 스크린샷/영상
   - [ ] 기술 블로그 글 작성
@@ -161,6 +168,7 @@
 ## 🚀 시작하기
 
 ### 개발 환경 설정
+
 ```bash
 # 저장소 클론
 git clone https://github.com/junoaplus/portfolio.git
@@ -178,6 +186,7 @@ npm run dev
 ```
 
 ### 환경변수 설정
+
 ```bash
 # .env.local
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -213,6 +222,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 3. 통합 테스트 후 `main`으로 릴리스
 
 ## 📁 프로젝트 구조
+
 ```
 portfolio/
 ├── app/                    # Next.js App Router
@@ -239,11 +249,13 @@ portfolio/
 ## 🎨 디자인 시스템
 
 ### 컬러 팔레트
+
 - **Primary**: AI/기술 관련 색상 (파란색 계열)
 - **Secondary**: 포인트 색상 (그린/오렌지)
 - **Neutral**: 텍스트 및 배경 (그레이 계열)
 
 ### 타이포그래피
+
 - **Headings**: Inter (모던하고 깔끔한 느낌)
 - **Body**: Inter (가독성 최적화)
 - **Code**: JetBrains Mono (코드 블록용)
@@ -251,11 +263,13 @@ portfolio/
 ## 📊 예상 성과
 
 ### 기술적 성과
+
 - **성능**: Lighthouse 90+ 점수
 - **접근성**: WCAG 2.1 AA 준수
 - **SEO**: 구글 검색 최적화
 
 ### 비즈니스 성과
+
 - **차별화**: AI 챗봇으로 인터랙티브한 경험
 - **어필도**: 최신 기술 스택 활용
 - **실용성**: 실제 질문-답변 가능
@@ -275,6 +289,7 @@ portfolio/
 ## 📞 연락처
 
 **황준호** - AI Engineer
+
 - 📧 Email: [your-email@example.com]
 - 💼 LinkedIn: [your-linkedin]
 - 🐙 GitHub: [@junoaplus](https://github.com/junoaplus)
