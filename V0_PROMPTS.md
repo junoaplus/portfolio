@@ -41,7 +41,7 @@ Create a modern AI engineer portfolio landing page using Next.js 14, TypeScript,
 4. **Quick Stats Section**
    - 4 animated counters in a row:
      * "50+" GitHub 커밋
-     * "8+" 완성 프로젝트  
+     * "8+" 완성 프로젝트
      * "15+" 사용 기술
      * "2년+" 개발 경험
    - Each with an icon and smooth counting animation
@@ -113,7 +113,7 @@ Create an advanced AI chatbot interface page for an AI engineer portfolio using 
 4. **Sidebar (Desktop) / Bottom Sheet (Mobile)**
    - Chat features:
      * "대화 내보내기" button
-     * "새 대화 시작" button  
+     * "새 대화 시작" button
      * "피드백 남기기" (thumbs up/down for messages)
    - Technical Details:
      * "시스템 아키텍처" collapsible section showing LangGraph flow
@@ -125,7 +125,7 @@ Create an advanced AI chatbot interface page for an AI engineer portfolio using 
    - Welcome message: "안녕하세요! 황준호의 AI 어시스턴트입니다."
    - Feature highlights:
      * "실시간 GitHub 데이터 연동"
-     * "프로젝트 상세 정보 제공"  
+     * "프로젝트 상세 정보 제공"
      * "기술적 질문 전문 답변"
      * "개인 경험 및 동기 공유"
    - Sample questions as clickable cards
@@ -171,14 +171,14 @@ Create a comprehensive project showcase page for an AI engineer portfolio using 
    - Project subtitle/tagline
    - Status badges: "Live Demo", "Open Source", "Featured"
    - Key metrics: GitHub stars, live users, tech stack count
-   - Primary CTA: "View Live Demo" 
+   - Primary CTA: "View Live Demo"
    - Secondary CTA: "View Code"
    - Project hero image/GIF with subtle animation border
 
 2. **Project Grid Layout**
    - Filter tabs at top:
      * "All Projects"
-     * "AI/ML Projects" 
+     * "AI/ML Projects"
      * "Full-Stack Web"
      * "Backend APIs"
    - Project cards in responsive grid (3 columns desktop, 1 mobile):
@@ -293,15 +293,15 @@ Create an interactive technology skills showcase page for an AI engineer portfol
      * Option A: Hexagonal honeycomb layout
      * Option B: Circular/radar chart style
      * Option C: Card-based category grid
-   
+
    - **Categories with Visual Hierarchy:**
-     
+
      **Frontend Development** (Primary category)
      - Next.js (Expert - 5/5 stars) - "현재 프로젝트의 핵심 프레임워크"
      - React (Expert - 5/5 stars) - "3년+ 경험, 복잡한 상태 관리 능숙"
      - TypeScript (Advanced - 4/5 stars) - "타입 안전성으로 대규모 프로젝트 구축"
      - Tailwind CSS (Advanced - 4/5 stars) - "빠른 프로토타이핑과 일관된 디자인"
-     
+
      **Backend Development** (Primary category)
      - Python (Expert - 5/5 stars) - "AI/ML 프로젝트의 주력 언어"
      - FastAPI (Advanced - 4/5 stars) - "고성능 API 개발"
@@ -354,7 +354,7 @@ Create an interactive technology skills showcase page for an AI engineer portfol
      * "SK Networks AI 캠프 11기"
      * "LangChain/LangGraph 전문 과정"
      * "PostgreSQL 성능 최적화"
-   
+
    - **Currently Learning:**
      * "Advanced Prompt Engineering"
      * "Vector Database Optimization"
@@ -432,12 +432,12 @@ Create a comprehensive "About Me" and contact page for an AI engineer portfolio 
      * "멀티 에이전트 시스템 설계"
      * "사용자 친화적 AI 인터페이스"
      * "성능 최적화와 확장성"
-   
+
    - **Personal Interests:**
      * "새로운 기술 트렌드 탐구"
      * "오픈소스 프로젝트 기여"
      * "개발 커뮤니티 활동"
-   
+
    - **Soft Skills:**
      * "팀 커뮤니케이션"
      * "문제 해결 능력"
@@ -448,13 +448,13 @@ Create a comprehensive "About Me" and contact page for an AI engineer portfolio 
      * Email: professional email with copy button
      * LinkedIn: profile link with preview
      * GitHub: profile with recent activity showcase
-   
+
    - **Contact Form:**
      * Name, Email, Subject, Message fields
      * Purpose dropdown: "프로젝트 협업", "취업 제안", "기술 문의", "기타"
      * Send button with loading state
      * Success/error message handling
-   
+
    - **Alternative Contact:**
      * "AI 챗봇에게 질문하기" - link to chatbot page
      * "이력서 다운로드" button
@@ -467,7 +467,7 @@ Create a comprehensive "About Me" and contact page for an AI engineer portfolio 
      * "프리랜스 프로젝트"
      * "오픈소스 기여"
      * "멘토링 & 교육"
-   
+
    - Location: "서울, 원격 근무 가능"
    - Response time: "24시간 내 답변"
 
@@ -527,15 +527,18 @@ Create a comprehensive "About Me" and contact page for an AI engineer portfolio 
 ## 🎯 사용 순서 가이드
 
 ### 1단계: 메인 페이지부터 시작
+
 위의 **"메인 페이지"** 프롬프트를 v0.dev에 복붙 → 기본 구조 생성
 
 ### 2단계: 개별 페이지 순서대로
+
 1. AI 챗봇 페이지
-2. 프로젝트 상세 페이지  
+2. 프로젝트 상세 페이지
 3. 기술 스택 페이지
 4. 연락처/소개 페이지
 
 ### 3단계: 통합 및 최적화
+
 각 페이지가 완성되면 Next.js 프로젝트로 통합하고 라우팅 연결
 
 ---

@@ -1,16 +1,31 @@
-"use client"
+'use client'
 
-import { Navigation } from "@/components/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Home, ArrowLeft, Bot, Search, AlertTriangle } from "lucide-react"
-import Link from "next/link"
+import { Navigation } from '@/components/navigation'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Home, ArrowLeft, Bot, Search, AlertTriangle } from 'lucide-react'
+import Link from 'next/link'
 
 export default function NotFound() {
   const suggestions = [
-    { name: "홈", href: "/", icon: Home, description: "메인 페이지로 돌아가기" },
-    { name: "AI 챗봇", href: "/chatbot", icon: Bot, description: "AI 어시스턴트와 대화하기" },
-    { name: "프로젝트", href: "/projects", icon: Search, description: "프로젝트 둘러보기" },
+    {
+      name: '홈',
+      href: '/',
+      icon: Home,
+      description: '메인 페이지로 돌아가기',
+    },
+    {
+      name: 'AI 챗봇',
+      href: '/chatbot',
+      icon: Bot,
+      description: 'AI 어시스턴트와 대화하기',
+    },
+    {
+      name: '프로젝트',
+      href: '/projects',
+      icon: Search,
+      description: '프로젝트 둘러보기',
+    },
   ]
 
   return (
@@ -22,7 +37,9 @@ export default function NotFound() {
           {/* 404 Animation */}
           <div className="mb-12">
             <div className="relative">
-              <div className="text-9xl font-bold text-gray-200 select-none">404</div>
+              <div className="text-9xl font-bold text-gray-200 select-none">
+                404
+              </div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center animate-bounce">
                   <AlertTriangle className="w-12 h-12 text-white" />
@@ -33,7 +50,9 @@ export default function NotFound() {
 
           {/* Error Message */}
           <div className="mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">페이지를 찾을 수 없습니다</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              페이지를 찾을 수 없습니다
+            </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
               <br />
@@ -85,8 +104,8 @@ export default function NotFound() {
           {/* Fun Message */}
           <div className="mt-16 p-6 bg-gradient-to-r from-blue-50 to-purple-50/50 rounded-2xl border border-blue-100">
             <p className="text-gray-600 text-sm">
-              💡 <strong>팁:</strong> AI 챗봇에게 "어떤 페이지들이 있나요?"라고 물어보시면 전체 사이트 구조를
-              안내해드려요!
+              💡 <strong>팁:</strong> AI 챗봇에게 "어떤 페이지들이 있나요?"라고
+              물어보시면 전체 사이트 구조를 안내해드려요!
             </p>
           </div>
         </div>

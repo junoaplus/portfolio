@@ -1,20 +1,20 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Home, Bot, FolderOpen, Code, User, Mail } from "lucide-react"
-import Link from "next/link"
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Menu, X, Home, Bot, FolderOpen, Code, User, Mail } from 'lucide-react'
+import Link from 'next/link'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { name: "홈", href: "/", icon: Home },
-    { name: "AI 챗봇", href: "/chatbot", icon: Bot },
-    { name: "프로젝트", href: "/projects", icon: FolderOpen },
-    { name: "기술 스택", href: "/skills", icon: Code },
-    { name: "소개", href: "/about", icon: User },
-    { name: "연락처", href: "/contact", icon: Mail },
+    { name: '홈', href: '/', icon: Home },
+    { name: 'AI 챗봇', href: '/chatbot', icon: Bot },
+    { name: '프로젝트', href: '/projects', icon: FolderOpen },
+    { name: '기술 스택', href: '/skills', icon: Code },
+    { name: '소개', href: '/about', icon: User },
+    { name: '연락처', href: '/contact', icon: Mail },
   ]
 
   return (
@@ -31,7 +31,7 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <Link key={item.name} href={item.href}>
                 <Button
                   variant="ghost"
@@ -45,7 +45,12 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="sm" className="md:hidden text-gray-900" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden text-gray-900"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
         </div>
@@ -54,7 +59,7 @@ export function Navigation() {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <Link key={item.name} href={item.href}>
                   <Button
                     variant="ghost"

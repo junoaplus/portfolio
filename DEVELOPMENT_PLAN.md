@@ -9,12 +9,14 @@
 ## 🎯 핵심 목표
 
 ### 기술적 목표
+
 - [x] **최신 기술 스택 활용**: Next.js 14, LangGraph, RAG 시스템
 - [ ] **실제 동작하는 AI 시스템**: 단순 데모가 아닌 실용적인 챗봇
 - [ ] **확장 가능한 아키텍처**: 멀티 에이전트 시스템으로 미래 확장성 확보
 - [ ] **성능 최적화**: Lighthouse 90+ 점수 달성
 
 ### 비즈니스 목표
+
 - [ ] **면접관 어필**: "와, 이거 어떻게 만들었어요?" 반응 유도
 - [ ] **차별화된 경험**: 기존 포트폴리오와 완전히 다른 인터랙션
 - [ ] **실용성 증명**: AI 기술을 실제 문제 해결에 적용한 사례
@@ -24,6 +26,7 @@
 ### 🏗️ Phase 1: 기반 구축 (Week 1-2)
 
 #### Week 1: 프로젝트 초기화
+
 - [ ] **환경 설정**
   - [ ] Next.js 14 + TypeScript 프로젝트 생성
   - [ ] ESLint, Prettier, Husky 설정
@@ -39,6 +42,7 @@
   - [ ] 기본 CI/CD 파이프라인
 
 #### Week 2: 메인 페이지 UI 개발
+
 - [ ] **Hero Section**
   - [ ] 타이핑 애니메이션 효과
   - [ ] 프로필 이미지 최적화
@@ -59,6 +63,7 @@
 ### 🤖 Phase 2: AI 시스템 구축 (Week 3-4)
 
 #### Week 3: 데이터 파이프라인 구축
+
 - [ ] **데이터 수집**
   - [ ] 개인 이력서 텍스트 파싱
   - [ ] GitHub API 연동 (repositories, commits, issues)
@@ -75,6 +80,7 @@
   - [ ] OpenAI Embeddings 생성 및 저장
 
 #### Week 4: LangGraph 멀티 에이전트 시스템
+
 - [ ] **에이전트 아키텍처 설계**
   - [ ] 질문 분류 에이전트 (기술/프로젝트/개인 구분)
   - [ ] 기술 전문 에이전트 (스킬, 경험, 도구)
@@ -94,6 +100,7 @@
 ### 💬 Phase 3: 챗봇 UI/UX 개발 (Week 5)
 
 #### 챗봇 인터페이스 구현
+
 - [ ] **실시간 채팅 UI**
   - [ ] 메시지 컴포넌트 (사용자/AI)
   - [ ] 타이핑 효과 애니메이션
@@ -113,6 +120,7 @@
 ### 🎨 Phase 4: 상세 페이지 & 콘텐츠 (Week 6)
 
 #### 상세 페이지 개발
+
 - [ ] **프로젝트 상세 페이지**
   - [ ] 동적 라우팅 (/projects/[slug])
   - [ ] 프로젝트 메타데이터
@@ -131,6 +139,7 @@
   - [ ] 취미/관심사
 
 #### 콘텐츠 제작
+
 - [ ] **시각적 자료**
   - [ ] 프로젝트 스크린샷 고해상도
   - [ ] 데모 영상 (15초 이내)
@@ -143,6 +152,7 @@
 ### 🚀 Phase 5: 최적화 & 배포 (Week 7)
 
 #### 성능 최적화
+
 - [ ] **웹 성능**
   - [ ] 이미지 최적화 (WebP, 압축)
   - [ ] 코드 스플리팅
@@ -155,6 +165,7 @@
   - [ ] 요청 제한 (Rate Limiting)
 
 #### SEO & 접근성
+
 - [ ] **검색 엔진 최적화**
   - [ ] 메타 태그 최적화
   - [ ] Open Graph 설정
@@ -167,6 +178,7 @@
   - [ ] 색상 대비 검증
 
 #### 배포 & 모니터링
+
 - [ ] **프로덕션 배포**
   - [ ] 커스텀 도메인 연결
   - [ ] SSL 인증서 설정
@@ -180,6 +192,7 @@
 ## 🔧 기술적 구현 세부사항
 
 ### AI 챗봇 시스템 아키텍처
+
 ```python
 # LangGraph 노드 구성 예시
 workflow = StateGraph(AgentState)
@@ -187,49 +200,52 @@ workflow = StateGraph(AgentState)
 # 에이전트 노드들
 workflow.add_node("classifier", classify_question)      # 질문 분류
 workflow.add_node("tech_agent", tech_expert_agent)      # 기술 관련
-workflow.add_node("project_agent", project_agent)       # 프로젝트 관련  
+workflow.add_node("project_agent", project_agent)       # 프로젝트 관련
 workflow.add_node("personal_agent", personal_agent)     # 개인 경험
 workflow.add_node("rag_retriever", rag_search)          # 문서 검색
 
 # 조건부 라우팅
 workflow.add_conditional_edges(
-    "classifier", 
+    "classifier",
     route_question,
     {
         "tech": "tech_agent",
-        "project": "project_agent", 
+        "project": "project_agent",
         "personal": "personal_agent"
     }
 )
 ```
 
 ### 데이터 파이프라인
+
 ```javascript
 // 데이터 소스들
 const dataSources = [
-  "개인 이력서 및 자기소개서",
-  "GitHub 레포지토리 README",
-  "프로젝트 문서 및 설명",
-  "기술 블로그 포스트",
-  "커밋 메시지 및 이슈 내용"
-];
+  '개인 이력서 및 자기소개서',
+  'GitHub 레포지토리 README',
+  '프로젝트 문서 및 설명',
+  '기술 블로그 포스트',
+  '커밋 메시지 및 이슈 내용',
+]
 
 // 임베딩 생성 및 저장
 const embeddings = await openai.embeddings.create({
   input: chunkedTexts,
-  model: "text-embedding-ada-002"
-});
+  model: 'text-embedding-ada-002',
+})
 ```
 
 ## 📊 성공 지표
 
 ### 정량적 지표
+
 - [ ] **성능**: Lighthouse 점수 90+ (Performance, Accessibility, SEO)
 - [ ] **응답 속도**: AI 챗봇 응답 시간 3초 이내
 - [ ] **검색 정확도**: RAG 시스템 관련성 점수 85% 이상
 - [ ] **모바일 최적화**: Core Web Vitals 기준 충족
 
 ### 정성적 지표
+
 - [ ] **사용자 경험**: 직관적이고 매끄러운 인터랙션
 - [ ] **콘텐츠 품질**: 정확하고 유용한 정보 제공
 - [ ] **시각적 완성도**: 전문적이고 현대적인 디자인
@@ -238,17 +254,20 @@ const embeddings = await openai.embeddings.create({
 ## 🚨 위험 요소 및 대응책
 
 ### 기술적 위험
+
 - **AI API 비용 초과**: 캐싱 전략 및 요청 제한으로 대응
 - **성능 이슈**: 점진적 최적화 및 모니터링
 - **벡터 검색 정확도**: 다양한 chunking 전략 테스트
 
 ### 일정 위험
+
 - **개발 지연**: 핵심 기능 우선 개발, MVP 접근
 - **완성도 부족**: 단계별 검증 및 피드백 수집
 
 ## 💰 예상 비용
 
 ### 개발 단계 (월)
+
 - **Vercel Pro**: $20 (고성능 빌드)
 - **Supabase Pro**: $25 (확장된 DB 용량)
 - **OpenAI API**: $50-100 (개발/테스트)
@@ -256,6 +275,7 @@ const embeddings = await openai.embeddings.create({
 - **총 예상**: ~$100/월
 
 ### 프로덕션 단계 (월)
+
 - **Vercel**: $0-20 (트래픽에 따라)
 - **Supabase**: $0-25 (사용량에 따라)
 - **OpenAI API**: $10-30 (실제 사용량)
@@ -264,12 +284,14 @@ const embeddings = await openai.embeddings.create({
 ## 🎯 차별화 전략
 
 ### 기술적 차별화
+
 1. **LangGraph 멀티 에이전트**: 질문 유형별 전문화된 응답
 2. **실시간 GitHub 연동**: 최신 프로젝트 정보 자동 업데이트
 3. **소스 인용 시스템**: 답변의 근거 투명하게 제공
 4. **대화형 UX**: 단순 정보 나열이 아닌 인터랙티브 경험
 
 ### 콘텐츠 차별화
+
 1. **스토리텔링**: 기술적 성장 과정과 경험 스토리
 2. **실제 문제 해결**: 구체적인 비즈니스 임팩트 중심
 3. **최신 기술 트렌드**: 2024-2025년 핫한 기술 스택 활용
