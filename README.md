@@ -40,9 +40,9 @@
 ## 📋 개발 체크리스트
 
 ### Phase 1: 기본 구조 설정
-- [ ] Next.js + TypeScript 프로젝트 초기화
-- [ ] Tailwind CSS + shadcn/ui 설정
-- [ ] 기본 폴더 구조 생성
+- [x] Next.js + TypeScript 프로젝트 초기화
+- [x] Tailwind CSS + shadcn/ui 설정
+- [x] 기본 폴더 구조 생성
 - [ ] ESLint & Prettier 설정
 - [ ] Vercel 배포 환경 구축
 - [ ] 환경변수 설정 (.env.local, .env.example)
