@@ -29,28 +29,28 @@ import Link from 'next/link'
 
 export default function HomePage() {
   const techStack = [
-    // 1줄: 토스 ML Engineer 핵심 기술 (빅데이터/ML)
+    // 1줄: 토스 핵심 빅데이터/DB 기술 (실제 사용) - 6개
     { name: 'PySpark', level: 85, icon: '⚡', slug: 'pyspark' },
-    { name: 'SQL', level: 90, icon: '🗄️', slug: 'sql' },
     { name: 'PostgreSQL', level: 80, icon: '🐘', slug: 'postgresql' },
-    { name: 'Vector DB', level: 85, icon: '🔍', slug: 'vector-db' },
-    { name: 'Hadoop', level: 70, icon: '📊', slug: 'hadoop' },
     { name: 'Redis', level: 75, icon: '💾', slug: 'redis' },
+    { name: 'Qdrant', level: 80, icon: '🔍', slug: 'qdrant' },
+    { name: 'FAISS', level: 75, icon: '🎯', slug: 'faiss' },
+    { name: 'Vector DB', level: 85, icon: '🗃️', slug: 'vector-db' },
 
-    // 2줄: AI/ML 및 추천 시스템
+    // 2줄: ML 알고리즘 & 데이터 처리 (실제 사용) - 5개
+    { name: 'XGBoost', level: 80, icon: '🚀', slug: 'xgboost' },
+    { name: 'LightGBM', level: 80, icon: '💡', slug: 'lightgbm' },
+    { name: 'RandomForest', level: 85, icon: '🌲', slug: 'randomforest' },
+    { name: 'pandas', level: 90, icon: '🐼', slug: 'pandas' },
+    { name: 'SVM', level: 75, icon: '🎯', slug: 'svm' },
+
+    // 3줄: AI/LLM & ML 라이브러리 (실제 사용) - 6개
     { name: 'LangChain', level: 90, icon: '🔗', slug: 'langchain' },
     { name: 'RAG', level: 85, icon: '📚', slug: 'rag' },
-    { name: 'OpenAI', level: 85, icon: '🤖', slug: 'openai' },
-    { name: 'Python', level: 95, icon: '🐍', slug: 'python' },
-    { name: 'NumPy', level: 80, icon: '🔢', slug: 'numpy' },
-
-    // 3줄: 백엔드 및 인프라
-    { name: 'FastAPI', level: 85, icon: '⚡', slug: 'fastapi' },
-    { name: 'Docker', level: 75, icon: '🐳', slug: 'docker' },
-    { name: 'Next.js', level: 90, icon: '▲', slug: 'nextjs' },
-    { name: 'TypeScript', level: 85, icon: '📘', slug: 'typescript' },
-    { name: 'GitHub', level: 95, icon: '🐙', slug: 'github' },
-    { name: 'Vercel', level: 80, icon: '☁️', slug: 'vercel' },
+    { name: 'LLM', level: 85, icon: '🤖', slug: 'llm' },
+    { name: 'Fine-tuning', level: 80, icon: '🔧', slug: 'fine-tuning' },
+    { name: 'OpenAI', level: 85, icon: '🧠', slug: 'openai' },
+    { name: 'scikit-learn', level: 85, icon: '🔬', slug: 'scikit-learn' },
   ]
 
   const projects = [
@@ -74,7 +74,7 @@ export default function HomePage() {
       description2: 'Qdrant 벡터DB 실시간 검색 최적화', 
       description3: 'LangChain 대화형 추천 시스템 구축',
       image: '/date.jpeg',
-      tech: ['PySpark', 'Qdrant', 'LangChain', 'FastAPI', 'PostgreSQL'],
+      tech: ['PySpark', 'LangChain', 'Qdrant'],
       achievements: [
         'PySpark로 20만→9만개 데이터 정제',
         '평균 300ms 실시간 추천 응답',
@@ -89,19 +89,60 @@ export default function HomePage() {
     {
       id: 3, // 추가
       title: '보드게임 룰 챗봇',
-      description: '복잡한 보드게임 규칙을 쉽게 설명하는 AI 어시스턴트',
-      image: '/placeholder.svg?height=200&width=300',
-      tech: ['Django', 'RAG', 'Vector DB', 'Fine-tuning'],
+      description: 'Fine-tuning으로 도메인 특화 성능 향상',
+      description2: '217개 게임별 RAG 시스템 구축', 
+      description3: '실시간 추천 & 룰 검색 최적화',
+      image: '/보드게임.png',
+      tech: ['Fine-tuning', 'RAG', 'FAISS'],
       achievements: [
-        '50+ 게임 지원',
-        '규칙 검색 최적화',
-        '사용자 만족도 4.8/5',
+        'EXAONE 파인튜닝으로 83.7% 정확도 달성',
+        '217개 게임별 개별 벡터DB 구축',
+        'QR코드 모바일 접속 지원',
+        '실시간 Q-A 데이터 자동 축적'
       ],
       github: '#',
-      demo: null,
+      demo: '/boardgame-chatbot',
       status: 'Completed',
       metrics: { stars: 18, views: '1.8k', commits: 127 },
       gradient: 'from-orange-500 to-red-500',
+    },
+    {
+      id: 4,
+      title: '신문 구독자 이탈 예측',
+      description: 'RandomForest로 87% F1-Score 달성',
+      description2: 'Faker 데이터 증강으로 불균형 해결', 
+      description3: '8가지 ML 모델 체계적 비교',
+      image: '/Newspaper.png',
+      tech: ['RandomForest', 'Faker', 'Streamlit'],
+      achievements: [
+        'RandomForest 87% F1-Score 달성',
+        'Faker로 클래스 불균형 완전 해결',
+        'Streamlit 실시간 예측 대시보드',
+      ],
+      github: 'https://github.com/hwangjunho-sknetworks/SKN11-2nd-1Team',
+      demo: '/newspaper-churn',
+      status: 'Completed',
+      metrics: { stars: 12, views: '0.9k', commits: 89 },
+      gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+      id: 5,
+      title: '간호사 퇴사 예측',
+      description: 'StratifiedKFold로 불균형 대응',
+      description2: '1676→822→794명 데이터 정제', 
+      description3: 'LogisticRegression F1-Score 0.76',
+      image: '/퇴사여부분포.png',
+      tech: ['LogisticRegression', 'StratifiedKFold', 'GridSearchCV'],
+      achievements: [
+        'LogisticRegression F1-Score 0.76',
+        '체계적 데이터 정제 파이프라인',
+        '의료기관 HR 전략 제안',
+      ],
+      github: 'https://github.com/hwangjunho-sknetworks/ML-1Team',
+      demo: '/nurse-salary',
+      status: 'Completed',
+      metrics: { stars: 8, views: '0.7k', commits: 67 },
+      gradient: 'from-cyan-500 to-blue-500',
     },
   ]
 
@@ -307,8 +348,8 @@ export default function HomePage() {
 
                   {/* 화살표 아이콘 */}
                   <div className="absolute bottom-6 right-6">
-                    <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center group-hover:bg-green-500/30 transition-all duration-300">
-                      <ArrowRight className="w-4 h-4 text-green-400 group-hover:text-green-300 group-hover:translate-x-0.5 transition-all duration-300" />
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                      <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all duration-300" />
                     </div>
                   </div>
                 </CardContent>
@@ -316,34 +357,59 @@ export default function HomePage() {
             </Link>
 
             {/* Project 3 - 보드게임 룰 챗봇 */}
-            <Link href="/projects/3" className="block h-full">
+            <Link href="/boardgame-chatbot" className="block h-full group">
               <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer">
                 <div className="relative rounded-t-2xl overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=320&width=500"
+                    src="/보드게임.png"
                     alt="보드게임 룰 챗봇 스크린샷"
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent"></div>
-                  <Badge style={{ background: 'rgb(234 88 12)' }} className="absolute top-6 left-6 text-white text-sm px-3 py-1">Completed</Badge>
                 </div>
-                <CardContent className="p-8">
+                <CardContent className="p-8 relative">
                   <h3 className="text-2xl font-bold text-white mb-4">
                     보드게임 룰 챗봇
                   </h3>
-                  <p className="text-gray-300 mb-6 text-base leading-relaxed">
-                    <strong className="text-orange-400">복잡한 게임 규칙</strong>을 쉽게 설명하는 전문 AI 어시스턴트
-                  </p>
+                  <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
+                    <div><strong className="text-green-400">Fine-tuning</strong>으로 도메인 특화 성능 향상</div>
+                    <div><strong className="text-blue-400">217개 게임별 RAG 시스템</strong> 구축</div>
+                    <div><strong className="text-purple-400">실시간 추천 & 룰 검색</strong> 최적화</div>
+                  </div>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-orange-400 text-sm px-3 py-1 border border-gray-700">Django</Badge>
-                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
                     <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">Fine-tuning</Badge>
+                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
+                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">AWS EC2</Badge>
                   </div>
 
+                  {/* 화살표 아이콘 */}
+                  <div className="absolute bottom-6 right-6">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                      <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all duration-300" />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </Link>
+
+          </div>
+
+          {/* 3번째 박스 아래 모든 프로젝트 보러가기 버튼 */}
+          <div className="grid lg:grid-cols-3 gap-12 mt-8">
+            <div></div>
+            <div></div>
+            <div className="flex justify-end">
+              <Link href="/projects" className="z-10 relative">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-blue-400 text-blue-400 hover:bg-blue-900/30 hover:border-blue-300 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105 cursor-pointer"
+                >
+                  모든 프로젝트 보기
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
         

@@ -14,11 +14,12 @@ export function Navigation() {
   useEffect(() => {
     // 프로젝트 상세 페이지 체크
     const checkProjectDetailPage = () => {
-      const isProjectPage = window.location.pathname.startsWith('/projects')
+      const isProjectPage = window.location.pathname.startsWith('/projects') || 
+                           window.location.pathname.startsWith('/boardgame-chatbot')
       setIsProjectDetailPage(isProjectPage)
-      // 프로젝트 페이지면 라이트 테마로 설정
+      // 프로젝트 페이지도 다크 테마로 설정
       if (isProjectPage) {
-        setIsDark(false)
+        setIsDark(true)
       }
     }
     
@@ -98,13 +99,12 @@ export function Navigation() {
 
   // 섹션별 헤더 스타일 정의
   const getHeaderStyle = () => {
-    // 프로젝트 상세 페이지면 화이트 헤더 (페이지와 통일감)
+    // 프로젝트 상세 페이지면 히어로 섹션과 똑같은 스타일 사용
     if (isProjectDetailPage) {
       return {
-        background: 'rgba(241, 245, 249, 0.9)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(203, 213, 225, 0.5)',
-        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+        backgroundImage: 'linear-gradient(to bottom right, rgba(0, 0, 0, 0.95), rgba(17, 24, 39, 0.95), rgba(0, 0, 0, 0.95)), linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)',
+        backgroundSize: '100% 100%, 60px 60px, 60px 60px',
+        borderBottom: '1px solid rgba(55, 65, 81, 0.8)'
       }
     }
     
@@ -146,8 +146,9 @@ export function Navigation() {
         }
       default:
         return {
-          background: 'rgba(255, 255, 255, 0.9)',
-          borderBottom: '1px solid rgba(229, 231, 235, 0.8)'
+          backgroundImage: 'linear-gradient(to bottom right, rgba(0, 0, 0, 0.95), rgba(17, 24, 39, 0.95), rgba(0, 0, 0, 0.95)), linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)',
+          backgroundSize: '100% 100%, 60px 60px, 60px 60px',
+          borderBottom: '1px solid rgba(55, 65, 81, 0.8)'
         }
     }
   }
@@ -165,11 +166,7 @@ export function Navigation() {
               <Link key={item.name} href={item.href}>
                 <Button
                   variant="ghost"
-                  className={`transition-colors ${
-                    isDark && !isProjectDetailPage
-                      ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
+                  className="text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
                 >
                   <item.icon className="w-4 h-4 mr-2" />
                   {item.name}
@@ -179,9 +176,7 @@ export function Navigation() {
           </div>
 
           {/* 지원자 정보 - 오른쪽 */}
-          <div className={`transition-colors ${
-            isDark && !isProjectDetailPage ? 'text-white' : 'text-gray-900'
-          }`}>
+          <div className="text-white transition-colors">
             지원자 - 황준호
           </div>
 
@@ -189,9 +184,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="sm"
-            className={`md:hidden transition-colors ${
-              isDark && !isProjectDetailPage ? 'text-white' : 'text-gray-900'
-            }`}
+            className="md:hidden text-white transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -200,19 +193,13 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className={`md:hidden py-4 transition-colors ${
-            isDark && !isProjectDetailPage ? 'border-t border-gray-800' : 'border-t border-gray-200'
-          }`}>
+          <div className="md:hidden py-4 border-t border-gray-800 transition-colors">
             <div className="flex flex-col gap-2">
               {navItems.map(item => (
                 <Link key={item.name} href={item.href}>
                   <Button
                     variant="ghost"
-                    className={`w-full justify-start transition-colors ${
-                      isDark && !isProjectDetailPage
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                    className="w-full justify-start text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     <item.icon className="w-4 h-4 mr-3" />

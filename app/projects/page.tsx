@@ -11,6 +11,7 @@ import {
   Brain,
   Clock,
   Sparkles,
+  ArrowRight,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -82,200 +83,208 @@ export default function ProjectsPage() {
     },
     {
       id: 3,
-      title: '보드게임 룰 챗봇',
-      subtitle: '복잡한 게임 규칙을 쉽게 설명하는 AI',
+      title: "보드게임 룰 챗봇 '보비(BOVI)'",
+      subtitle: 'LLM 파인튜닝 + RAG 기반 보드게임 전문 챗봇 시스템',
       description:
-        '50+ 보드게임의 복잡한 규칙을 AI가 쉽고 재미있게 설명해주는 전문 어시스턴트입니다.',
-      image: '/placeholder.svg?height=300&width=500',
-      tech: [
-        'Django',
-        'RAG',
-        'Vector DB',
-        'Fine-tuning',
-        'PostgreSQL',
-        'Redis',
-      ],
+        '보드게임 초보자들의 게임 선택 장애와 복잡한 룰 이해를 돕기 위해 개발된 전문 AI 챗봇입니다. GPT-3.5-turbo 파인튜닝과 FAISS 벡터 DB를 활용한 RAG 시스템으로 정확한 룰 설명과 개인 취향 기반 보드게임 추천을 제공합니다.',
+      image: '/보드게임.png',
+      tech: ['Fine-tuning', 'RAG', 'AWS EC2'],
       category: 'AI/ML',
       status: 'Completed',
       gradient: 'from-orange-500 to-red-500',
       achievements: [
-        '50+ 보드게임 규칙 데이터베이스 구축',
-        '게임별 전문 지식 Fine-tuning으로 정확도 향상',
-        '사용자 만족도 4.8/5점 달성',
-        '규칙 검색 속도 0.8초 이내 최적화',
+        'EXAONE 파인튜닝으로 83.7% 정확도 달성',
+        '217개 게임별 개별 벡터DB 구축',
+        'QR코드 모바일 접속 지원',
       ],
-      github: 'https://github.com/your-username/boardgame-rules-bot',
-      demo: null,
-      timeline: '2024.05 - 2024.07 (3개월)',
-      team: '개인 프로젝트',
+      github: 'https://github.com/junoaplus/SKN11-4th-3Team',
+      demo: '/boardgame-chatbot',
+      timeline: '2025.05.16 - 2025.06.11 (4주)',
+      team: '4명',
     },
     {
       id: 4,
-      title: '실시간 협업 코드 에디터',
-      subtitle: 'WebSocket 기반 동시 편집 시스템',
+      title: '신문 구독자 이탈 예측',
+      subtitle: '머신러닝 기반 고객 이탈 분류 모델',
       description:
-        '여러 개발자가 실시간으로 코드를 함께 편집할 수 있는 협업 플랫폼입니다.',
-      image: '/placeholder.svg?height=300&width=500',
-      tech: [
-        'Node.js',
-        'Socket.io',
-        'React',
-        'Monaco Editor',
-        'Redis',
-        'Docker',
-      ],
-      category: 'Full-Stack',
+        '신문사 구독자 이탈을 예측하는 머신러닝 모델입니다. 불균형 데이터 처리와 다양한 분류 알고리즘을 비교 분석하여 최적의 모델을 구축했습니다.',
+      image: '/streamlit-page1.png',
+      tech: ['RandomForest', 'XGBoost', 'Faker', 'Python', 'scikit-learn', 'Streamlit'],
+      category: 'Traditional ML',
       status: 'Completed',
       gradient: 'from-purple-500 to-pink-600',
       achievements: [
-        '실시간 동시 편집 충돌 해결 알고리즘 구현',
-        'WebSocket 연결 최적화로 지연시간 50ms 이하 달성',
-        '500+ 동시 사용자 지원하는 확장 가능한 아키텍처',
-        'Docker 컨테이너화로 쉬운 배포 환경 구축',
+        'RandomForest로 87.3% 정확도 달성',
+        'SMOTE를 활용한 불균형 데이터 해결',
+        '6가지 ML 알고리즘 성능 비교 분석',
+        'Streamlit 기반 예측 웹 앱 구현',
       ],
-      github: 'https://github.com/your-username/realtime-code-editor',
-      demo: 'https://code-collab.vercel.app',
-      timeline: '2024.02 - 2024.04 (3개월)',
-      team: '개인 프로젝트',
+      github: 'https://github.com/your-username/newspaper-churn',
+      demo: null,
+      timeline: '2024.03 - 2024.04 (4주)',
+      team: '팀 프로젝트 (3명)',
     },
     {
       id: 5,
-      title: '마이크로서비스 API 게이트웨이',
-      subtitle: '고성능 분산 시스템 아키텍처',
+      title: '간호사 급여 예측',
+      subtitle: '회귀 분석 기반 급여 예측 모델',
       description:
-        '여러 마이크로서비스를 통합 관리하는 고성능 API 게이트웨이 시스템입니다.',
-      image: '/placeholder.svg?height=300&width=500',
-      tech: ['Go', 'Docker', 'Kubernetes', 'Redis', 'Prometheus', 'Grafana'],
-      category: 'Backend',
+        '간호사의 다양한 특성을 기반으로 급여를 예측하는 회귀 모델입니다. 여러 회귀 알고리즘을 비교하고 30% 오차 이내 정답률로 실용적인 예측 성능을 달성했습니다.',
+      image: '/피처벌중요도상위15개_그래프.png',
+      tech: ['LogisticRegression', 'StratifiedKFold', 'GridSearchCV', 'Python', 'scikit-learn', 'pandas'],
+      category: 'Traditional ML',
       status: 'Completed',
       gradient: 'from-indigo-500 to-blue-600',
       achievements: [
-        '초당 10,000+ 요청 처리 가능한 고성능 시스템',
-        '99.9% 가용성 달성하는 안정적인 아키텍처',
-        'Kubernetes 기반 자동 스케일링 구현',
-        '실시간 모니터링 및 알림 시스템 구축',
+        '30% 오차 이내 정답률 달성',
+        '4가지 회귀 알고리즘 성능 비교',
+        '체계적인 EDA 및 데이터 전처리',
+        '피처 중요도 분석 및 해석',
       ],
-      github: 'https://github.com/your-username/api-gateway',
+      github: 'https://github.com/your-username/nurse-salary-prediction',
       demo: null,
-      timeline: '2023.11 - 2024.01 (3개월)',
-      team: '개인 프로젝트',
+      timeline: '2024.02 - 2024.03 (4주)',
+      team: '팀 프로젝트 (3명)',
     },
   ]
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100">
+    <div className="min-h-screen snap-start flex flex-col relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #000000, #111827, #000000)' }}>
+      {/* Hero Tech Grid Pattern - 메인과 동일 */}
+      <div className="absolute inset-0 opacity-40" style={{
+        backgroundImage: `linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)`,
+        backgroundSize: '60px 60px'
+      }}></div>
+      
+      {/* Hero Tech Glow Effects - 메인과 동일 */}
+      <div className="absolute top-24 left-24 w-96 h-96 rounded-full filter blur-3xl animate-pulse" style={{ 
+        background: 'linear-gradient(to right, rgba(59, 130, 246, 0.15), rgba(99, 152, 255, 0.15))',
+        animationDuration: '4s'
+      }}></div>
+      
+      <div className="absolute bottom-32 right-32 w-80 h-80 rounded-full filter blur-3xl animate-pulse" style={{ 
+        background: 'linear-gradient(to right, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15))',
+        animationDuration: '3s',
+        animationDelay: '1s'
+      }}></div>
+      
+      <div className="absolute top-1/2 left-32 w-64 h-64 rounded-full filter blur-2xl animate-pulse" style={{ 
+        background: 'linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.1))',
+        animationDuration: '5s',
+        animationDelay: '2s'
+      }}></div>
+      
       <Navigation />
 
       <div className="pt-16">
-
-
-        {/* Projects Grid */}
-        <div className="px-4 py-16 bg-gradient-to-br from-slate-50 to-indigo-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-8">
-              {projects.map(project => (
-                <Link href={`/projects/${project.id}`} key={project.id} className="block">
+        <section className="min-h-screen snap-start flex items-center justify-center py-20 px-4 relative">
+          <div className="max-w-full px-8 mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                모든 프로젝트
+              </h2>
+              <p className="text-xl text-gray-300">
+                복잡한 비즈니스 문제를 AI로 해결한 실무 프로젝트
+              </p>
+            </div>
+            
+            {/* 첫 번째 줄: AI/LLM 프로젝트 (3개) */}
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                AI/LLM Projects
+              </h3>
+              <p className="text-lg text-gray-300">
+                대규모 언어모델과 AI 기술을 활용한 실전 프로젝트
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-3 gap-12 mb-16">
+              {projects.filter(project => project.id <= 3).map(project => (
+                <Link href={project.id === 3 ? '/boardgame-chatbot' : `/projects/${project.id}`} key={project.id} className="block h-full group">
                   <Card
-                    className="bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden transform hover:-translate-y-2 cursor-pointer"
+                    style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
+                    className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer"
                   >
-                  {/* Project Image */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative rounded-t-2xl overflow-hidden">
                     <img
                       src={project.image || '/placeholder.svg'}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-64 object-cover"
                     />
+                    {project.id === 1 && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+                        <Badge style={{ background: 'rgb(37 99 235)' }} className="absolute top-6 left-6 text-white text-sm px-3 py-1">Live Service</Badge>
+                      </>
+                    )}
                   </div>
 
-                  <CardContent className="p-6">
-                    {/* Project Header */}
-                    <div className="mb-4">
-                      <h3 className="text-2xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-blue-600 font-medium mb-3">
-                        {project.subtitle}
+                  <CardContent className="p-8 relative">
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {project.title}
+                    </h3>
+                    
+                    {project.id === 1 ? (
+                      <p className="text-gray-300 mb-6 text-base leading-relaxed">
+                        <strong className="text-blue-400">실시간으로 내 경험을 답변</strong>하는 지능형 포트폴리오
                       </p>
-                    </div>
-
-                    {/* Tech Stack */}
-                    <div className="mb-4">
-                      <div className="flex flex-wrap gap-2">
+                    ) : (
+                      <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
                         {project.id === 2 ? (
                           <>
-                            <Badge className="text-xs bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 transition-colors">
-                              PySpark
-                            </Badge>
-                            <Badge className="text-xs bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 transition-colors">
-                              LangChain
-                            </Badge>
-                            <Badge className="text-xs bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 transition-colors">
-                              Qdrant Vector DB
-                            </Badge>
+                            <div><strong className="text-green-400">PySpark</strong>로 20만→9만개 데이터 정제</div>
+                            <div><strong className="text-blue-400">Qdrant 벡터DB</strong> 실시간 검색 최적화</div>
+                            <div><strong className="text-purple-400">LangChain</strong> 대화형 추천 시스템 구축</div>
                           </>
-                        ) : (
-                          project.tech.slice(0, 3).map(tech => (
-                            <Badge
-                              key={tech}
-                              className="text-xs bg-gray-100 border-gray-200 text-gray-700 hover:bg-gray-200 transition-colors"
-                            >
-                              {tech}
-                            </Badge>
-                          ))
-                        )}
-                      </div>
-                    </div>
-
-                    {/* 핵심 기술 & 성과 섹션 */}
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-sm mb-3 flex items-center gap-2 text-blue-600">
-                        <Sparkles className="w-4 h-4" />
-                        핵심 기술 & 성과
-                      </h4>
-                      <div className="grid grid-cols-1 gap-2">
-                        {project.id === 2 ? (
+                        ) : project.id === 3 ? (
                           <>
-                            <div className="flex items-center gap-2 text-sm text-gray-700 bg-gradient-to-r from-blue-50 to-purple-50/30 p-2 rounded-lg">
-                              <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
-                              <strong className="text-green-400">PySpark</strong>로 20만→9만개 데이터 정제
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-gray-700 bg-gradient-to-r from-blue-50 to-purple-50/30 p-2 rounded-lg">
-                              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
-                              <strong className="text-blue-400">Qdrant 벡터DB</strong> 실시간 검색 최적화
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-gray-700 bg-gradient-to-r from-blue-50 to-purple-50/30 p-2 rounded-lg">
-                              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
-                              <strong className="text-purple-400">LangChain</strong> 대화형 추천 시스템 구축
-                            </div>
+                            <div><strong className="text-green-400">Fine-tuning</strong>으로 도메인 특화 성능 향상</div>
+                            <div><strong className="text-blue-400">217개 게임별 RAG 시스템</strong> 구축</div>
+                            <div><strong className="text-purple-400">실시간 추천 & 룰 검색</strong> 최적화</div>
                           </>
                         ) : (
-                          project.achievements
-                            .slice(0, 3)
-                            .map((achievement, i) => (
-                              <div
-                                key={i}
-                                className="flex items-center gap-2 text-sm text-gray-700 bg-gradient-to-r from-blue-50 to-purple-50/30 p-2 rounded-lg"
-                              >
-                                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-                                {achievement}
-                              </div>
-                            ))
+                          <p>{project.description}</p>
                         )}
                       </div>
+                    )}
+                    
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.id === 1 ? (
+                        <>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">LangGraph</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">Next.js</Badge>
+                        </>
+                      ) : project.id === 2 ? (
+                        <>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">PySpark</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">Qdrant</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">LangChain</Badge>
+                        </>
+                      ) : project.id === 3 ? (
+                        <>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">Fine-tuning</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">AWS EC2</Badge>
+                        </>
+                      ) : (
+                        project.tech.slice(0, 3).map(tech => (
+                          <Badge
+                            key={tech}
+                            style={{ background: 'rgb(31 41 55)' }}
+                            className="text-blue-400 text-sm px-3 py-1 border border-gray-700"
+                          >
+                            {tech}
+                          </Badge>
+                        ))
+                      )}
                     </div>
 
-                    {/* Project Info */}
-                    <div className="mb-6 p-4 bg-gradient-to-r from-gray-50 to-purple-50/30 rounded-xl border border-gray-100">
-                      <div className="grid grid-cols-2 gap-4 text-xs">
-                        <div className="flex items-center gap-2 text-gray-600">
-                          <Clock className="w-3 h-3" />
-                          <span>{project.timeline}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-gray-600">
-                          <Users className="w-3 h-3" />
-                          <span>{project.team}</span>
-                        </div>
+                    {/* 화살표 아이콘 */}
+                    <div className="absolute bottom-6 right-6">
+                      <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all duration-300" />
                       </div>
                     </div>
 
@@ -284,9 +293,84 @@ export default function ProjectsPage() {
                 </Link>
               ))}
             </div>
-          </div>
-        </div>
 
+            {/* 두 번째 줄: Traditional ML 프로젝트 (2개) */}
+            <div className="text-center mb-12 mt-20">
+              <h3 className="text-3xl font-bold text-gray-400 mb-4">
+                Traditional ML Projects
+              </h3>
+              <p className="text-lg text-gray-500">
+                전통적인 머신러닝 기법으로 구현한 분류/회귀 모델
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              {projects.filter(project => project.id >= 4).map(project => (
+                <Link href={project.id === 4 ? '/newspaper-churn' : '/nurse-salary'} key={project.id} className="block h-full group">
+                  <Card
+                    style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
+                    className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer"
+                  >
+                    <div className="relative rounded-t-2xl overflow-hidden">
+                      <img
+                        src={project.image || '/placeholder.svg'}
+                        alt={project.title}
+                        className="w-full h-64 object-cover"
+                      />
+                      <Badge style={{ background: 'rgb(55 65 81)' }} className="absolute top-6 left-6 text-gray-300 text-sm px-3 py-1">{project.category}</Badge>
+                    </div>
+
+                    <CardContent className="p-8 relative">
+                      <h3 className="text-2xl font-bold text-white mb-4">
+                        {project.title}
+                      </h3>
+                      
+                      <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
+                        {project.id === 4 ? (
+                          <>
+                            <div><strong className="text-purple-400">RandomForest</strong>로 87.3% 정확도 달성</div>
+                            <div><strong className="text-blue-400">SMOTE</strong> 불균형 데이터 해결</div>
+                            <div><strong className="text-green-400">6가지 알고리즘</strong> 성능 비교</div>
+                          </>
+                        ) : (
+                          <>
+                            <div><strong className="text-indigo-400">회귀 분석</strong>으로 30% 오차 이내 달성</div>
+                            <div><strong className="text-blue-400">4가지 알고리즘</strong> 성능 비교</div>
+                            <div><strong className="text-green-400">체계적 EDA</strong> 및 전처리</div>
+                          </>
+                        )}
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.id === 4 ? (
+                          <>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">RandomForest</Badge>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">XGBoost</Badge>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">Faker</Badge>
+                          </>
+                        ) : (
+                          <>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-indigo-400 text-sm px-3 py-1 border border-gray-700">LogisticRegression</Badge>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">StratifiedKFold</Badge>
+                            <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">GridSearchCV</Badge>
+                          </>
+                        )}
+                      </div>
+
+                      {/* 화살표 아이콘 */}
+                      <div className="absolute bottom-6 right-6">
+                        <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                          <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all duration-300" />
+                        </div>
+                      </div>
+
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )
