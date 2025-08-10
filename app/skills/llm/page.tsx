@@ -51,40 +51,33 @@ export default function LLMSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               LLM
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Large Language Model - 거대언어모델
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 90%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 LLM */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                LLM에 대한 개인적 견해
+                내가 이해한 LLM
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">LLM은 인간의 언어 능력을 재현한 역사적 혁신</span>이라고 생각합니다. 
-                  단순한 패턴 매칭을 넘어 <span className="font-bold text-cyan-400">맥락적 이해와 창조적 생성</span>을 
-                  동시에 수행할 수 있는 범용 인공지능의 첫걸음입니다.
+                  <span className="font-bold text-cyan-400">LLM은 AI 시장의 판도를 완전히 바꿔놓았다고 생각합니다.</span> 
+                  그동안은 ML을 이용해서 직접 코드를 짜고 구현을 해야 했다면, 
+                  <span className="font-bold text-cyan-400">이제는 LLM을 관리 감독하고 일을 시키면 알아서 코드를 다 짜 줍니다.</span> 
+                  그리고 사용자와 챗봇을 만들 때도 LLM을 활용하면 됩니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">Transformer 아키텍처의 Self-Attention 메커니즘</span>이 
-                  놀라웠습니다. 긴 시퀀스에서도 중요한 정보를 선별하고 
-                  <span className="font-bold text-cyan-400">문맥을 유지하면서 일관된 응답</span>을 생성하는 
-                  능력이 매우 인상적이었습니다.
+                  하지만 <span className="font-bold text-cyan-400">너무 최신 기술만 따라가면 안 된다고 생각합니다.</span> 
+                  로우레벨에서 해결할 수 있는 건 해결하고 간단하게 넘어가야 된다고 생각합니다. 
+                  <span className="font-bold text-cyan-400">토큰을 쓰는 데 돈이 들 수도 있고, 블랙박스의 영역이기 때문에 어떤 결과가 나올지도 모릅니다.</span>
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">혁신적인 플랫폼</span>에서는 
-                  고객 문의 처리, 개인화된 금융 조언, 문서 요약과 분석에서 
-                  LLM의 자연어 이해와 생성 능력이 <span className="font-bold text-cyan-400">차세대 사용자 경험</span>을 
-                  만드는 핵심 기술이 될 것입니다.
+                  그래서 <span className="font-bold text-cyan-400">에러 처리를 잘해야 된다고 생각합니다.</span> 
+                  특히 할루시네이션 대비가 중요합니다. 
+                  <span className="font-bold text-cyan-400">벡터 DB로 최신 정보를 보완하거나, 특정 분야의 정보를 학습시키고 싶다면 파인튜닝과 벡터 DB를 활용</span>하는 것이 좋은 전략이라고 생각합니다.
                 </p>
               </div>
             </CardContent>
@@ -100,22 +93,7 @@ export default function LLMSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/boardgame-chatbot', '_blank')}>
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    보드게임 룰 챗봇 'BOVI' →
-                  </h3>
-                  <div className="text-gray-300 space-y-3">
-                    <p>
-                      <span className="font-bold text-cyan-400">GPT-4 LLM을 핵심 엔진으로 활용</span>하여 
-                      복잡한 보드게임 룰을 사용자가 이해하기 쉽게 설명하는 
-                      <span className="font-bold text-cyan-400">지능형 대화 시스템</span>을 구축했습니다. 
-                      자연스러운 질문-답변 인터페이스로 게임 룰 학습을 혁신했습니다.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-green-900/30 hover:to-teal-900/30 transition-all duration-300" onClick={() => window.open('/projects/2', '_blank')}>
+                <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-green-900/30 hover:to-teal-900/30 transition-all duration-300" onClick={() => window.open('/date-recommendation', '_blank')}>
                   <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-green-300 transition-colors">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     데이트 코스 추천 AI 시스템 →
@@ -129,119 +107,71 @@ export default function LLMSkillPage() {
                     </p>
                   </div>
                 </div>
+                
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/boardgame-chatbot', '_blank')}>
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    보드게임 룰 챗봇 'BOVI' →
+                  </h3>
+                  <div className="text-gray-300 space-y-3">
+                    <p>
+                      <span className="font-bold text-cyan-400">GPT와 벡터 DB를 활용해서 구축하고, EXAONE 모델 파인튜닝한 것도 구축했습니다.</span> 
+                      <span className="font-bold text-cyan-400">2가지를 다 구축</span>해서 
+                      복잡한 보드게임 룰을 사용자가 이해하기 쉽게 설명하는 시스템을 만들었습니다.
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-                <div className="text-sm text-gray-400 mb-2">핵심 LLM 활용:</div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-700 text-cyan-100">Natural Language Understanding</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Text Generation</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Conversational AI</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Prompt Engineering</Badge>
-                </div>
-              </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    언어 이해도
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">자연스러운 대화</span> 구현</div>
-                    <div>• <span className="font-bold">맥락 이해 95%</span> 정확도</div>
-                    <div>• <span className="font-bold">다양한 질문 유형</span> 처리</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    생성 품질
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">일관된 응답</span> 생성</div>
-                    <div>• <span className="font-bold">창의적 콘텐츠</span> 제작</div>
-                    <div>• <span className="font-bold">개인화된 추천</span></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">단순히 API를 호출하는 것</span>이라고 생각했지만, 
-                    실제로는 <span className="font-bold text-blue-300">프롬프트 엔지니어링과 컨텍스트 관리</span>가 
-                    결과의 질을 좌우한다는 것을 깨달았습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">Temperature, Top-p, Token 제한</span> 등의 파라미터가 
-                    응답의 창의성과 일관성에 미치는 영향을 실험하면서 
-                    <span className="font-bold text-blue-300">LLM의 동작 원리</span>를 더 깊이 이해할 수 있었습니다. 
-                    특히 <span className="font-bold text-blue-300">Chain-of-Thought 추론</span>의 강력함을 체감했습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">멀티모달 통합, 도메인 특화 파인튜닝, 
-                    안전성 가이드라인</span> 등을 활용해서 
-                    프로덕션 환경에서도 안정적이고 신뢰할 수 있는 LLM 기반 서비스를 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 비즈니스 임팩트 */}
+          {/* LLM으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                LLM으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">차세대 사용자 경험 혁신</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    LLM의 <span className="font-bold text-cyan-400">자연어 대화 인터페이스</span>로 
-                    기존 클릭 기반 UI를 넘어 <span className="font-bold text-blue-300">직관적이고 인간적인 상호작용</span>을 
-                    가능하게 하여 사용자 만족도와 서비스 접근성을 획기적으로 향상시켰습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">개인맞춤형 콘텐츠 생성</span>으로 
-                    각 사용자의 필요에 정확히 맞는 정보와 추천을 제공하여 
-                    <span className="font-bold text-cyan-400">사용자 참여도를 크게 높이고</span> 
-                    서비스의 가치와 차별성을 강화했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">복잡한 금융 서비스</span>에서는 
-                    LLM이 <span className="font-bold text-cyan-400">고객 상담 자동화, 금융 상품 설명, 투자 조언</span> 등에서 
-                    전문적이면서도 이해하기 쉬운 소통을 가능하게 하여 
-                    <span className="font-bold text-cyan-400">고객 경험 혁신과 운영 효율성</span>을 동시에 달성하는 
-                    게임 체인저가 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 개발 생산성 혁신 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    개발 생산성 혁신
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> ML로 직접 코드를 짜고 구현해야 하는 복잡한 과정</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> LLM을 관리 감독하면 알아서 코드를 다 짜 줍니다</div>
+                  </div>
+                </div>
+
+                {/* 비용과 예측가능성 문제 */}
+                <div className="bg-gradient-to-r from-orange-900/20 to-red-900/20 rounded-xl p-6 border border-orange-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💰</div>
+                    비용과 예측가능성 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-orange-400">주의:</span> 토큰 사용 비용과 블랙박스의 예측 불가능한 결과입니다</div>
+                    <div>• <span className="font-bold text-orange-400">해결:</span> 로우레벨 해결 가능한 건 간단하게 처리하고, 에러 처리를 철저히 합니다</div>
+                  </div>
+                </div>
+
+                {/* 정보 정확성 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    정보 정확성과 할루시네이션 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">문제:</span> 할루시네이션으로 인한 부정확한 정보 생성입니다</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 벡터 DB로 최신 정보를 보완하고, 파인튜닝으로 특정 분야 정확도를 향상시킵니다</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

@@ -201,7 +201,7 @@ export default function ProjectsPage() {
             
             <div className="grid lg:grid-cols-3 gap-12 mb-16">
               {projects.filter(project => project.id <= 3).map(project => (
-                <Link href={project.id === 3 ? '/boardgame-chatbot' : `/projects/${project.id}`} key={project.id} className="block h-full group">
+                <Link href={project.id === 3 ? '/boardgame-chatbot' : project.id === 2 ? '/date-recommendation' : `/projects/${project.id}`} key={project.id} className="block h-full group">
                   <Card
                     style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
                     className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer"

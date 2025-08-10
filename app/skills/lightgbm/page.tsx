@@ -51,39 +51,29 @@ export default function LightGBMSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               LightGBM
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Microsoft의 경량화된 고속 그라디언트 부스팅
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 80%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 LightGBM */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                LightGBM에 대한 개인적 견해
+                내가 이해한 LightGBM
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">LightGBM은 속도와 성능의 완벽한 균형</span>이라고 생각합니다. 
-                  XGBoost 대비 <span className="font-bold text-cyan-400">훨씬 빠른 학습 속도</span>로 
-                  대용량 데이터셋에서도 효율적인 모델링이 가능합니다.
+                  <span className="font-bold text-cyan-400">LightGBM은 XGBoost를 업그레이드한 알고리즘</span>입니다. 
+                  XGBoost와 동일하게 <span className="font-bold text-cyan-400">학습을 순차적으로 진행하면서 앞의 학습의 오차를 줄여나가는 방식</span>을 사용합니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">Leaf-wise 트리 성장 방식</span>이 인상적이었습니다. 
-                  기존 Level-wise 방식보다 <span className="font-bold text-cyan-400">메모리 효율성이 뛰어나면서도 
-                  높은 정확도</span>를 유지할 수 있어 실무에서 매우 유용한 알고리즘입니다.
+                  업그레이드한 방식은 <span className="font-bold text-cyan-400">XGBoost는 모든 걸 확장하지만 LightGBM은 가장 큰 손실만 먼저 확장해 나간다</span>는 것입니다. 
+                  이래서 <span className="font-bold text-cyan-400">더 빠르고 메모리를 적게 사용</span>합니다.
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">대규모 데이터 처리</span>가 필요한 환경에서는 
-                  LightGBM의 빠른 학습 속도와 메모리 효율성이 
-                  <span className="font-bold text-cyan-400">실시간 모델 업데이트와 A/B 테스트</span>에 
-                  필수적인 기술이 될 것입니다.
+                  <span className="font-bold text-cyan-400">분류, 회귀, 랭킹</span>에서 XGBoost와 동일하게 사용할 수 있지만 
+                  더 빠른 성능을 제공합니다.
                 </p>
               </div>
             </CardContent>
@@ -106,9 +96,9 @@ export default function LightGBMSkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">8가지 머신러닝 알고리즘 비교 분석</span>에서 
-                      LightGBM으로 빠른 학습과 높은 성능을 동시에 확보했습니다. 
-                      특히 <span className="font-bold text-cyan-400">불균형 데이터 처리</span>에서 뛰어난 결과를 보였습니다.
+                      <span className="font-bold text-cyan-400">XGBoost보다 빠른 학습 속도</span>로 
+                      구독자 이탈을 예측했습니다. 
+                      <span className="font-bold text-cyan-400">분류 문제</span>에서 XGBoost와 비슷한 성능을 더 빠르게 달성했습니다.
                     </p>
                   </div>
                 </div>
@@ -120,124 +110,61 @@ export default function LightGBMSkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">5가지 분류 모델 비교</span>에서 
-                      LightGBM의 효율적인 성능을 확인했습니다. 
-                      <span className="font-bold text-cyan-400">빠른 학습 속도</span>로 다양한 실험을 진행할 수 있었습니다.
+                      <span className="font-bold text-cyan-400">회귀 문제</span>로 간호사 퇴사 요인을 분석했습니다. 
+                      <span className="font-bold text-cyan-400">XGBoost보다 적은 메모리 사용량</span>으로 
+                      동일한 성능을 더 효율적으로 달성했습니다.
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-                <div className="text-sm text-gray-400 mb-2">핵심 LightGBM 활용:</div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-700 text-cyan-100">Gradient Boosting</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Fast Training</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Memory Efficiency</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Early Stopping</Badge>
-                </div>
-              </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    학습 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">XGBoost 대비 3배 빠른</span> 학습 속도</div>
-                    <div>• <span className="font-bold">메모리 사용량 50% 절약</span></div>
-                    <div>• <span className="font-bold">높은 예측 정확도</span> 유지</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    모델 품질
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">Leaf-wise 최적화</span> 구현</div>
-                    <div>• <span className="font-bold">과적합 방지</span> 효과적</div>
-                    <div>• <span className="font-bold">Feature Importance</span> 분석</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">XGBoost와의 차이점</span>을 명확히 이해하지 못했지만, 
-                    실제 대용량 데이터로 실험해보니 <span className="font-bold text-blue-300">학습 속도의 차이가 극명</span>했습니다. 
-                    같은 성능을 훨씬 빠르게 달성할 수 있었습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">Leaf-wise 트리 성장의 원리</span>를 
-                    이해하게 되면서 메모리 효율성과 속도의 비밀을 알 수 있었습니다. 
-                    특히 <span className="font-bold text-blue-300">num_leaves 파라미터 조절</span>이 
-                    성능에 미치는 영향을 체감했습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">대용량 데이터 처리, 실시간 모델 업데이트, GPU 가속</span> 등을 
-                    활용해서 프로덕션 환경에서도 빠르고 안정적인 LightGBM 모델을 운영할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* LightGBM로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                LightGBM로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">빠른 학습으로 개발 사이클 단축</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    LightGBM의 <span className="font-bold text-cyan-400">3배 빠른 학습 속도</span>로 
-                    모델 실험과 튜닝 시간을 대폭 단축하여 
-                    <span className="font-bold text-blue-300">빠른 프로토타이핑과 반복 개발</span>이 가능해졌습니다. 
-                    이는 비즈니스 요구사항에 빠르게 대응할 수 있는 경쟁력을 제공했습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">메모리 사용량 50% 절약</span>으로 
-                    서버 리소스 비용을 크게 줄이면서도 
-                    <span className="font-bold text-cyan-400">더 많은 모델을 동시에 운영</span>할 수 있게 되어 
-                    서비스 확장성과 경제성을 동시에 달성했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">실시간 의사결정이 중요한 환경</span>에서는 
-                    LightGBM의 <span className="font-bold text-cyan-400">빠른 학습과 예측 능력</span>이 
-                    실시간 신용평가, 개인화 추천, 리스크 모니터링 등에서 
-                    <span className="font-bold text-cyan-400">즉각적이고 정확한 서비스</span>를 가능하게 하는 핵심 기술이 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* XGBoost 속도 문제 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    XGBoost 대용량 데이터 속도 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-blue-400">문제:</span> XGBoost가 대규모 데이터에서 학습 속도 느림</div>
+                    <div>• <span className="font-bold text-blue-400">해결:</span> XGBoost보다 훨씬 빠른 학습 속도 제공</div>
+                  </div>
+                </div>
+
+                {/* 메모리 효율성 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💾</div>
+                    메모리 효율성 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">문제:</span> 대용량 데이터 처리 시 높은 메모리 사용량</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> XGBoost보다 적은 메모리로 동일한 성능</div>
+                  </div>
+                </div>
+
+                {/* 실시간 학습 요구사항 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🚀</div>
+                    실시간 모델 업데이트 요구사항
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">문제:</span> 빠른 모델 재학습이 필요한 환경</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 빠른 학습으로 실시간 모델 업데이트 가능</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

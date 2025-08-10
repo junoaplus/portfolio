@@ -321,7 +321,7 @@ export default function HomePage() {
             </Link>
 
             {/* Project 2 - 데이트 코스 추천 */}
-            <Link href="/projects/2" className="block h-full group">
+            <Link href="/date-recommendation" className="block h-full group">
               <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer">
                 <div className="relative rounded-t-2xl overflow-hidden">
                   <img

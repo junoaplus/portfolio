@@ -51,39 +51,32 @@ export default function LangChainSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               LangChain
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              LLM 애플리케이션 개발을 위한 강력한 프레임워크
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 90%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 랭체인 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                LangChain에 대한 개인적 견해
+                내가 이해한 LangChain
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">LangChain은 AI 애플리케이션의 레고 블록</span>이라고 생각합니다. 
-                  복잡한 LLM 기반 시스템을 <span className="font-bold text-cyan-400">모듈화된 컴포넌트</span>로 쉽게 구성할 수 있어 
-                  개발 생산성을 극대화할 수 있습니다.
+                  <span className="font-bold text-cyan-400">랭체인은 대화의 맥락을 이어나가는 부분에서 편의성을 높여주었습니다.</span> 
+                  특히 여기서 핵심은 <span className="font-bold text-cyan-400">기능에 따라서 메모리 전략을 잘 정리해야 한다</span>는 점이에요.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">Chain과 Agent의 강력한 추상화</span>가 인상적이었습니다. 
-                  단순한 질답부터 복잡한 다단계 추론까지 일관된 인터페이스로 처리할 수 있어 
-                  <span className="font-bold text-cyan-400">확장 가능한 AI 시스템</span>을 구축할 수 있습니다.
+                  예를 들어 <span className="font-bold text-cyan-400">분위기나 느낌을 수집하는 곳에서는 요약 저장이 좋고</span>, 
+                  <span className="font-bold text-cyan-400">모든 정보를 수집해야 되는 민감한 정보들은 그 자체를 모두 가지는게 좋아요.</span> 
+                  물론 상황에 따라서는 하이브리드 방식으로 둘을 적절히 조합하거나, 
+                  비용이 들더라도 퀄리티를 위해 모든 내용을 기억하도록 설정하는 것도 괜찮다고 생각합니다.
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">대규모 서비스</span>에서는 
-                  고객 상담, 문서 분석, 개인화 추천에 LangChain의 체계적인 프레임워크가 필수적입니다. 
-                  <span className="font-bold text-cyan-400">메모리 관리, 체인 연결, 에이전트 협업</span>으로 
-                  복잡한 비즈니스 로직을 AI로 자동화하는 핵심 인프라입니다.
+                  결국 랭체인의 진짜 강점은 <span className="font-bold text-cyan-400">상황에 맞는 메모리 관리 전략을 유연하게 선택할 수 있다</span>는 거예요. 
+                  단순히 프레임워크를 쓰는게 아니라, 비즈니스 요구사항에 따라 
+                  <span className="font-bold text-cyan-400">효율성과 품질 사이의 균형을 조절할 수 있는</span> 도구라고 이해하고 있습니다.
                 </p>
               </div>
             </CardContent>
@@ -99,17 +92,16 @@ export default function LangChainSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/projects/2', '_blank')}>
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/date-recommendation', '_blank')}>
                   <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                     데이트 코스 추천 AI 시스템 →
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">LangChain으로 대화형 추천 시스템</span>을 구축했습니다. 
-                      ConversationChain과 메모리 관리를 활용하여 
-                      <span className="font-bold text-cyan-400">사용자와의 자연스러운 대화 맥락을 유지</span>하면서 
-                      개인맞춤형 데이트 코스를 추천하는 시스템을 개발했습니다.
+                      <span className="font-bold text-cyan-400">분위기를 이어가는 부분이라서 요약해서 저장하는 방식</span>을 사용했습니다. 
+                      사용자의 선호도나 대화 톤 같은 전반적인 느낌만 기억하면 되니까 
+                      <span className="font-bold text-cyan-400">효율적인 메모리 관리</span>가 가능했어요.
                     </p>
                   </div>
                 </div>
@@ -121,124 +113,64 @@ export default function LangChainSkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">LangChain Expression Language 기반 RAG 파이프라인</span>을 구현했습니다. 
-                      FAISS 벡터 검색과 GPT-4 생성을 체인으로 연결하여 
-                      <span className="font-bold text-cyan-400">정확한 보드게임 룰 설명 시스템</span>을 구축했습니다.
+                      <span className="font-bold text-cyan-400">게임 룰적인 질문이라서 최근 질문은 남겨두고 위쪽은 요약하는 하이브리드 전략</span>을 사용했습니다. 
+                      정확한 룰 설명이 중요한 부분은 원문 그대로 유지하면서도 
+                      <span className="font-bold text-cyan-400">메모리 효율성을 챙길 수 있었어요.</span>
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-                <div className="text-sm text-gray-400 mb-2">핵심 LangChain 활용:</div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-700 text-cyan-100">Conversation Chain</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Memory Management</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">RAG Pipeline</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">LCEL</Badge>
-                </div>
-              </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    시스템 구축
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">복잡한 AI 파이프라인</span> 구축</div>
-                    <div>• <span className="font-bold">모듈화된 컴포넌트</span> 설계</div>
-                    <div>• <span className="font-bold">확장 가능한 아키텍처</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    사용자 경험
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">자연스러운 대화</span> 구현</div>
-                    <div>• <span className="font-bold">맥락 유지</span> 완벽</div>
-                    <div>• <span className="font-bold">개인화된 응답</span> 제공</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">OpenAI API를 직접 호출</span>하는 방식에 익숙했지만, 
-                    LangChain을 사용하니 <span className="font-bold text-blue-300">코드의 재사용성과 유지보수성</span>이 
-                    극적으로 향상되었습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">체인의 개념과 LCEL(LangChain Expression Language)</span>을 
-                    이해하게 되면서 복잡한 AI 워크플로우를 선언적으로 정의할 수 있게 되었습니다. 
-                    특히 <span className="font-bold text-blue-300">메모리와 상태 관리</span>의 중요성을 깨달았습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">커스텀 체인, 에이전트 시스템, 
-                    다중 LLM 협업</span> 등을 활용해서 
-                    엔터프라이즈급 AI 애플리케이션을 체계적으로 설계하고 구현할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 비즈니스 임팩트 */}
+          {/* 랭체인으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                랭체인으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">AI 시스템 개발 생산성 극대화</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    LangChain의 <span className="font-bold text-cyan-400">모듈화된 컴포넌트 시스템</span>으로 
-                    복잡한 AI 기능을 빠르게 프로토타이핑하고 
-                    <span className="font-bold text-blue-300">개발 시간을 70% 단축</span>했습니다. 
-                    이는 비즈니스 요구사항에 빠르게 대응하고 시장 기회를 선점하는 경쟁력을 제공했습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">체계적인 메모리 관리와 대화 맥락 유지</span>로 
-                    사용자들이 자연스럽고 일관된 AI 경험을 받을 수 있게 되어 
-                    <span className="font-bold text-cyan-400">사용자 만족도와 서비스 신뢰성</span>을 크게 향상시켰습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 플랫폼</span>에서는 
-                    LangChain이 <span className="font-bold text-cyan-400">고객 상담 자동화, 문서 처리, 개인화 서비스</span> 등에서 
-                    확장 가능하고 유지보수하기 쉬운 AI 시스템을 구축하여 
-                    <span className="font-bold text-cyan-400">운영 비용 절감과 서비스 품질 향상</span>을 
-                    동시에 달성하는 핵심 프레임워크가 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 개발 기간 단축 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🚀</div>
+                    개발 기간 단축
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">반복되는 LLM 호출 로직을 체인으로 재사용</span></div>
+                    <div>• <span className="font-bold text-cyan-400">복잡한 AI 파이프라인을 모듈화해서 빠른 개발</span></div>
+                  </div>
+                </div>
+
+                {/* 상황에 맞는 메모리 전략 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💡</div>
+                    상황에 맞는 메모리 전략 선택
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">퀄리티 우선:</span> 모든 대화 저장 (비용 높음, 품질 최고)</div>
+                    <div>• <span className="font-bold text-green-400">비용 우선:</span> 요약 저장 (비용 낮음, 효율적)</div>
+                    <div>• <span className="font-bold text-green-400">균형:</span> 하이브리드 전략 (퀄리티와 비용의 중간)</div>
+                  </div>
+                </div>
+
+                {/* 비즈니스 요구사항 최적화 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    비즈니스 요구사항에 맞는 최적화
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">프로젝트 특성에 따라 전략을 유연하게 선택</span></div>
+                    <div>• <span className="font-bold text-purple-400">상황별로 다른 메모리 관리 방식 적용 가능</span></div>
+                  </div>
                 </div>
               </div>
             </CardContent>

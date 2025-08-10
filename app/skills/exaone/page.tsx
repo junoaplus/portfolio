@@ -51,12 +51,6 @@ export default function EXAONESkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               EXAONE
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              LG AI Research의 초거대 언어모델로 한국어 특화 AI 서비스 구축
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 75%
-            </Badge>
           </div>
 
           {/* 개인적 견해 */}
@@ -64,7 +58,7 @@ export default function EXAONESkillPage() {
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                EXAONE에 대한 개인적 견해
+                내가 이해한 EXAONE
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -75,14 +69,19 @@ export default function EXAONESkillPage() {
                   <span className="font-bold text-cyan-400">한국어 특화 성능</span>에서 압도적인 우위를 보여줍니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">파인튜닝을 통한 도메인 특화</span>가 인상적이었습니다. 
-                  일반적인 대화형 AI를 넘어서 특정 업무 영역에서의 
-                  <span className="font-bold text-cyan-400">전문성과 정확성</span>을 확보할 수 있는 것이 뛰어납니다.
+                  특히 <span className="font-bold text-cyan-400">허깅페이스에 오픈 소스로 공개되어 있고</span> 
+                  <span className="font-bold text-cyan-400">로컬 환경(맥북 M1 Pro)에서도 돌아간다는 게</span> 너무 놀라웠습니다. 
+                  <span className="font-bold text-cyan-400">파인튜닝을 연습해보거나 직접 해보고 싶을 때 할 수 있는 게</span> 정말 좋다고 생각합니다.
                 </p>
                 <p>
                   보드게임 룰 챗봇 프로젝트에서 <span className="font-bold text-cyan-400">EXAONE 파인튜닝</span>을 경험하면서, 
                   217개 보드게임의 복잡한 룰을 학습하고 
-                  <span className="font-bold text-cyan-400">자연스러운 한국어로 설명</span>하는 능력에 감탄했습니다.
+                  <span className="font-bold text-cyan-400">자연스러운 한국어로 설명</span>하는 능력에 감탄했습니다. 
+                  <span className="font-bold text-cyan-400">파인튜닝해서 허깅페이스에 올린 것도</span> 좋은 경험이었습니다.
+                </p>
+                <p>
+                  하지만 <span className="font-bold text-cyan-400">상업적 사용이 안 되는 게</span> 아쉬웠습니다. 
+                  개인 프로젝트나 연구용으로는 완벽하지만, 실제 서비스에 적용하기에는 제약이 있다고 생각합니다.
                 </p>
               </div>
             </CardContent>
@@ -112,113 +111,56 @@ export default function EXAONESkillPage() {
                     일반적인 LLM으로는 불가능한 <span className="font-bold text-blue-300">전문적인 게임 룰 해석</span>과 
                     상황별 맞춤 가이드를 제공했습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 EXAONE 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Fine-tuning</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Korean Language</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Domain Specialization</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Rule Understanding</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    모델 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">217개 게임 룰</span> 완벽 학습</div>
-                    <div>• <span className="font-bold">한국어 이해도 95%</span></div>
-                    <div>• <span className="font-bold">답변 정확도 90%</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    사용자 경험
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">자연스러운 대화</span> 구현</div>
-                    <div>• <span className="font-bold">전문적 룰 해석</span></div>
-                    <div>• <span className="font-bold">맞춤형 가이드</span> 제공</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">GPT-4만 있으면 충분하다고</span> 생각했습니다. 
-                    글로벌 모델이면 한국어도 당연히 잘 할 거라고 
-                    <span className="font-bold text-blue-300">안일하게 생각</span>했죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">복잡한 한국어 게임 룰을 다루면서</span> 
-                    차이를 확실히 느꼈습니다. 
-                    특히 <span className="font-bold text-blue-300">미묘한 뉘앙스와 문맥 이해</span>에서 
-                    EXAONE의 한국어 특화 성능이 압도적이었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">파인튜닝 전략, 데이터셋 구성, 성능 최적화</span> 등을 
-                    통해 도메인 특화 AI 모델을 효율적으로 개발할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* EXAONE으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                EXAONE으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">한국어 특화 AI로 국내 시장 최적화된 서비스 구현</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    EXAONE의 <span className="font-bold text-cyan-400">한국어 특화 성능</span>을 활용하여 
-                    국내 사용자에게 최적화된 AI 서비스를 제공할 수 있었습니다. 이는 단순한 번역을 넘어선 <span className="font-bold text-cyan-400">문화적 맥락의 이해</span>입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">도메인 특화 파인튜닝</span>을 통해 
-                    일반적인 범용 모델로는 불가능한 전문성을 확보하여, <span className="font-bold text-cyan-400">서비스 차별화</span>를 달성했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">한국 시장 특화 서비스</span>에서는 
-                    이런 한국어 AI 기술이 <span className="font-bold text-cyan-400">고객 소통과 서비스 품질</span>의 
-                    핵심 경쟁력이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 한국어 특화 AI 서비스 문제 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🇰🇷</div>
+                    한국어 특화 AI 서비스 구축 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">문제:</span> 글로벌 모델들이 영어 중심으로 설계된 한계</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 한국어 특화 성능에서 압도적인 우위를 보여줍니다</div>
+                  </div>
+                </div>
+
+                {/* 도메인 특화 AI 개발 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    도메인 특화 AI 개발 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">문제:</span> 일반적인 대화형 AI를 넘어선 전문성 확보 필요</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 파인튜닝을 통한 도메인 특화로 정확성과 전문성을 확보할 수 있습니다</div>
+                  </div>
+                </div>
+
+                {/* 한국 시장 최적화 문제 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🏢</div>
+                    한국 시장 최적화 서비스 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-blue-400">문제:</span> 단순한 번역을 넘어선 문화적 맥락 이해 필요</div>
+                    <div>• <span className="font-bold text-blue-400">해결:</span> 자연스러운 한국어로 설명하고 문화적 맥락을 이해하는 능력을 제공합니다</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

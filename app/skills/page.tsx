@@ -20,6 +20,7 @@ export default function SkillsPage() {
         { name: 'LLM', level: 85, icon: '🤖', slug: 'llm' },
         { name: 'Fine-tuning', level: 80, icon: '🔧', slug: 'fine-tuning' },
         { name: 'OpenAI', level: 85, icon: '🧠', slug: 'openai' },
+        { name: 'Claude Code', level: 90, icon: '💻', slug: 'claude-code' },
         { name: 'EXAONE', level: 70, icon: '🤖', slug: 'exaone' },
         { name: 'Qdrant', level: 80, icon: '🔍', slug: 'qdrant' },
         { name: 'FAISS', level: 75, icon: '🎯', slug: 'faiss' },
@@ -34,7 +35,6 @@ export default function SkillsPage() {
       color: 'from-green-500/20 to-teal-500/20',
       textColor: 'text-green-400',
       skills: [
-        { name: 'Python', level: 90, icon: '🐍', slug: 'python' },
         { name: 'XGBoost', level: 80, icon: '🚀', slug: 'xgboost' },
         { name: 'LightGBM', level: 80, icon: '💡', slug: 'lightgbm' },
         { name: 'RandomForest', level: 85, icon: '🌲', slug: 'randomforest' },

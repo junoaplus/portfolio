@@ -51,40 +51,31 @@ export default function OpenAISkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               OpenAI
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              OpenAI API - 최고 수준의 AI 서비스
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 95%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 OpenAI */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                OpenAI에 대한 개인적 견해
+                내가 이해한 OpenAI
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">OpenAI는 AI 혁명의 선두주자이자 실용적인 동반자</span>라고 생각합니다. 
-                  GPT-4의 강력한 언어 이해와 생성 능력으로 <span className="font-bold text-cyan-400">상상을 현실로 만드는</span> 
-                  개발 경험을 제공하며, 복잡한 AI를 누구나 쉽게 사용할 수 있게 했습니다.
+                  <span className="font-bold text-cyan-400">GPT가 나오면서 대중들에게 LLM 시대를 연 선구자라고 생각합니다.</span> 
+                  ChatGPT의 등장으로 일반인들도 AI를 쉽게 접할 수 있게 되었고, 
+                  이것이 전 세계 AI 혁신의 출발점이 되었다고 생각합니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">API의 직관적인 설계와 강력한 성능</span>이 인상적이었습니다. 
-                  간단한 HTTP 호출로도 세계 최고 수준의 AI 능력을 활용할 수 있어 
-                  <span className="font-bold text-cyan-400">개발 생산성과 서비스 품질</span>을 
-                  동시에 극대화할 수 있습니다.
+                  <span className="font-bold text-cyan-400">가장 가성비 좋고 챗봇을 만들 때 정말 많이 애용합니다.</span> 
+                  API 호출도 간단하고 성능도 뛰어나서, 실제 서비스에 적용하기에 가장 실용적인 선택이라고 생각합니다. 
+                  특히 대화형 서비스를 구축할 때는 OpenAI만한 게 없다고 봅니다.
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">혁신적인 기술 기업</span>에서는 
-                  OpenAI의 최신 AI 기술이 고객 상담, 문서 처리, 개인화 서비스에서 
-                  <span className="font-bold text-cyan-400">차세대 사용자 경험</span>을 창조하고 
-                  경쟁 우위를 확보하는 핵심 엔진이 될 것입니다.
+                  하지만 <span className="font-bold text-cyan-400">코드적 측면에서 볼 때 코드를 짤 때는 Claude Code를 사용합니다.</span> 
+                  OpenAI는 대화와 챗봇에는 최고지만, 개발 작업에서는 Claude가 더 정확하고 세밀한 코딩 지원을 해준다고 생각합니다.
                 </p>
               </div>
             </CardContent>
@@ -100,6 +91,21 @@ export default function OpenAISkillPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
+                <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-green-900/30 hover:to-teal-900/30 transition-all duration-300" onClick={() => window.open('/date-recommendation', '_blank')}>
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-green-300 transition-colors">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    데이트 코스 추천 AI 시스템 →
+                  </h3>
+                  <div className="text-gray-300 space-y-3">
+                    <p>
+                      <span className="font-bold text-cyan-400">OpenAI API 기반 대화형 추천 시스템</span>을 구축하여 
+                      사용자의 선호도, 예산, 위치 정보를 종합 분석하고 
+                      <span className="font-bold text-cyan-400">개인맞춤형 데이트 코스를 자연스럽게 추천</span>하는 
+                      지능형 플래너를 개발했습니다.
+                    </p>
+                  </div>
+                </div>
+                
                 <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/boardgame-chatbot', '_blank')}>
                   <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
@@ -114,133 +120,57 @@ export default function OpenAISkillPage() {
                     </p>
                   </div>
                 </div>
-                
-                <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-green-900/30 hover:to-teal-900/30 transition-all duration-300" onClick={() => window.open('/projects/2', '_blank')}>
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-green-300 transition-colors">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    데이트 코스 추천 AI 시스템 →
-                  </h3>
-                  <div className="text-gray-300 space-y-3">
-                    <p>
-                      <span className="font-bold text-cyan-400">OpenAI API 기반 대화형 추천 시스템</span>을 구축하여 
-                      사용자의 선호도, 예산, 위치 정보를 종합 분석하고 
-                      <span className="font-bold text-cyan-400">개인맞춤형 데이트 코스를 자연스럽게 추천</span>하는 
-                      지능형 플래너를 개발했습니다.
-                    </p>
-                  </div>
-                </div>
               </div>
               
-              <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-                <div className="text-sm text-gray-400 mb-2">핵심 OpenAI 활용:</div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-700 text-cyan-100">GPT-4 API</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Embeddings</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Completions</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Function Calling</Badge>
-                </div>
-              </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    API 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">세계 최고 수준</span> AI 성능</div>
-                    <div>• <span className="font-bold">안정적인 서비스</span> 제공</div>
-                    <div>• <span className="font-bold">빠른 응답 속도</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 생산성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">개발 시간 80%</span> 단축</div>
-                    <div>• <span className="font-bold">직관적인 API</span> 설계</div>
-                    <div>• <span className="font-bold">풍부한 문서화</span></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음 <span className="font-bold text-cyan-400">OpenAI API를 접했을 때</span>의 충격을 잊을 수 없습니다. 
-                    단 몇 줄의 코드로 <span className="font-bold text-blue-300">인간 수준의 대화와 창작</span>이 가능하다는 것이 
-                    개발자로서의 관점을 완전히 바꿔놓았습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">프롬프트 엔지니어링의 중요성</span>을 깨달으면서 
-                    같은 API라도 질문하는 방식에 따라 결과가 천차만별이라는 것을 배웠습니다. 
-                    특히 <span className="font-bold text-blue-300">System Message, Temperature, Token 관리</span> 등의 
-                    세밀한 조정이 서비스 품질을 좌우한다는 것을 경험했습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">Function Calling, Streaming, Embeddings, 
-                    Vision API</span> 등을 종합적으로 활용해서 
-                    프로덕션 환경에서도 안정적이고 효율적인 AI 기반 서비스를 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* 비즈니스 임팩트 */}
+          {/* OpenAI로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                OpenAI로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">최첨단 AI로 경쟁 우위 확보</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    OpenAI의 <span className="font-bold text-cyan-400">세계 최고 수준 AI 성능</span>을 활용하여 
-                    경쟁사 대비 현저히 높은 <span className="font-bold text-blue-300">서비스 품질과 사용자 경험</span>을 
-                    제공할 수 있게 되어 시장에서 강력한 차별화와 브랜드 가치를 확보했습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">개발 시간 80% 단축</span>으로 
-                    복잡한 AI 기능을 빠르게 프로토타이핑하고 출시할 수 있어 
-                    <span className="font-bold text-cyan-400">시장 기회를 선점</span>하고 
-                    비즈니스 요구사항에 민첩하게 대응할 수 있는 경쟁력을 갖췄습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">혁신을 추구하는 기술 기업</span>에서는 
-                    OpenAI가 <span className="font-bold text-cyan-400">고객 상담 자동화, 금융 문서 분석, 개인화 서비스</span> 등에서 
-                    최신 AI 기술을 바탕으로 한 <span className="font-bold text-cyan-400">차세대 금융 경험</span>을 
-                    창조하는 핵심 동력이 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* LLM 대중화 및 접근성 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🌍</div>
+                    LLM 대중화와 AI 민주화
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기여:</span> GPT가 나오면서 대중들에게 LLM 시대를 연 선구자입니다</div>
+                    <div>• <span className="font-bold text-purple-400">영향:</span> ChatGPT로 일반인들도 AI를 쉽게 접할 수 있게 되었습니다</div>
+                  </div>
+                </div>
+
+                {/* 챗봇 개발과 가성비 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🤖</div>
+                    챗봇 개발과 비용 효율성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">장점:</span> 가장 가성비 좋고 챗봇을 만들 때 정말 많이 애용합니다</div>
+                    <div>• <span className="font-bold text-green-400">실용성:</span> API 호출도 간단하고 성능도 뛰어나서 실제 서비스에 적용하기 최적입니다</div>
+                  </div>
+                </div>
+
+                {/* 영역별 특성화 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    영역별 AI 활용 구분
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-blue-400">대화/챗봇:</span> OpenAI만한 게 없다고 봅니다</div>
+                    <div>• <span className="font-bold text-blue-400">코드 작업:</span> 코드적 측면에서는 Claude Code를 사용합니다</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

@@ -51,12 +51,6 @@ export default function QdrantSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Qdrant
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              고성능 벡터 검색 엔진 및 벡터 데이터베이스
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 80%
-            </Badge>
           </div>
 
           {/* 개인적 견해 */}
@@ -64,27 +58,25 @@ export default function QdrantSkillPage() {
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Qdrant에 대한 개인적 견해
+                내가 이해한 Qdrant
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Qdrant는 차세대 검색의 핵심 기술</span>이라고 생각합니다. 
-                  기존 키워드 검색의 한계를 뛰어넘어 <span className="font-bold text-cyan-400">의미적 유사성</span>을 
-                  기반으로 진정한 지능형 검색을 구현할 수 있게 해줍니다.
+                  <span className="font-bold text-cyan-400">Qdrant는 벡터 DB의 종류 중 하나</span>로 
+                  <span className="font-bold text-cyan-400">메타데이터와 함께 임베딩을 저장</span>합니다. 
+                  그리고 <span className="font-bold text-cyan-400">메타데이터를 통해서 정교한 필터링이 가능하도록 지원</span>해주는 
+                  벡터 DB라고 생각합니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">필터링과 벡터 검색의 완벽한 결합</span>이 인상적이었습니다. 
-                  단순 벡터 유사도만으로는 부정확한 결과가 나올 수 있는데, 
-                  <span className="font-bold text-cyan-400">메타데이터 필터링을 먼저 적용</span>한 후 벡터 검색을 하니 
-                  정확도가 극적으로 향상되었습니다.
+                  요새 유행하는 <span className="font-bold text-cyan-400">RAG 서비스에서는 필터링해서 검색이 가장 중요</span>하다고 생각합니다. 
+                  그래야 <span className="font-bold text-cyan-400">검색의 정확성과 퀄리티가 올라가기 때문</span>입니다.
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">대규모 서비스</span>에서는 고객 상담, 
-                  상품 추천, 문서 검색 등에 Qdrant의 의미 검색이 필수적입니다. 
-                  <span className="font-bold text-cyan-400">실시간 벡터 검색과 확장성</span>으로 
-                  수백만 사용자의 개인화된 경험을 제공할 수 있는 핵심 인프라입니다.
+                  그렇기 때문에 현재는 <span className="font-bold text-cyan-400">벡터 DB에서 필터링을 가장 잘 지원하는 것이 Qdrant</span>라고 생각해서 
+                  이것을 자주 쓰고 있습니다. 메타데이터 기반의 정교한 필터링 능력이 
+                  다른 벡터 DB들과 차별화되는 핵심 강점이라고 봅니다.
                 </p>
               </div>
             </CardContent>
@@ -99,7 +91,7 @@ export default function QdrantSkillPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/projects/2', '_blank')}>
+              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/date-recommendation', '_blank')}>
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                   데이트 코스 추천 AI 시스템 →
@@ -111,122 +103,55 @@ export default function QdrantSkillPage() {
                     <span className="font-bold text-cyan-400">지리공간 반경 필터링</span>을 조합하여 
                     정확한 장소 매칭을 구현했습니다.
                   </p>
-                  <p>
-                    특히 <span className="font-bold text-cyan-400">"로맨틱한 야경이 보이는 레스토랑"</span> 같은 
-                    자연어 쿼리도 정확히 이해하여 적절한 장소를 찾아내는 
-                    <span className="font-bold text-cyan-400">의미적 검색 시스템</span>을 구현했습니다. 
-                    벡터 검색 응답 시간도 <span className="font-bold text-cyan-400">평균 300ms</span>로 실시간 서비스가 가능했습니다.
-                  </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 Qdrant 활용:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Vector Search</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Metadata Filtering</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Geo Filtering</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Similarity Scoring</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    검색 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">평균 응답 시간 300ms</span></div>
-                    <div>• <span className="font-bold">검색 정확도 92%</span> 달성</div>
-                    <div>• <span className="font-bold">89,321개 벡터</span> 실시간 검색</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    필터링 최적화
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">151개 카테고리</span> 세분화</div>
-                    <div>• <span className="font-bold">지리공간 필터링</span> 구현</div>
-                    <div>• <span className="font-bold">노이즈 제거 85%</span> 개선</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">단순 벡터 유사도 검색</span>만 사용했더니 
-                    엉뚱한 결과들이 많이 나왔습니다. <span className="font-bold text-blue-300">필터링 전략의 중요성</span>을 
-                    뒤늦게 깨달았죠.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">메타데이터 필터링을 먼저 적용</span>하고 
-                    벡터 검색을 수행하는 방식으로 바꾸니 정확도가 극적으로 향상되었습니다. 
-                    특히 <span className="font-bold text-blue-300">지리공간 데이터와 카테고리 필터링</span>의 
-                    조합이 핵심이었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">벡터 임베딩 최적화, 인덱싱 전략, 클러스터링</span> 등을 
-                    활용해서 대규모 벡터 데이터베이스도 효율적으로 운영할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* Qdrant로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                Qdrant로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">의미적 검색으로 사용자 만족도 극대화</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Qdrant의 <span className="font-bold text-cyan-400">의미적 벡터 검색</span>으로 
-                    사용자들이 자연어로 원하는 장소를 표현해도 <span className="font-bold text-blue-300">정확한 추천을 받을 수 있게</span> 되었습니다. 
-                    이는 기존 키워드 검색 대비 사용자 만족도를 크게 향상시켰습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">평균 300ms의 빠른 검색 속도</span>로 
-                    실시간 추천 서비스를 구현하여 <span className="font-bold text-cyan-400">사용자 이탈률을 대폭 감소</span>시켰고, 
-                    서비스의 반응성과 사용성을 크게 개선했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 플랫폼</span>에서는 
-                    Qdrant의 <span className="font-bold text-cyan-400">확장 가능한 벡터 검색 능력</span>이 
-                    개인화된 상품 추천, 스마트 고객 상담, 문서 검색 등에서 
-                    <span className="font-bold text-cyan-400">차별화된 사용자 경험</span>을 제공하는 핵심 기술이 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 키워드 검색의 한계 문제 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔍</div>
+                    키워드 검색의 한계와 의미적 검색 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">문제:</span> 기존 키워드 검색으로는 사용자의 진정한 의도를 파악하기 어려움</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 의미적 유사성 기반 지능형 검색으로 정확한 결과 제공</div>
+                  </div>
+                </div>
+
+                {/* 대규모 벡터 검색 성능 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    대규모 벡터 검색 성능 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">문제:</span> 수만 개 이상의 벡터에서 실시간 검색 성능 확보</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 대규모 벡터에서도 빠른 검색 속도 제공</div>
+                  </div>
+                </div>
+
+                {/* 검색 정확도 향상 문제 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    검색 정확도와 노이즈 제거 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-blue-400">문제:</span> 단순 벡터 유사도만으로는 부정확한 결과 발생</div>
+                    <div>• <span className="font-bold text-blue-400">해결:</span> 메타데이터 필터링과 지리공간 필터링으로 검색 정확도 향상</div>
+                  </div>
                 </div>
               </div>
             </CardContent>
