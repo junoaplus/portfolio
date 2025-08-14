@@ -332,6 +332,45 @@ def create_portfolio_workflow() -> StateGraph:
     
     return compiled_workflow
 
+# === 헬스체크 함수들 ===
+
+def get_workflow_status() -> Dict[str, Any]:
+    """워크플로우 상태 정보 반환"""
+    return {
+        "workflow_version": "2.0 - 전략기반 에이전틱 시스템",
+        "agents_count": 6,
+        "features": ["Router", "Extractors", "Data Integrator", "Response Generator", "Validator"]
+    }
+
+async def test_workflow_health() -> Dict[str, Any]:
+    """AI 워크플로우 헬스체크"""
+    try:
+        # 간단한 워크플로우 테스트
+        from workflow.state import PortfolioState
+        
+        test_state = PortfolioState(
+            question="테스트 질문",
+            company_context="toss"
+        )
+        
+        # 워크플로우 생성 테스트
+        workflow = create_portfolio_workflow()
+        
+        return {
+            "status": "healthy",
+            "workflow_ready": True,
+            "agents_loaded": True,
+            "last_check": time.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        
+    except Exception as e:
+        return {
+            "status": "unhealthy", 
+            "error": str(e),
+            "workflow_ready": False,
+            "last_check": time.strftime("%Y-%m-%d %H:%M:%S")
+        }
+
 # === 메인 실행 함수 ===
 
 async def run_portfolio_workflow(
@@ -373,7 +412,7 @@ async def run_portfolio_workflow(
         # === 4. 결과 처리 ===
         processing_time = time.time() - workflow_start_time
         
-        if not final_state.response or len(final_state.response.strip()) < 10:
+        if not final_state.get("response") or len(final_state.get("response", "").strip()) < 10:
             raise ValueError("생성된 답변이 너무 짧습니다")
         
         print("\n" + "="*80)
@@ -383,14 +422,14 @@ async def run_portfolio_workflow(
         
         return {
             "success": True,
-            "answer": final_state.response,
+            "answer": final_state.get("response", ""),
             "metadata": {
-                "intent": getattr(final_state, 'intent', ''),
-                "selected_extractors": getattr(final_state, 'selected_extractors', []),
-                "data_quality_score": getattr(final_state, 'data_quality_score', 0.0),
-                "validation_score": getattr(final_state, 'validation_score', 0),
+                "intent": final_state.get('intent', ''),
+                "selected_extractors": final_state.get('selected_extractors', []),
+                "data_quality_score": final_state.get('data_quality_score', 0.0),
+                "validation_score": final_state.get('validation_score', 0),
                 "processing_time": round(processing_time, 3),
-                "retry_count": getattr(final_state, 'retry_count', 0)
+                "retry_count": final_state.get('retry_count', 0)
             }
         }
         

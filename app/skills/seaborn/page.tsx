@@ -51,38 +51,32 @@ export default function SeabornSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Seaborn
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Statistical data visualization library for beautiful and informative plots
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 85%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 seaborn */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Seaborn에 대한 개인적 견해
+                내가 이해한 seaborn
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Seaborn은 matplotlib의 완벽한 상위 호환</span>이라고 생각합니다. 
-                  통계적 시각화에 특화되어 복잡한 데이터 관계를 
-                  <span className="font-bold text-cyan-400">한 줄의 코드로 아름답게 표현</span>할 수 있는 놀라운 라이브러리입니다.
+                  <span className="font-bold text-cyan-400">seaborn은 matplotlib의 예쁜 버전</span>이라고 생각합니다. 
+                  matplotlib이 너무 복잡하고 만들어지는 그래프가 예쁘지 않아서 스트레스받았는데, 
+                  <span className="font-bold text-cyan-400">한 줄만 써도 예쁘고 통계적인 그래프</span>를 만들어줍니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">built-in 통계 기능과 테마 시스템</span>이 인상적이었습니다. 
-                  상관관계, 분포, 회귀선까지 자동으로 계산해서 표시하고 
-                  <span className="font-bold text-cyan-400">일관된 스타일</span>을 제공하는 것이 뛰어납니다.
+                  특히 <span className="font-bold text-cyan-400">EDA할 때 정말 편하다</span>고 생각합니다. 
+                  pairplot 하나만 써도 전체 변수들의 관계를 한번에 볼 수 있고, 
+                  <span className="font-bold text-cyan-400">heatmap으로 상관계수도 예쁘게</span> 보여줍니다.
                 </p>
                 <p>
-                  신문 이탈 예측과 간호사 퇴사 예측 프로젝트에서 <span className="font-bold text-cyan-400">탐색적 데이터 분석과 피쳐 관계 분석</span>을 
-                  Seaborn으로 구현하면서, 데이터 패턴을 빠르고 직관적으로 파악할 수 있는 
-                  <span className="font-bold text-cyan-400">EDA의 핵심 도구</span>임을 경험했습니다.
+                  하지만 세밀한 커스터마이징은 한계가 있어서, 
+                  <span className="font-bold text-cyan-400">진짜 완성된 결과물을 만들 때는 matplotlib과 섞어 쓰는 게 최고</span>라고 생각합니다. 
+                  seaborn으로 빠르게 탐색하고, matplotlib으로 정리하는 식으로요.
                 </p>
               </div>
             </CardContent>
@@ -105,13 +99,9 @@ export default function SeabornSkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">Seaborn 통계 시각화</span>로 구독자 이탈 패턴을 
-                      다각도로 분석하고 <span className="font-bold text-cyan-400">상관관계 매트릭스와 분포 차트</span>를 생성했습니다.
-                    </p>
-                    <p>
-                      <span className="font-bold text-cyan-400">Pairplot과 heatmap</span>을 활용하여 
-                      <span className="font-bold text-blue-300">피쳐 간 복잡한 관계</span>를 한눈에 파악하고 
-                      모델링 전략 수립에 활용했습니다.
+                      <span className="font-bold text-cyan-400">초기 EDA 단계에서 seaborn pairplot으로 전체 변수 관계를 한번에 파악</span>했고, 
+                      heatmap으로 상관계수를 예쁜 색상으로 시각화했습니다. 
+                      <span className="font-bold text-cyan-400">특히 구독 기간과 연령의 강한 상관관계</span>를 발견했습니다.
                     </p>
                   </div>
                 </div>
@@ -123,122 +113,48 @@ export default function SeabornSkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">Seaborn 고급 플롯</span>으로 간호사 근무 조건과 
-                      퇴사율 간의 관계를 <span className="font-bold text-cyan-400">통계적으로 분석</span>했습니다.
-                    </p>
-                    <p>
-                      <span className="font-bold text-cyan-400">Violin plot과 box plot</span>을 통해 
-                      그룹별 분포 차이를 <span className="font-bold text-blue-300">시각적으로 비교</span>하고 
-                      유의미한 패턴을 발굴했습니다.
+                      <span className="font-bold text-cyan-400">boxplot으로 나이대별 월급 분포를 비교해서 연령대가 높을수록 퇴사율이 높다는 걸 발견</span>했고, 
+                      violinplot으로 출퇴근 거리와 퇴사 의향의 관계도 시각화했습니다. 
+                      <span className="font-bold text-cyan-400">결과적으로 LogisticRegression이 최고 성능</span>을 내다는 걸 예측할 수 있었습니다.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-                <div className="text-sm text-gray-400 mb-2">핵심 Seaborn 기술들:</div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-700 text-cyan-100">Pairplot</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Heatmap</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Violin Plot</Badge>
-                  <Badge className="bg-cyan-700 text-cyan-100">Statistical Plots</Badge>
-                </div>
-              </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    EDA 효율성
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">탐색 시간 80% 단축</span></div>
-                    <div>• <span className="font-bold">패턴 발견 90%</span> 향상</div>
-                    <div>• <span className="font-bold">통계적 인사이트</span> 자동 생성</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    시각화 품질
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">아름다운 기본 테마</span></div>
-                    <div>• <span className="font-bold">통계 정보 자동 표시</span></div>
-                    <div>• <span className="font-bold">코드 간결성 95%</span> 향상</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">matplotlib으로 모든 차트</span>를 직접 만들려고 했습니다. 
-                    상관관계 히트맵 하나 만드는데도 
-                    <span className="font-bold text-blue-300">수십 줄의 코드</span>가 필요했죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">Seaborn의 sns.heatmap()을 사용하면서</span> 
-                    완전히 생각이 바뀌었습니다. 
-                    특히 <span className="font-bold text-blue-300">pairplot으로 모든 변수 관계</span>를 
-                    한 번에 볼 수 있다는 것이 놀라웠습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">FacetGrid, 커스텀 팔레트, 통계적 추정</span> 등을 
-                    활용해서 복잡한 다차원 데이터도 효과적으로 탐색할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* seaborn으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                seaborn으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">효율적인 통계 시각화로 데이터 인사이트 발굴 가속화</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Seaborn의 <span className="font-bold text-cyan-400">통계적 시각화 기능</span>을 통해 
-                    복잡한 데이터 패턴을 빠르게 발견하고 가설을 검증할 수 있게 되었습니다. 이는 단순한 차트 생성을 넘어선 <span className="font-bold text-cyan-400">데이터 탐험의 혁신</span>입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">간결한 코드로 고품질 시각화</span>를 생성하여 
-                    데이터 분석 생산성이 크게 향상되고, <span className="font-bold text-cyan-400">의사결정 속도</span>를 획기적으로 개선했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">데이터 기반 의사결정</span> 조직에서는 
-                    이런 효율적인 EDA 능력이 <span className="font-bold text-cyan-400">비즈니스 인사이트 발굴과 전략 수립</span>의 
-                    핵심 경쟁력이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 빠른 EDA */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🚀</div>
+                    빠른 탐색적 데이터 분석
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">pairplot 하나로 전체 변수 관계를 한번에 파악</span></div>
+                    <div>• <span className="font-bold text-cyan-400">상관계수 heatmap으로 직관적 시각화</span></div>
+                  </div>
+                </div>
+                
+                {/* 통계적 시각화 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">📈</div>
+                    복잡한 데이터의 그룹별 비교 분석
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">boxplot으로 그룹별 분포 차이를 한눈에 비교</span></div>
+                    <div>• <span className="font-bold text-cyan-400">violinplot으로 데이터 밀도까지 동시 확인</span></div>
+                  </div>
                 </div>
               </div>
             </CardContent>

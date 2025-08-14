@@ -51,12 +51,6 @@ export default function FastAPISkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               FastAPI
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              고성능 Python 웹 프레임워크로 현대적인 API 개발
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 80%
-            </Badge>
           </div>
 
           {/* 개인적 견해 */}
@@ -64,25 +58,25 @@ export default function FastAPISkillPage() {
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                FastAPI에 대한 개인적 견해
+내가 이해한 FastAPI
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">FastAPI는 Python 웹 프레임워크의 새로운 패러다임</span>이라고 생각합니다. 
-                  Django의 완성도와 Flask의 유연성을 결합하면서도 
-                  <span className="font-bold text-cyan-400">타입 힌트 기반의 현대적 개발 경험</span>을 제공합니다.
+                  <span className="font-bold text-cyan-400">FastAPI는 진짜 쓸 만한 백엔드 프레임워크</span>입니다. 
+                  Django는 너무 무겁고 Flask는 뭔가 부족한 느낌이었는데, 
+                  <span className="font-bold text-cyan-400">FastAPI는 딱 적당히 필요한 기능들이 다 있더라고요</span>.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">자동 API 문서화와 타입 검증</span>이 인상적이었습니다. 
-                  코드만 작성하면 Swagger UI와 ReDoc이 자동 생성되고, 
-                  <span className="font-bold text-cyan-400">런타임 타입 검증</span>까지 제공하는 것이 혁신적입니다.
+                  특히 <span className="font-bold text-cyan-400">Swagger 문서가 자동으로 만들어지는 게</span> 정말 편했습니다. 
+                  API 만들고 바로 테스트도 할 수 있고, 
+                  프론트엔드 개발자한테 공유하기도 쉬웠어요.
                 </p>
                 <p>
-                  데이트 코스 추천 AI 프로젝트에서 <span className="font-bold text-cyan-400">3개 마이크로서비스의 백엔드 API</span>를 
-                  FastAPI로 구축하면서, 비동기 처리와 데이터베이스 연동의 매끄러움을 경험했습니다. 
-                  <span className="font-bold text-cyan-400">개발 속도와 성능을 모두 잡는</span> 완벽한 도구입니다.
+                  데이트 코스 추천 프로젝트에서 <span className="font-bold text-cyan-400">여러 서비스를 FastAPI로 만들어서</span> 
+                  제대로 작동하게 만들었습니다. 
+                  <span className="font-bold text-cyan-400">비동기 처리도 간단하게 구현했습니다</span>.
                 </p>
               </div>
             </CardContent>
@@ -105,24 +99,9 @@ export default function FastAPISkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">FastAPI로 3개 마이크로서비스</span>를 구축하여 
-                      메인 서비스, 플레이스 관리, AI 추천 엔진을 독립적으로 운영하는 
-                      <span className="font-bold text-cyan-400">확장 가능한 아키텍처</span>를 구현했습니다.
+                      <span className="font-bold text-cyan-400">여러 마이크로서비스를 FastAPI로 구축</span>해서 
+                      각 서비스가 독립적으로 잘 돌아가는 시스템을 만들었습니다.
                     </p>
-                    <p>
-                      <span className="font-bold text-cyan-400">비동기 처리와 SQLAlchemy ORM</span>을 활용하여 
-                      <span className="font-bold text-blue-300">평균 300ms 응답시간</span>을 달성하면서도 
-                      복잡한 데이터 처리와 AI 모델 연동을 안정적으로 구현했습니다.
-                    </p>
-                    <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                      <div className="text-sm text-gray-400 mb-2">핵심 FastAPI 기술들:</div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge className="bg-cyan-700 text-cyan-100">Async/Await</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">Pydantic Models</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">Auto Documentation</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">Microservices</Badge>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -133,117 +112,47 @@ export default function FastAPISkillPage() {
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">FastAPI와 Django 하이브리드</span> 구조로 
-                      AI 추론 서비스는 FastAPI로, 웹 서비스는 Django로 분리하여 
-                      각 영역의 최적화를 달성했습니다.
+                      <span className="font-bold text-cyan-400">AI 추론 서비스는 FastAPI로</span> 만들어서 
+                      Django 웹 서비스랑 분리해서 각각 최적화했습니다.
                     </p>
-                    <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                      <div className="text-sm text-gray-400 mb-2">사용 기술:</div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge className="bg-orange-700 text-orange-100">AI API Server</Badge>
-                        <Badge className="bg-orange-700 text-orange-100">Model Integration</Badge>
-                        <Badge className="bg-orange-700 text-orange-100">High Performance</Badge>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    API 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">평균 응답시간 300ms</span> 달성</div>
-                    <div>• <span className="font-bold">동시 처리 1000+ RPS</span></div>
-                    <div>• <span className="font-bold">에러율 0.1% 이하</span> 유지</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">API 개발 시간 60% 단축</span></div>
-                    <div>• <span className="font-bold">자동 문서화 100%</span></div>
-                    <div>• <span className="font-bold">타입 안전성 95%</span> 보장</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">Django에 익숙한 상태</span>에서 FastAPI의 
-                    타입 힌트 중심 개발이 낯설었습니다. 왜 모든 것을 타입으로 정의해야 하는지 
-                    <span className="font-bold text-blue-300">불편함</span>을 느꼈죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">복잡한 AI API 서비스를 구축하면서</span> 
-                    자동 검증과 문서화의 강력함을 체감했습니다. 
-                    특히 <span className="font-bold text-blue-300">프론트엔드 팀과의 협업</span>에서 
-                    API 스펙 변경 시 자동으로 반영되는 문서가 큰 도움이 되었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">의존성 주입, 미들웨어, 백그라운드 작업</span> 등을 
-                    활용해서 확장성과 유지보수성을 모두 갖춘 마이크로서비스를 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* FastAPI로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                FastAPI로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">고성능 마이크로서비스로 확장 가능한 아키텍처 구축</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    FastAPI를 통해 <span className="font-bold text-cyan-400">3개 독립 마이크로서비스</span>를 구축하여 
-                    각 서비스의 독립적인 확장과 배포가 가능한 시스템을 완성했습니다. 이는 단순한 기술 구현을 넘어선 <span className="font-bold text-cyan-400">비즈니스 민첩성</span>의 확보입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">자동 API 문서화와 타입 안전성</span>을 통해 
-                    개발팀 간의 협업 효율성이 크게 향상되었고, <span className="font-bold text-cyan-400">개발 및 유지보수 비용</span>을 현저히 절감했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 API 서비스</span>에서는 
-                    이런 FastAPI의 성능과 개발 효율성이 <span className="font-bold text-cyan-400">빠른 기능 출시와 안정적 서비스 운영</span>의 
-                    핵심 역량이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* API 문서화 문제 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">📚</div>
+                    API 문서 만들기 귀찮고 프론트랑 소통 어려운 경우
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">Swagger 문서가 자동으로 만들어져서 편함</span></div>
+                    <div>• <span className="font-bold text-cyan-400">프론트엔드 개발자한테 바로 공유 가능</span></div>
+                  </div>
+                </div>
+                
+                {/* 백엔드 성능 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    Django는 무겁고 Flask는 기능이 부족한 경우
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">딱 필요한 기능들만 있어서 가볍고 빠름</span></div>
+                    <div>• <span className="font-bold text-cyan-400">비동기 처리로 성능도 좋음</span></div>
+                  </div>
                 </div>
               </div>
             </CardContent>

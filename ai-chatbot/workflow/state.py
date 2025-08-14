@@ -96,6 +96,7 @@ class PortfolioState(BaseModel):
     
     # === Simple Workflow 추가 필드 ===
     selected_extractors: List[str] = []       # Router가 선택한 extractor들
+    selection_reason: str = ""                # Router의 선택 이유 (디버깅 및 분석용)
     final_answer: str = ""                    # 최종 답변
     recommended_links: Dict[str, str] = {}    # 추천 링크
     response_quality_score: float = 0.0       # 응답 품질 점수

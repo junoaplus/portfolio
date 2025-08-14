@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from enum import Enum
 
 from services.session_manager import session_manager, ConversationMessage
-from workflow.simple_graph import run_simple_workflow
+from workflow.graph import run_portfolio_workflow
 
 class MessageType(Enum):
     USER = "user"
@@ -155,11 +155,10 @@ class ConversationService:
             print(f"   회사: {context.company_context}")
             print(f"   기존 대화: {len(conversation_history)}개")
             
-            workflow_result = await run_simple_workflow(
+            workflow_result = await run_portfolio_workflow(
                 question=user_question,
                 company_context=context.company_context,
-                conversation_history=conversation_history,
-                is_initial=False
+                conversation_history=conversation_history
             )
             
             # 4. 처리 시간 계산

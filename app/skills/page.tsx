@@ -68,9 +68,6 @@ export default function SkillsPage() {
         { name: 'Pydantic', level: 75, icon: '✅', slug: 'pydantic' },
         { name: 'Uvicorn', level: 70, icon: '🦄', slug: 'uvicorn' },
         { name: 'HTTPX', level: 65, icon: '🌐', slug: 'httpx' },
-        { name: 'Loguru', level: 65, icon: '📝', slug: 'loguru' },
-        { name: 'Geopy', level: 60, icon: '🌍', slug: 'geopy' },
-        { name: 'Tiktoken', level: 70, icon: '🎫', slug: 'tiktoken' },
       ]
     },
     {

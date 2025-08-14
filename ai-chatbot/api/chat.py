@@ -23,7 +23,6 @@ import uuid
 # 완벽한 세션 및 대화 관리 서비스
 from services.session_manager import session_manager
 from services.conversation_service import conversation_service
-from workflow.simple_graph import run_simple_workflow
 
 router = APIRouter()
 

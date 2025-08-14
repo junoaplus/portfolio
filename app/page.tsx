@@ -533,7 +533,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-purple-500 text-purple-300 hover:bg-purple-900/30 hover:border-purple-400 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105"
+                className="border-2 border-blue-500 text-blue-300 hover:bg-blue-900/30 hover:border-blue-400 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105"
               >
                 모든 기술 스택 보기
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -559,49 +559,60 @@ export default function HomePage() {
         }}></div>
       </div>
 
-      {/* About Me Section - 풀스크린 */}
+      {/* About Me Section - TOP 5 핵심 콘텐츠 */}
       <section className="min-h-screen snap-start flex items-center justify-center py-20 px-4 relative" style={{ background: 'linear-gradient(to bottom right, #000000, #111827, #000000)' }}>
         {/* Projects 네온 그리드 패턴 */}
         <div className="absolute inset-0 opacity-40" style={{
           background: `linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)`,
           backgroundSize: '50px 50px'
         }}></div>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-16">About Me</h2>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+            <p className="text-xl text-gray-300">AI/ML 엔지니어로서의 핵심 가치관과 강점</p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* 문제 해결 능력 */}
-            <div className="flex flex-col items-center p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}>
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style={{ background: 'rgb(37 99 235)' }}>
-                <Target className="w-8 h-8 text-white" />
+          {/* 1. 핵심 가치관 & 개발 철학 */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-white mb-8 text-center">💡 핵심 가치관 & 개발 철학</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded-xl p-6">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                  <Brain className="w-6 h-6 text-blue-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-cyan-400 mb-3">왜 AI/ML 엔지니어가 되었나요?</h4>
+                <p className="text-gray-300 text-sm leading-relaxed">임베디드부터 IoT, 컴퓨터 네트워크까지 다양하게 공부할 때 가장 큰 도움을 준 것이 GPT였습니다. AI가 미래의 핵심 기술이라 확신하고 본격적으로 공부했더니 저와 너무 잘 맞았고, 그동안 배운 모든 지식들과 시너지를 내며 더 큰 가치를 만들 수 있었습니다.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">문제 해결</h3>
-              <p className="text-gray-300 leading-relaxed">
-                복잡한 비즈니스 문제를 <strong className="text-blue-400">AI로 단순하게</strong> 해결합니다
-              </p>
+              <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded-xl p-6">
+                <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-green-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-cyan-400 mb-3">어떤 개발자가 되고 싶나요?</h4>
+                <p className="text-gray-300 text-sm leading-relaxed">요즘 기업들은 여러 명의 평범한 개발자보다 한 명의 확실한 개발자를 원합니다. AI/ML이라는 한 분야에서 깊은 전문성을 갖추면서, 다른 분야도 폭넓게 이해하는 'T자형 개발자'가 되고 싶습니다.</p>
+              </div>
+              <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded-xl p-6">
+                <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-purple-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-cyan-400 mb-3">일할 때 중요하게 생각하는 것은?</h4>
+                <p className="text-gray-300 text-sm leading-relaxed">새로운 도전을 두려워하지 않는 것입니다. 무엇보다 문제를 명확히 정의하고 체계적으로 해결하는 능력이 뛰어난 성과의 핵심이라고 믿습니다. 데이터를 꼼꼼하게 정제하고, 품질을 검증하는 과정이 모델 성능의 90%를 좌우한다고 생각합니다.</p>
+              </div>
             </div>
+          </div>
 
-            {/* 빠른 학습 능력 */}
-            <div className="flex flex-col items-center p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}>
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style={{ background: 'rgb(5 150 105)' }}>
-                <Brain className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">빠른 학습</h3>
-              <p className="text-gray-300 leading-relaxed">
-                새로운 기술의 <strong className="text-green-400">본질을 파악</strong>하고 실무에 빠르게 적용합니다
-              </p>
-            </div>
 
-            {/* 실무 중심 */}
-            <div className="flex flex-col items-center p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}>
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style={{ background: 'rgb(147 51 234)' }}>
-                <Rocket className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">실무 중심</h3>
-              <p className="text-gray-300 leading-relaxed">
-                이론이 아닌 <strong className="text-purple-400">실제 동작하는 서비스</strong>를 만듭니다
-              </p>
-            </div>
+          {/* 모든 소개 보러가기 버튼 */}
+          <div className="text-center relative z-20">
+            <Link href="/about">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-500 text-blue-300 hover:bg-blue-900/30 hover:border-blue-400 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105 relative z-20"
+              >
+                모든 소개 보러가기
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
         
@@ -622,169 +633,87 @@ export default function HomePage() {
         }}></div>
       </div>
 
-      {/* Education & Activities - 박스 크기 맞추기 */}
-      <section className="min-h-screen snap-start py-20 px-4 relative" style={{ background: 'linear-gradient(to bottom right, #111827, #000000, #111827)' }}>
+      {/* Education & Activities - 간단하고 고급스럽게 */}
+      <section className="min-h-screen snap-start flex items-center justify-center py-20 px-4 relative" style={{ background: 'linear-gradient(to bottom right, #111827, #000000, #111827)' }}>
         {/* Education 패턴 오버레이 */}
         <div className="absolute inset-0 opacity-30" style={{
           background: `linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px)`,
           backgroundSize: '45px 45px'
         }}></div>
-        <div className="max-w-6xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              학력 & 경험
-            </h2>
-            <p className="text-xl text-gray-300">
-              교육 배경과 리더십 경험을 소개합니다
-            </p>
+            <h2 className="text-4xl font-bold text-white mb-4">학력 및 대외활동</h2>
+            <p className="text-xl text-gray-300">교육 배경과 주요 활동</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Education - 높이 맞추기 */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-white">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-white" />
+            {/* 학력 */}
+            <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded-xl p-10 shadow-2xl">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <GraduationCap className="w-7 h-7 text-blue-400" />
                 </div>
-                학력
-              </h3>
-              <div className="space-y-6 flex-1">
-                <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-purple-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <GraduationCap className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-white mb-1">
-                          한국항공대학교
-                        </h4>
-                        <p className="text-blue-600 mb-2 font-medium">
-                          소프트웨어학과 (4-1 휴학)
-                        </p>
-                        <p className="text-gray-400 text-sm mb-3">
-                          2022 - 현재
-                        </p>
-                        <p className="text-gray-300 text-sm">
-                          AI와 소프트웨어 개발의 기초를 다지며, 실무 프로젝트를
-                          통해 실력을 키워가고 있습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 to-teal-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <GraduationCap className="w-6 h-6 text-green-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-white mb-1">
-                          하노이한국국제학교
-                        </h4>
-                        <p className="text-green-600 mb-2 font-medium">
-                          고등학교 졸업
-                        </p>
-                        <p className="text-gray-400 text-sm mb-3">
-                          2018 - 2021
-                        </p>
-                        <p className="text-gray-300 text-sm">
-                          국제적인 환경에서 다양한 문화를 경험하며 글로벌
-                          마인드를 기를 수 있었습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <h3 className="text-2xl font-bold text-white">학력</h3>
+              </div>
+              <div className="space-y-6">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">한국항공대학교</h4>
+                  <p className="text-blue-400 font-medium mb-2">소프트웨어학과 (4-1 휴학중)</p>
+                  <p className="text-gray-400 text-sm">2022 - 현재</p>
+                </div>
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">하노이한국국제학교</h4>
+                  <p className="text-green-400 font-medium mb-2">고등학교 졸업</p>
+                  <p className="text-gray-400 text-sm">2018 - 2021</p>
+                </div>
               </div>
             </div>
 
-            {/* Activities - 높이 맞추기 */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-white">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                  <Trophy className="w-5 h-5 text-white" />
+            {/* 대외활동 */}
+            <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded-xl p-10 shadow-2xl">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                  <Trophy className="w-7 h-7 text-purple-400" />
                 </div>
-                대외활동 & 리더십
-              </h3>
-              <div className="space-y-6 flex-1">
-                <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 to-pink-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Brain className="w-6 h-6 text-purple-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-white mb-1">
-                          SK Networks Family AI Camp 11기
-                        </h4>
-                        <p className="text-purple-600 mb-2 font-medium">
-                          AI 개발 교육 프로그램
-                        </p>
-                        <p className="text-gray-400 text-sm mb-3">2025</p>
-                        <p className="text-gray-300 text-sm">
-                          LangChain, RAG 시스템 등 실무 AI 기술을 학습하며 최신
-                          AI 트렌드를 익혔습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-red-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Trophy className="w-6 h-6 text-orange-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-white mb-1">
-                          부학생회장
-                        </h4>
-                        <p className="text-orange-600 mb-2 font-medium">
-                          한국항공대학교 학생회
-                        </p>
-                        <p className="text-gray-400 text-sm mb-3">2024</p>
-                        <p className="text-gray-300 text-sm">
-                          학교 전체 학생 대표로 활동하며 리더십과 소통 능력을
-                          기를 수 있었습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-cyan-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Users className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-white mb-1">
-                          소프트웨어학과 과대표
-                        </h4>
-                        <p className="text-blue-600 mb-2 font-medium">
-                          한국항공대학교
-                        </p>
-                        <p className="text-gray-400 text-sm mb-3">2023</p>
-                        <p className="text-gray-300 text-sm">
-                          학과 행사 기획과 학생들 간의 소통 창구 역할을
-                          담당했습니다.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <h3 className="text-2xl font-bold text-white">대외활동</h3>
+              </div>
+              <div className="space-y-6">
+                <div className="border-l-4 border-red-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">SK Networks Family AI Camp 11기</h4>
+                  <p className="text-red-400 font-medium mb-2">AI 개발 교육</p>
+                  <p className="text-gray-400 text-sm">2024.02-07</p>
+                </div>
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">부학생회장</h4>
+                  <p className="text-green-400 font-medium mb-2">한국항공대학교 소프트웨어학과</p>
+                  <p className="text-gray-400 text-sm">2023.12-2024.11</p>
+                </div>
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">해커톤 운영진</h4>
+                  <p className="text-blue-400 font-medium mb-2">기술 이벤트 기획 및 운영</p>
+                  <p className="text-gray-400 text-sm">2023.04-05</p>
+                </div>
+                <div className="border-l-4 border-purple-500 pl-4">
+                  <h4 className="font-bold text-lg text-white mb-1">E-commerce 사업 운영</h4>
+                  <p className="text-purple-400 font-medium mb-2">온라인 플랫폼 셀러 경험</p>
+                  <p className="text-gray-400 text-sm">2023.08</p>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* 모든 대외활동 보기 버튼 */}
+          <div className="text-center mt-12">
+            <Link href="/about#activities">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue-500 text-blue-300 hover:bg-blue-900/30 hover:border-blue-400 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105"
+              >
+                모든 대외활동 보기
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
         
