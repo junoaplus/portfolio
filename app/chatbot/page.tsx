@@ -43,6 +43,12 @@ const companyConfigs: Record<string, CompanyConfig> = {
     focus: ['검색 인프라', 'LLM/RAG', '대용량 데이터 처리', '추천 시스템'],
     description: 'ML Engineer - 검색/추천/이상탐지 전문',
   },
+  game_n: {
+    name: 'Game N',
+    color: 'orange-500',
+    focus: ['게임 AI', '사용자 개인화', '실시간 추천', '데이터 분석'],
+    description: 'AI Engineer - 게임 사용자 경험 최적화',
+  },
 }
 
 export default function ChatbotPage() {
@@ -304,61 +310,35 @@ export default function ChatbotPage() {
                 <Bot className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-4xl font-bold text-white mb-4">
-                AI 어시스턴트에 오신 것을 환영합니다
+                안녕하세요 지원자 황준호에 대해 답해주는 AI 챗봇입니다
               </h1>
               <p className="text-xl text-gray-300 mb-12">
-                어떤 방식으로 포트폴리오를 둘러보시겠어요?
+                회사를 선택하시고 회사 맞춤형 답변을 받아보세요
               </p>
             </div>
 
             {/* 회사 선택 카드들 */}
-            <div className="max-w-md mx-auto">
-              <div className="space-y-4">
+            <div className="max-w-2xl mx-auto">
+              <div className="grid grid-cols-2 gap-6">
                 {Object.entries(companyConfigs).map(([key, company]) => (
                   <Card
                     key={key}
-                    className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer group transform hover:-translate-y-1"
+                    className={`bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 hover:border-${company.color}/50 hover:shadow-xl hover:shadow-${company.color}/20 transition-all duration-300 cursor-pointer group transform hover:-translate-y-1`}
                     onClick={() => handleCompanySelect(key)}
                   >
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 bg-${company.color} rounded-xl flex items-center justify-center shadow-lg`}>
-                          <Building2 className="w-6 h-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold text-white mb-1">
-                            {company.name}
-                          </h3>
-                          <p className="text-sm text-gray-400 mb-3">
-                            {company.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1">
-                            {company.focus.slice(0, 2).map((focus, idx) => (
-                              <span key={idx} className="text-xs bg-gray-700/50 text-gray-300 px-2 py-1 rounded">
-                                {focus}
-                              </span>
-                            ))}
-                            {company.focus.length > 2 && (
-                              <span className="text-xs text-gray-400">
-                                +{company.focus.length - 2}개
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+                    <CardContent className="p-8 text-center">
+                      <div className={`w-16 h-16 bg-${company.color} rounded-2xl flex items-center justify-center shadow-lg mx-auto mb-4`}>
+                        <Building2 className="w-8 h-8 text-white" />
                       </div>
+                      <h3 className="text-2xl font-bold text-white">
+                        {company.name}
+                      </h3>
                     </CardContent>
                   </Card>
                 ))}
               </div>
             </div>
 
-            {/* 팁 섹션 */}
-            <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6 backdrop-blur-sm max-w-md mx-auto">
-              <p className="text-sm text-blue-300">
-                💡 <strong className="text-blue-200">안내:</strong> 회사를 선택하시면 해당 회사의 채용 요구사항에 맞춤화된 포트폴리오 정보와 답변을 제공합니다.
-              </p>
-            </div>
           </div>
         </div>
       </div>

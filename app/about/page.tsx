@@ -498,7 +498,7 @@ export default function AboutPage() {
                 const bgColor = `bg-${activity.color}-500/20`;
                 
                 return (
-                  <Card key={idx} className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl">
+                  <Card key={idx} id={activity.name === "E-commerce 사업 운영" ? "ecommerce" : undefined} className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl">
                     <CardHeader>
                       <CardTitle className="text-xl font-bold text-white flex items-center gap-3">
                         <div className={`w-8 h-8 ${bgColor} rounded-lg flex items-center justify-center`}>
