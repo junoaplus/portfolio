@@ -158,16 +158,47 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
                 "success": False
             }
         
-        # 비동기 요청 처리
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        
+        # 동기 요청 처리 (runpod 환경에서)
         try:
-            result = loop.run_until_complete(process_request(job_input))
-            print("✅ 요청 처리 완료")
+            # FastAPI TestClient는 동기적으로 작동
+            from main import app
+            from fastapi.testclient import TestClient
+            
+            client = TestClient(app)
+            
+            method = job_input.get("method", "GET")
+            path = job_input.get("path", "/")
+            headers = job_input.get("headers", {})
+            body = job_input.get("body", {})
+            
+            print(f"🔄 요청 처리: {method} {path}")
+            
+            # 동기 요청 실행
+            if method == "GET":
+                response = client.get(path, headers=headers)
+            elif method == "POST":
+                response = client.post(path, json=body, headers=headers)
+            else:
+                return {"error": f"지원하지 않는 HTTP 메소드: {method}", "status_code": 405}
+            
+            # 응답 처리
+            try:
+                response_data = response.json()
+            except Exception:
+                response_data = {"message": response.text}
+            
+            result = {
+                "status_code": response.status_code,
+                "body": response_data,
+                "success": response.status_code < 400
+            }
+            
+            print(f"✅ 응답 완료: {response.status_code}")
             return result
-        finally:
-            loop.close()
+            
+        except Exception as e:
+            print(f"❌ 요청 처리 오류: {str(e)}")
+            return {"error": f"요청 처리 중 오류 발생: {str(e)}", "status_code": 500, "success": False}
             
     except Exception as e:
         print(f"❌ 핸들러 오류: {str(e)}")

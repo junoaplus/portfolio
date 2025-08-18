@@ -46,8 +46,64 @@ const companyConfigs: Record<string, CompanyConfig> = {
 }
 
 export default function ChatbotPage() {
-  // API Base URL 환경변수 설정
+  // API Base URL 환경변수 설정 (Runpod Serverless)
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
+  
+  // Runpod Serverless API 호출 함수
+  const callRunpodAPI = async (path: string, body: any) => {
+    const response = await fetch(API_BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}` // 필요시
+      },
+      body: JSON.stringify({
+        input: {
+          method: 'POST',
+          path: path,
+          headers: { 'Content-Type': 'application/json' },
+          body: body
+        }
+      })
+    })
+    
+    const data = await response.json()
+    
+    // 디버깅용 로그
+    console.log('Runpod 응답:', data)
+    
+    // Runpod Serverless 응답 구조 확인
+    if (data.status === 'IN_QUEUE' || data.status === 'IN_PROGRESS') {
+      // Job이 큐에 있거나 처리 중인 경우
+      console.log('Job 상태:', data.status)
+      throw new Error('Job이 아직 처리 중입니다. 잠시 후 다시 시도해주세요.')
+    }
+    
+    // 응답 형식에 따라 처리
+    if (data.output) {
+      // output이 직접 결과인 경우
+      if (typeof data.output === 'object' && !data.output.body) {
+        return {
+          ok: true,
+          json: () => Promise.resolve(data.output)
+        }
+      }
+      // output.body가 있는 경우
+      if (data.output.body) {
+        return {
+          ok: data.output.status_code ? data.output.status_code < 400 : true,
+          json: () => Promise.resolve(data.output.body)
+        }
+      }
+    }
+    
+    // 에러 응답인 경우
+    if (data.error) {
+      throw new Error(data.error)
+    }
+    
+    throw new Error('Runpod API 응답 형식을 알 수 없습니다')
+  }
   
   const [showCompanySelection, setShowCompanySelection] = useState(true)
   const [selectedCompany, setSelectedCompany] = useState<string>('')
@@ -76,15 +132,9 @@ export default function ChatbotPage() {
     setIsTyping(true)
     
     try {
-      // 1. 세션 생성
-      const sessionResponse = await fetch(`${API_BASE_URL}/api/sessions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          company_context: companyKey,
-        }),
+      // 1. 세션 생성 (Runpod Serverless)
+      const sessionResponse = await callRunpodAPI('/api/sessions', {
+        company_context: companyKey,
       })
       
       const sessionData = await sessionResponse.json()
@@ -92,15 +142,9 @@ export default function ChatbotPage() {
       if (sessionData.success) {
         const sessionId = sessionData.session_id
         
-        // 2. 초기 대화 시작
-        const initialResponse = await fetch(`${API_BASE_URL}/api/chat/initial`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            session_id: sessionId,
-          }),
+        // 2. 초기 대화 시작 (Runpod Serverless)
+        const initialResponse = await callRunpodAPI('/api/chat/initial', {
+          session_id: sessionId,
         })
         
         const initialData = await initialResponse.json()
@@ -155,18 +199,10 @@ export default function ChatbotPage() {
       console.log('🔥 서버 warming up 시작...')
       
       try {
-        const response = await fetch(`${API_BASE_URL}/api/health`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
+        // Runpod Serverless Health Check
+        const response = await callRunpodAPI('/api/health', {})
         
-        if (response.ok) {
-          console.log('✅ 서버 warm-up 성공!')
-        } else {
-          console.log('⚠️ 서버 warm-up 응답 이상:', response.status)
-        }
+        console.log('✅ 서버 warm-up 성공!')
       } catch (error) {
         console.log('⚠️ 서버 warm-up 오류:', error)
         // 에러가 발생해도 사용자에게는 알리지 않음 (백그라운드 작업)
@@ -200,16 +236,10 @@ export default function ChatbotPage() {
         throw new Error('세션 ID가 없습니다. 다시 시작해주세요.')
       }
       
-      // 챗봇 API 호출
-      const response = await fetch(`${API_BASE_URL}/api/chat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          question: content.trim(),
-        }),
+      // 챗봇 API 호출 (Runpod Serverless)
+      const response = await callRunpodAPI('/api/chat', {
+        session_id: sessionId,
+        question: content.trim(),
       })
 
       const data = await response.json()
