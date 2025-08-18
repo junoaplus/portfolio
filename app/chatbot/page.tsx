@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 import { Navigation } from '@/components/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -9,7 +10,6 @@ import {
   Send,
   Download,
   RefreshCw,
-  Copy,
   Bot,
   User,
   Sparkles,
@@ -26,6 +26,7 @@ interface Message {
   content: string
   timestamp: Date
   sources?: string[]
+  links?: Record<string, string>  // 추천 링크 추가
 }
 
 interface CompanyConfig {
@@ -177,6 +178,10 @@ export default function ChatbotPage() {
       })
 
       const data = await response.json()
+      
+      // 디버깅용 로그
+      console.log('백엔드 응답 전체:', data)
+      console.log('링크 데이터:', data.links)
 
       if (data.success) {
         const aiMessage: Message = {
@@ -184,6 +189,7 @@ export default function ChatbotPage() {
           type: 'ai',
           content: data.answer,
           timestamp: new Date(),
+          links: data.links || {},  // 백엔드에서 받은 링크 추가
           sources: data.metadata?.key_points || [],
         }
         setMessages(prev => [...prev, aiMessage])
@@ -216,9 +222,6 @@ export default function ChatbotPage() {
     handleSendMessage(question)
   }
 
-  const copyMessage = (content: string) => {
-    navigator.clipboard.writeText(content)
-  }
 
   // 회사 선택 화면 - 메인 페이지와 동일한 히어로 스타일
   if (showCompanySelection) {
@@ -515,16 +518,6 @@ export default function ChatbotPage() {
                               <Clock className="w-3 h-3" />
                               {message.timestamp.toLocaleTimeString()}
                             </span>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              className="h-6 w-6 p-0 hover:bg-gray-700/50"
-                              onClick={() => copyMessage(message.content)}
-                            >
-                              <Copy
-                                className={`w-3 h-3 ${message.type === 'user' ? 'text-white/70' : 'text-gray-400'}`}
-                              />
-                            </Button>
                           </div>
                         </div>
 
@@ -533,163 +526,190 @@ export default function ChatbotPage() {
                             message.type === 'user' ? 'text-gray-200' : 'text-gray-100'
                           }`}
                         >
-                          {message.content.split('\n').map((line, index) => {
-                            // 박스 섹션 처리 (━━━ 패턴)
-                            if (line.includes('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')) {
-                              return (
-                                <div key={index} className="my-4">
-                                  <div className="border-t border-blue-500/30 w-full"></div>
-                                </div>
-                              );
-                            }
-                            
-                            // 박스 처리 - 통일된 고급 테마
-                            if (line.includes('**안녕하세요! 토스 ML Engineer 지원자 황준호입니다!**')) {
-                              return (
-                                <div key={index} className="mb-4">
-                                  <div className="bg-blue-900/20 p-2 rounded-lg border-l-4 border-r-4 border-blue-400 text-center">
-                                    <h2 className="text-lg font-bold text-white">
-                                      안녕하세요! 토스 ML Engineer <span className="text-cyan-300 font-bold">지원자 황준호</span>입니다!
-                                    </h2>
-                                  </div>
-                                </div>
-                              );
-                            }
-                            
-                            // 소개 박스 처리 - 양쪽 파란색 보더 + 가운데 정렬
-                            if (line.includes('**토스 채용 공고를 바탕으로')) {
-                              const text = '토스 채용 공고를 바탕으로 우선순위를 정리하여 보여드립니다! 아래 프로젝트들을 확인해보시고, 궁금한 점은 언제든 저에게 질문해주세요. 꼭 좋은 기회로 이어졌으면 좋겠습니다';
-                              
-                              return (
-                                <div key={index} className="mb-4">
-                                  <div className="bg-blue-900/20 p-2 rounded-lg border-l-4 border-r-4 border-blue-400 text-center">
-                                    <h3 className="text-lg font-bold text-white">
-                                      <div><span className="text-cyan-300 font-bold">토스 채용 공고</span>를 바탕으로 <span className="text-cyan-300 font-bold">우선순위</span>를 정리하여 보여드립니다!</div>
-                                      <div>아래 프로젝트들을 확인해보시고, 언제든지 챗봇을 통해 질문해주세요</div>
-                                    </h3>
-                                  </div>
-                                </div>
-                              );
-                            }
-                            
-                            // 안내 박스 처리 - 양쪽 파란색 보더 + 가운데 정렬 (글자 크기 유지)
-                            if (line.includes('**궁금한 프로젝트나')) {
-                              return (
-                                <div 
-                                  key={index} 
-                                  className="mt-1 bg-blue-900/20 p-2 rounded-lg border-l-4 border-r-4 border-blue-400 text-center"
-                                >
-                                  <div>궁금한 프로젝트나 기술이 있으시면 언제든 질문해주세요!</div>
-                                  <div>각 프로젝트 링크를 클릭하시면 더 자세한 기술적 구현 내용과 성과를 확인하실 수 있습니다.</div>
-                                </div>
-                              );
-                            }
-                            
-                            // 프로젝트 링크 처리 - 완전 매칭 시스템 (모든 패턴)
-                            // 패턴 1: 이모지 제목 → 설명
-                            // 패턴 2: 이모지 제목 (부가설명)  
-                            // 패턴 3: 이모지 제목만
-                            const linkMatch = line.match(/^(🎯|🤖|📊|💰|🔧)\s*(.+?)(?:→|\(|$)(.*)$/);
-                            if (linkMatch && linkMatch[1]) {
-                              const [, emoji, title, description] = linkMatch;
-                              const fullText = `${title} ${description}`.toLowerCase();
-                              
-                              // 프로젝트별 완전 매칭 시스템
-                              let projectUrl = null;
-                              
-                              // 데이트코스 매칭 (마이크로서비스, PySpark 모두 여기)
-                              if (fullText.includes('데이트') || fullText.includes('추천 시스템') || 
-                                  fullText.includes('89,321') || fullText.includes('qdrant') || 
-                                  fullText.includes('vector db') || fullText.includes('마이크로') || 
-                                  fullText.includes('pyspark') || fullText.includes('redis') ||
-                                  fullText.includes('33초') || fullText.includes('3.4초')) {
-                                projectUrl = '/date-recommendation';
-                              } 
-                              // 보드게임 매칭
-                              else if (fullText.includes('보드게임') || fullText.includes('rag') || 
-                                       fullText.includes('exaone') || fullText.includes('faiss') || 
-                                       fullText.includes('217') || fullText.includes('langchain')) {
-                                projectUrl = '/boardgame-chatbot';
-                              } 
-                              // 신문 이탈 매칭 (이탈/퇴사 예측 ML 시스템도 여기)
-                              else if (fullText.includes('신문') || fullText.includes('이탈 예측') || 
-                                       fullText.includes('randomforest') || fullText.includes('smote') ||
-                                       fullText.includes('faker') || fullText.includes('top 50') ||
-                                       (fullText.includes('이탈') && fullText.includes('예측')) ||
-                                       (fullText.includes('8가지') && fullText.includes('알고리즘'))) {
-                                projectUrl = '/newspaper-churn';
-                              } 
-                              // 간호사 매칭
-                              else if (fullText.includes('간호사') || fullText.includes('퇴사 예측') || 
-                                       fullText.includes('급여') || fullText.includes('logistic') || 
-                                       fullText.includes('794') || fullText.includes('stratified')) {
-                                projectUrl = '/nurse-salary';
-                              }
-                              // 이탈/퇴사 예측 ML 시스템 - 신문과 간호사 둘 다 연관
-                              else if (fullText.includes('이탈/퇴사')) {
-                                // 기본적으로 신문 이탈로 연결 (더 관련성 높음)
-                                projectUrl = '/newspaper-churn';
-                              }
-                              
-                              if (projectUrl) {
+                          <ReactMarkdown
+                            components={{
+                              h1: ({ children }) => {
+                                const title = String(children);
+                                let icon = "📝";
+                                let color = "text-white";
+                                
+                                if (title.includes("강점") || title.includes("경험")) {
+                                  icon = "💪";
+                                  color = "text-cyan-300";
+                                } else if (title.includes("기술") || title.includes("스킬")) {
+                                  icon = "🛠️";
+                                  color = "text-yellow-300";
+                                } else if (title.includes("목표") || title.includes("비전")) {
+                                  icon = "🎯";
+                                  color = "text-green-300";
+                                } else if (title.includes("가치관") || title.includes("마인드")) {
+                                  icon = "💡";
+                                  color = "text-purple-300";
+                                } else if (title.includes("프로젝트")) {
+                                  icon = "📦";
+                                  color = "text-orange-300";
+                                } else if (title.includes("기여") || title.includes("토스") || title.includes("회사")) {
+                                  icon = "🏢";
+                                  color = "text-blue-300";
+                                }
+                                
                                 return (
-                                  <div key={index} className="mb-3">
-                                    <div className="bg-gray-800/60 backdrop-blur-sm border border-blue-500/30 rounded-lg p-3 hover:border-blue-400/50 hover:bg-gray-700/60 transition-all duration-200">
-                                      <a 
-                                        href={projectUrl} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="block"
-                                      >
-                                        <div className="flex items-start gap-3">
-                                          <span className="text-xl mt-1">{emoji}</span>
-                                          <div className="flex-1">
-                                            <div className="flex items-center gap-2 mb-1">
-                                              <span className="font-bold text-blue-300">{title.trim()}</span>
-                                              <ArrowRight className="w-4 h-4 text-blue-400" />
-                                              <span className="text-xs text-blue-400 bg-blue-900/30 px-2 py-1 rounded">프로젝트 보기</span>
-                                            </div>
-                                            <p className="text-gray-300 text-sm leading-relaxed">
-                                              {description.trim()}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </a>
-                                    </div>
+                                  <div className="mt-8 mb-4">
+                                    <h1 className={`text-xl font-bold ${color} mb-4 flex items-center gap-2 bg-gray-800/50 rounded-lg p-3 border-l-4 border-cyan-500`}>
+                                      <span className="text-2xl">{icon}</span>
+                                      {children}
+                                    </h1>
                                   </div>
                                 );
-                              }
-                            }
-                            
-                            // 일반 라인 처리 - 중요 포인트 강조
-                            let processedLine = line;
-                            
-                            // **텍스트** 마크다운 제거
-                            processedLine = processedLine.replace(/\*\*(.+?)\*\*/g, '$1');
-                            
-                            // 강조 문구들만 청록색 처리
-                            const cyanPatterns = [
-                              /(\d+%|\d+초|\d+\.\d+초|F1-Score|ROC AUC|89,321개|794명|87%)/g, // 성능 지표
-                              /(토스|Toss|ML Engineer|검색 인프라|LLM\/RAG|대용량 데이터|추천 시스템)/g, // 토스 관련
-                              /(Qdrant|Vector DB|FAISS|EXAONE|PySpark|StratifiedKFold|GridSearchCV)/g, // 기술 스택
-                            ];
-                            
-                            // 강조 문구들만 청록색 처리
-                            cyanPatterns.forEach(pattern => {
-                              processedLine = processedLine.replace(pattern, '<span class="text-cyan-300 font-bold">$1</span>');
-                            });
-                            
-                            return (
-                              <div 
-                                key={index} 
-                                className={`${index === 0 ? '' : 'mt-1'} ${line.includes('토스') || line.includes('ML Engineer') ? 'bg-blue-900/20 p-2 rounded-lg border-l-4 border-blue-400' : ''}`}
-                                dangerouslySetInnerHTML={processedLine !== line ? { __html: processedLine } : undefined}
-                              >
-                                {processedLine === line ? (line || <br />) : null}
-                              </div>
-                            );
-                          })}
+                              },
+                              h2: ({ children }) => {
+                                const title = String(children);
+                                let icon = "📝";
+                                let color = "text-white";
+                                
+                                if (title.includes("강점") || title.includes("경험")) {
+                                  icon = "💪";
+                                  color = "text-cyan-300";
+                                } else if (title.includes("기술") || title.includes("스킬")) {
+                                  icon = "🛠️";
+                                  color = "text-yellow-300";
+                                } else if (title.includes("목표") || title.includes("비전")) {
+                                  icon = "🎯";
+                                  color = "text-green-300";
+                                } else if (title.includes("가치관") || title.includes("마인드")) {
+                                  icon = "💡";
+                                  color = "text-purple-300";
+                                } else if (title.includes("프로젝트")) {
+                                  icon = "📦";
+                                  color = "text-orange-300";
+                                } else if (title.includes("기여") || title.includes("토스") || title.includes("회사")) {
+                                  icon = "🏢";
+                                  color = "text-blue-300";
+                                }
+                                
+                                return (
+                                  <div className="mt-8 mb-4">
+                                    <h2 className={`text-lg font-bold ${color} mb-4 flex items-center gap-2 bg-gray-800/50 rounded-lg p-3 border-l-4 border-cyan-500`}>
+                                      <span className="text-xl">{icon}</span>
+                                      {children}
+                                    </h2>
+                                  </div>
+                                );
+                              },
+                              h3: ({ children }) => {
+                                const title = String(children);
+                                let icon = "📝";
+                                let color = "text-white";
+                                
+                                if (title.includes("강점") || title.includes("경험")) {
+                                  icon = "☝️";
+                                  color = "text-cyan-300";
+                                } else if (title.includes("기술") || title.includes("스킬")) {
+                                  icon = "🛠️";
+                                  color = "text-yellow-300";
+                                } else if (title.includes("목표") || title.includes("비전")) {
+                                  icon = "🎯";
+                                  color = "text-green-300";
+                                } else if (title.includes("가치관") || title.includes("마인드")) {
+                                  icon = "💡";
+                                  color = "text-purple-300";
+                                } else if (title.includes("프로젝트")) {
+                                  icon = "📦";
+                                  color = "text-orange-300";
+                                } else if (title.includes("기여") || title.includes("토스") || title.includes("회사")) {
+                                  icon = "🏢";
+                                  color = "text-blue-300";
+                                }
+                                
+                                return (
+                                  <div className="mt-8 mb-4">
+                                    <h3 className={`text-lg font-bold ${color} mb-4 flex items-center gap-2 bg-gray-800/50 rounded-lg p-3 border-l-4 border-cyan-500`}>
+                                      <span className="text-xl">{icon}</span>
+                                      {children}
+                                    </h3>
+                                  </div>
+                                );
+                              },
+                              h4: ({ children }) => (
+                                <h4 className="text-base font-bold text-blue-300 mb-2 mt-3 pl-2">
+                                  {children}
+                                </h4>
+                              ),
+                              p: ({ children }) => (
+                                <p className="text-gray-200 leading-relaxed mb-3 bg-gray-900/30 rounded-md p-3 border border-gray-700/30">
+                                  {children}
+                                </p>
+                              ),
+                              strong: ({ children }) => (
+                                <strong className="text-cyan-300 font-bold">
+                                  {children}
+                                </strong>
+                              ),
+                              em: ({ children }) => (
+                                <em className="text-cyan-300 font-bold italic">
+                                  {children}
+                                </em>
+                              ),
+                              code: ({ children }) => (
+                                <code className="bg-blue-900/30 text-blue-300 px-2 py-1 rounded text-sm">
+                                  {children}
+                                </code>
+                              ),
+                              ul: ({ children }) => (
+                                <ul className="list-disc list-inside space-y-1 mb-3 text-gray-200">
+                                  {children}
+                                </ul>
+                              ),
+                              li: ({ children }) => (
+                                <li className="text-gray-200">
+                                  {children}
+                                </li>
+                              ),
+                              blockquote: ({ children }) => (
+                                <div className="bg-blue-900/20 border-l-4 border-blue-400 p-3 rounded-lg mb-3">
+                                  {children}
+                                </div>
+                              ),
+                              hr: () => (
+                                <hr className="border-t border-blue-500/30 my-4" />
+                              ),
+                              a: ({ href, children }) => (
+                                <a
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors duration-200"
+                                >
+                                  {children}
+                                </a>
+                              )
+                            }}
+                            rehypePlugins={[]}
+                          >
+                            {message.content}
+                          </ReactMarkdown>
                         </div>
+
+                        {/* 추천 링크 표시 */}
+                        {message.type === 'ai' && message.links && Object.keys(message.links).length > 0 && (
+                          <div className="mt-4 pt-4 border-t border-gray-700">
+                            <div className="text-xs text-gray-400 mb-2">📌 관련 링크</div>
+                            <div className="flex flex-wrap gap-2">
+                              {Object.entries(message.links).map(([title, url]) => (
+                                <a
+                                  key={url}
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-900/30 hover:bg-blue-900/50 border border-blue-500/30 hover:border-blue-500/50 rounded-lg text-xs text-blue-300 hover:text-blue-200 transition-all duration-200"
+                                >
+                                  <span>{title}</span>
+                                  <ArrowRight className="w-3 h-3" />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </div>
@@ -799,81 +819,6 @@ export default function ChatbotPage() {
           </div>
         </div>
 
-        {/* Fixed Right Sidebar */}
-        <div className="w-80 flex-shrink-0 relative backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.90), rgba(17,24,39,0.90), rgba(0,0,0,0.90))' }}>
-          <div className="absolute inset-0 opacity-15" style={{
-            backgroundImage: `linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}></div>
-          
-          {/* Sidebar Left Border Glow */}
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/40 via-blue-500/60 to-blue-500/40"></div>
-          <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-r from-blue-500/15 to-transparent blur-sm"></div>
-          
-          {/* Sidebar Enhanced Glow */}
-          <div className="absolute left-0 top-1/3 h-1/3 w-1 bg-blue-400/50 blur-sm"></div>
-          <div className="p-4 space-y-4 h-full relative z-10">
-            <div className="space-y-3">
-              <Button
-                variant="outline"
-                className="w-full justify-start border-blue-500/20 text-gray-200 hover:bg-blue-900/30 hover:border-blue-400/40 hover:shadow-lg hover:shadow-blue-500/20 bg-gray-900/30 backdrop-blur-sm transition-all duration-200"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                대화 내보내기
-              </Button>
-
-              <Button
-                variant="outline"
-                className="w-full justify-start border-blue-500/20 text-gray-200 hover:bg-blue-900/30 hover:border-blue-400/40 hover:shadow-lg hover:shadow-blue-500/20 bg-gray-900/30 backdrop-blur-sm transition-all duration-200"
-                onClick={() => setMessages([])}
-              >
-                <RefreshCw className="w-4 h-4 mr-2" />새 대화 시작
-              </Button>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold mb-3 text-white">
-                  {currentCompany?.name} 맞춤 정보
-                </h3>
-                <div className="space-y-2">
-                  {currentCompany?.focus.map((focus, index) => (
-                    <Badge
-                      key={index}
-                      className={`w-full justify-center bg-${currentCompany.color} text-white border-0`}
-                    >
-                      {focus}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-semibold mb-3 text-white">
-                  시스템 정보
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">응답 시간</span>
-                    <span className="text-green-400 font-medium">~1.5초</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">정확도</span>
-                    <span className="text-blue-400 font-medium">95%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">모드</span>
-                    <span
-                      className={`text-${currentCompany?.color} font-medium`}
-                    >
-                      {currentCompany?.name} 전용
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

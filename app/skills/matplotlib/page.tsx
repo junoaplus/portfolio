@@ -64,19 +64,19 @@ export default function MatplotlibSkillPage() {
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">matplotlib은 정말 복잡하지만 그만큼 강력한 도구</span>라고 생각합니다. 
-                  처음엔 seaborn이 더 예쁘고 쉬워서 matplotlib은 왜 쓰나 싶었는데, 
-                  <span className="font-bold text-cyan-400">정말 세밀한 커스터마이징이 필요할 때 진가를 발휘</span>합니다.
+                  <span className="font-bold text-cyan-400">matplotlib은 복잡하지만 그만큼 강력한 도구입니다.</span> 
+                  처음엔 seaborn이 더 예쁘고 쉬워서 matplotlib을 왜 써야 하나 싶었지만, 
+                  <span className="font-bold text-cyan-400">세밀한 커스터마이징이 필요할 때 진가를 발휘</span>합니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">머신러닝 모델 성능을 시각화할 때</span> matplotlib의 필요성을 절감했습니다. 
-                  ROC 커브나 혼동 행렬 같은 걸 정확히 내가 원하는 스타일로 만들려면 
-                  <span className="font-bold text-cyan-400">결국 matplotlib을 써야</span> 한다는 걸 깨달았습니다.
+                  특히 <span className="font-bold text-cyan-400">머신러닝 모델 성능 시각화에서</span> matplotlib의 필요성을 체감했습니다. 
+                  ROC 커브나 혼동 행렬을 정확히 원하는 스타일로 만들려면 
+                  <span className="font-bold text-cyan-400">결국 matplotlib을 사용해야</span> 했습니다.
                 </p>
                 <p>
-                  그리고 <span className="font-bold text-cyan-400">실제 발표나 보고서에 들어갈 차트</span>를 만들 때도 matplotlib이 최고입니다. 
-                  seaborn은 탐색적 분석용이고, 진짜 퀄리티 있는 결과물은 
-                  <span className="font-bold text-cyan-400">matplotlib으로 정성스럽게 만들어야</span> 한다고 생각합니다.
+                  <span className="font-bold text-cyan-400">발표나 보고서용 고품질 차트</span>를 만들 때도 matplotlib이 최적입니다. 
+                  seaborn은 탐색적 분석용이고, 완성도 높은 결과물은 
+                  <span className="font-bold text-cyan-400">matplotlib으로 정교하게 제작해야</span> 합니다.
                 </p>
               </div>
             </CardContent>
@@ -133,27 +133,39 @@ export default function MatplotlibSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-1 gap-6">
-                {/* 모델 성능 분석 */}
+                {/* seaborn 한계 */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="text-2xl">📊</div>
-                    모델 성능 분석 및 비교
+                    <div className="text-2xl">🎨</div>
+                    seaborn 커스터마이징 한계
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">여러 ML 모델의 성능을 ROC 커브로 한눈에 비교</span></div>
-                    <div>• <span className="font-bold text-cyan-400">혼동행렬과 피처 중요도로 모델 해석력 제공</span></div>
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> seaborn으로는 세밀한 커스터마이징이 불가능</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 축, 범례, 색상까지 완전 제어해서 발표용 고품질 차트 제작</div>
                   </div>
                 </div>
                 
-                {/* 비즈니스 인사이트 */}
+                {/* 복잡한 ML 시각화 */}
                 <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="text-2xl">💡</div>
-                    복잡한 데이터를 직관적 인사이트로 변환
+                    <div className="text-2xl">📊</div>
+                    복잡한 ML 시각화 문제
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">히트맵으로 상관관계를 시각적으로 파악</span></div>
-                    <div>• <span className="font-bold text-cyan-400">박스플롯으로 이상치와 분포 특성 한번에 확인</span></div>
+                    <div>• <span className="font-bold text-green-400">기존:</span> ROC 커브, 혼동행렬 같은 복잡한 그래프 구현이 어려움</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 다중 subplot으로 복합 분석 그래프를 정교하게 구현</div>
+                  </div>
+                </div>
+
+                {/* 논문급 퀄리티 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🏆</div>
+                    최종 결과물 퀄리티 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 탐색용 그래프로는 부족하고 논문이나 보고서급 완성도 필요</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> seaborn으로 안되는 건 matplotlib으로 정교하게 완성</div>
                   </div>
                 </div>
               </div>

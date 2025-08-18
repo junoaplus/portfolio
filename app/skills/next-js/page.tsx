@@ -51,38 +51,32 @@ export default function NextJSSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Next.js 15
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              풀스택 React 프레임워크의 최신 진화
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 90%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 Next.js */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Next.js에 대한 개인적 견해
+                내가 이해한 Next.js
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Next.js는 모던 웹 개발의 완성체</span>라고 생각합니다. 
-                  React의 강력함에 SSR, SSG, API Routes까지 통합하여 
-                  <span className="font-bold text-cyan-400">풀스택 애플리케이션을 하나의 프레임워크로 완성</span>할 수 있는 것이 혁신적입니다.
+                  <span className="font-bold text-cyan-400">Next.js를 찾아보니 React 기반에서 풀스택을 커버해줄 수 있다고</span> 
+                  나와있었습니다. SSR, SSG, API Routes까지 통합되어 있어서 
+                  <span className="font-bold text-cyan-400">하나의 프레임워크로 전체 애플리케이션</span>을 만들 수 있다는 점이 좋았습니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">App Router와 Server Components</span>의 등장이 인상적이었습니다. 
-                  클라이언트와 서버의 경계를 자연스럽게 넘나들며 
-                  <span className="font-bold text-cyan-400">성능 최적화와 개발 생산성</span>을 동시에 잡을 수 있게 해줍니다.
+                  하지만 이걸 선택한 <span className="font-bold text-cyan-400">가장 큰 이유는 서버사이드 렌더링을 지원</span>해서였습니다. 
+                  챗봇 같은 걸 만들 때 <span className="font-bold text-cyan-400">초기 화면을 빠르게 띄어주고</span>, 
+                  React Server Components와 Suspense/Streaming으로 <span className="font-bold text-cyan-400">실시간 응답을 매끄럽게</span> 처리할 수 있었습니다.
                 </p>
                 <p>
-                  AI 챗봇 포트폴리오 프로젝트에서 <span className="font-bold text-cyan-400">Vercel과의 완벽한 통합</span>을 경험하며, 
-                  배포부터 모니터링까지의 전체 워크플로우가 얼마나 매끄러운지 깨달았습니다. 
-                  <span className="font-bold text-cyan-400">개발자 경험의 새로운 기준</span>을 제시한다고 생각합니다.
+                  다만 <span className="font-bold text-cyan-400">무거운 백엔드는 따로 구축해야 합니다.</span> 
+                  API Routes는 간단한 서비스에는 좋지만, 대규모 챗봇 같은 경우에는 
+                  <span className="font-bold text-cyan-400">Django나 FastAPI 같은 별도 서버</span>와 연결하는 게 더 안정적이었습니다.
                 </p>
               </div>
             </CardContent>
@@ -97,147 +91,88 @@ export default function NextJSSkillPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-blue-900/30 hover:to-cyan-900/30 transition-all duration-300" onClick={() => window.open('/projects/1', '_blank')}>
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-blue-300 transition-colors">
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    AI 챗봇 포트폴리오 →
+                    포트폴리오 웹사이트
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">Next.js 15의 App Router와 Server Actions</span>를 활용하여 LangGraph 멀티 에이전트 시스템과 완벽하게 통합된 
-                      <span className="font-bold text-cyan-400">인터랙티브 포트폴리오</span>를 구축했습니다.
+                      <span className="font-bold text-cyan-400">Next.js 15의 App Router</span>를 사용해서 
+                      각 스킬 페이지와 프로젝트 페이지를 <span className="font-bold text-cyan-400">동적 라우팅</span>으로 구성했습니다.
                     </p>
-                    <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                      <div className="text-sm text-gray-400 mb-2">핵심 Next.js 기술들:</div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge className="bg-cyan-700 text-cyan-100">App Router</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">Server Actions</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">Streaming UI</Badge>
-                        <Badge className="bg-cyan-700 text-cyan-100">API Routes</Badge>
-                      </div>
-                    </div>
+                    <p>
+                      <span className="font-bold text-cyan-400">TypeScript와 Tailwind CSS</span>를 완벽하게 통합하여 
+                      <span className="font-bold text-blue-300">타입 안전성과 스타일링</span>을 모두 최적화했습니다.
+                    </p>
                   </div>
                 </div>
 
                 <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl p-6 border border-green-600/30 cursor-pointer hover:bg-gradient-to-r hover:from-green-900/30 hover:to-teal-900/30 transition-all duration-300" onClick={() => window.open('/date-recommendation', '_blank')}>
                   <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 hover:text-green-300 transition-colors">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    데이트 코스 추천 AI →
+                    데이트 코스 추천 AI 시스템 →
                   </h3>
                   <div className="text-gray-300 space-y-3">
                     <p>
-                      <span className="font-bold text-cyan-400">Next.js 15</span>를 활용해 FastAPI 백엔드와 실시간 통신하는 
-                      대화형 추천 시스템의 프론트엔드를 구축했습니다.
+                      <span className="font-bold text-cyan-400">Next.js 15</span>로 프론트엔드를 구축하여 
+                      FastAPI 백엔드와 <span className="font-bold text-cyan-400">실시간 채팅 인터페이스</span>를 구현했습니다.
                     </p>
-                    <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                      <div className="text-sm text-gray-400 mb-2">사용 기술:</div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge className="bg-green-700 text-green-100">Next.js 15</Badge>
-                        <Badge className="bg-green-700 text-green-100">API 통신</Badge>
-                        <Badge className="bg-green-700 text-green-100">실시간 UI</Badge>
-                      </div>
-                    </div>
+                    <p>
+                      <span className="font-bold text-cyan-400">3개 마이크로서비스와 통합</span>된 복잡한 API 통신을 
+                      <span className="font-bold text-blue-300">효율적으로 관리</span>하며 사용자 경험을 최적화했습니다.
+                    </p>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    성능 최적화
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">Lighthouse 95+ 점수</span> 달성</div>
-                    <div>• <span className="font-bold">초기 로딩 속도 40% 향상</span></div>
-                    <div>• <span className="font-bold">번들 크기 30% 최적화</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 생산성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">개발 시간 50% 단축</span></div>
-                    <div>• <span className="font-bold">자동 배포 파이프라인</span> 구축</div>
-                    <div>• <span className="font-bold">타입 안전성 100%</span> 보장</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">Pages Router에 익숙한 상태</span>에서 App Router의 
-                    Server Components 개념이 낯설었습니다. 클라이언트와 서버 컴포넌트를 구분하는 것이 
-                    <span className="font-bold text-blue-300">초기에는 혼란</span>스러웠죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">실제 프로젝트를 진행하면서</span> 
-                    Server Actions와 Streaming UI의 강력함을 체감했습니다. 
-                    특히 <span className="font-bold text-blue-300">AI 챗봇과의 실시간 통신</span>에서 
-                    기존 방식으로는 불가능했던 매끄러운 UX를 구현할 수 있었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">풀스택 아키텍처 설계, 성능 최적화, 배포 전략</span> 등을 
-                    체계적으로 적용해서 프로덕션 레벨의 웹 애플리케이션을 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* Next.js로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                Next.js로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">AI 기반 인터랙티브 포트폴리오의 혁신</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Next.js의 최신 기술을 통해 <span className="font-bold text-cyan-400">AI 에이전트와 실시간 소통</span>하는 
-                    포트폴리오를 구현했습니다. 이는 단순한 정적 페이지를 넘어선 <span className="font-bold text-cyan-400">인터랙티브 경험</span>을 제공합니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">성능 최적화와 SEO</span>를 동시에 달성하여 
-                    사용자 경험과 검색 엔진 최적화 모두에서 우수한 결과를 얻었고, 
-                    <span className="font-bold text-cyan-400">개발 생산성이 크게 향상</span>되었습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 서비스 환경</span>에서는 
-                    이런 풀스택 개발 능력이 <span className="font-bold text-cyan-400">빠른 프로덕트 개발과 안정적인 서비스</span> 
-                    운영의 핵심 역량이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 챗봇 초기 로딩 속도 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    챗봇 초기 로딩 속도
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 클라이언트 렌더링으로 챗봇 화면이 늦게 뜸</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> SSR로 초기 화면을 서버에서 빠르게 렌더링해서 즉시 표시</div>
+                  </div>
+                </div>
+                
+                {/* 실시간 스트리밍 구현의 어려움 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🌊</div>
+                    실시간 스트리밍 구현의 어려움
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> React만으로는 스트리밍 응답을 매끄럽게 처리하기 복잡</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> Server Components + Suspense/Streaming으로 실시간 응답 자연스럽게 처리</div>
+                  </div>
+                </div>
+
+                {/* 간단한 서비스의 과도한 설정 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🛠️</div>
+                    간단한 서비스의 과도한 설정
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 간단한 서비스도 프론트엔드/백엔드 따로 구축해야 하는 번거로움</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> API Routes로 간단한 백엔드 기능은 하나의 프로젝트에서 처리 (대규모는 별도 서버 필요)</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

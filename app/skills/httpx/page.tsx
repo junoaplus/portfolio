@@ -51,26 +51,20 @@ export default function HTTPXSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               HTTPX
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              차세대 Python HTTP 클라이언트로 동기/비동기 완벽 지원
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 70%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 HTTPX */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                HTTPX에 대한 개인적 견해
+                내가 이해한 HTTPX
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">HTTPX는 requests의 완벽한 진화형</span>이라고 생각합니다. 
+                  <span className="font-bold text-cyan-400">HTTPX는 requests의 완벽한 진화형입니다.</span> 
                   친숙한 API를 유지하면서도 HTTP/2, 비동기 처리, 스트리밍까지 지원하여 
                   <span className="font-bold text-cyan-400">현대적 웹 통신의 모든 요구사항</span>을 충족합니다.
                 </p>
@@ -112,113 +106,55 @@ export default function HTTPXSkillPage() {
                     89,321개 장소 데이터 수집과 AI 추론 요청을 <span className="font-bold text-blue-300">30% 빠른 속도</span>로 처리하고, 
                     마이크로서비스 간 안정적인 통신을 구축했습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 HTTPX 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Async HTTP Client</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Connection Pooling</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">HTTP/2 Support</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Streaming</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    통신 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">API 호출 속도 30% 향상</span></div>
-                    <div>• <span className="font-bold">Connection Pool</span> 최적화</div>
-                    <div>• <span className="font-bold">HTTP/2 지원</span>으로 성능 개선</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">동기/비동기 API 통일</span></div>
-                    <div>• <span className="font-bold">에러 핸들링 95%</span> 개선</div>
-                    <div>• <span className="font-bold">코드 재사용성 80%</span> 향상</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">requests 라이브러리에 익숙한 상태</span>에서 굳이 
-                    새로운 HTTP 클라이언트가 필요할까 의문이었습니다. 기존 requests로도 
-                    <span className="font-bold text-blue-300">충분히 잘 동작</span>한다고 생각했죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">대용량 API 통합 프로젝트를 진행하면서</span> 
-                    비동기 처리의 필요성을 절감했습니다. 
-                    특히 <span className="font-bold text-blue-300">여러 외부 API를 동시에 호출</span>할 때 
-                    HTTPX의 성능 차이를 확실히 체감할 수 있었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">HTTP/2 지원, 스트리밍, 고급 인증</span> 등을 
-                    활용해서 복잡한 API 통합도 효율적으로 구현할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* HTTPX으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                HTTPX으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">현대적 HTTP 통신으로 서비스 통합과 성능 최적화</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    HTTPX의 <span className="font-bold text-cyan-400">고성능 비동기 HTTP 처리</span>를 통해 
-                    다양한 외부 서비스와의 통합을 빠르고 안정적으로 구현할 수 있었습니다. 이는 단순한 API 호출을 넘어선 <span className="font-bold text-cyan-400">서비스 생태계</span>의 구축입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">Connection Pooling과 HTTP/2 지원</span>으로 
-                    네트워크 자원을 효율적으로 사용하여, <span className="font-bold text-cyan-400">인프라 비용 절감</span>과 사용자 경험 개선을 동시에 달성했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">API 중심 서비스</span>에서는 
-                    이런 고성능 HTTP 클라이언트가 <span className="font-bold text-cyan-400">서비스 안정성과 확장성</span>의 
-                    핵심 기술이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* requests 라이브러리 한계 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔄</div>
+                    requests 라이브러리 한계
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 동기 처리만 지원해서 API 호출시 대기 시간 발생</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 동기/비동기 모두 지원으로 병렬 처리와 성능 최적화</div>
+                  </div>
+                </div>
+                
+                {/* HTTP/1.1 성능 제약 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🚀</div>
+                    HTTP/1.1 성능 제약
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> 연결당 하나의 요청만 처리하여 네트워크 효율 낮음</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> HTTP/2 지원으로 다중 스트림과 헤더 압축 활용</div>
+                  </div>
+                </div>
+
+                {/* Connection Pool 관리 복잡성 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    Connection Pool 관리 복잡성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 연결 재사용을 수동으로 관리해야 하는 번거로움</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 내장 Connection Pool로 자동 연결 관리와 성능 향상</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

@@ -53,18 +53,18 @@ export default function StratifiedKFoldSkillPage() {
             </h1>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 StratifiedKFold */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-내가 이해한 StratifiedKFold
+                내가 이해한 StratifiedKFold
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">StratifiedKFold는 모델 성능을 제대로 평가할 때 쓰는 도구</span>입니다. 
+                  <span className="font-bold text-cyan-400">StratifiedKFold는 모델 성능을 제대로 평가할 때 쓰는 도구입니다.</span> 
                   처음에는 train_test_split만 써서 한 번만 나누어서 평가했는데, 
                   <span className="font-bold text-cyan-400">운에 따라 결과가 달라지는 문제</span>가 있었습니다.
                 </p>
@@ -115,27 +115,39 @@ export default function StratifiedKFoldSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-1 gap-6">
-                {/* 운에 따라 결과가 달라지는 문제 */}
+                {/* 모델 평가 신뢰성 문제 */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                     <div className="text-2xl">🎲</div>
-                    train_test_split으로 운에 따라 결과가 달라지는 문제
+                    모델 평가 신뢰성 문제
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">한 번만 나누어서 평가하면 운에 따라 성능이 달라짐</span></div>
-                    <div>• <span className="font-bold text-cyan-400">5번 나누어서 평가하면 진짜 성능을 알 수 있음</span></div>
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> train_test_split 한 번만 써서 운에 따라 성능이 달라짐</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 5번 교차검증으로 안정적이고 신뢰할 수 있는 성능 측정</div>
                   </div>
                 </div>
                 
-                {/* 여러 모델 중 어떤 게 좋은지 모르는 경우 */}
+                {/* 불균형 데이터 평가 */}
                 <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="text-2xl">🔍</div>
-                    여러 모델 중 어떤 게 제일 좋은지 모르는 경우
+                    <div className="text-2xl">⚖️</div>
+                    불균형 데이터 평가 문제
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">클래스 비율을 맞춰서 공정하게 비교</span></div>
-                    <div>• <span className="font-bold text-cyan-400">LogisticRegression이 F1-Score 0.76으로 최고 성능 확인</span></div>
+                    <div>• <span className="font-bold text-green-400">기존:</span> 일반 KFold는 클래스 비율이 안 맞아서 편향된 평가</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 각 폴드마다 클래스 비율을 유지해서 공정한 비교</div>
+                  </div>
+                </div>
+
+                {/* 모델 선택 고민 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔍</div>
+                    모델 선택 고민
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 여러 모델 중 어떤 게 제일 좋은지 확신이 안 섬</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 체계적 비교로 LogisticRegression이 F1-Score 0.76으로 최고 확정</div>
                   </div>
                 </div>
               </div>

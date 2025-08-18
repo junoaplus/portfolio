@@ -51,12 +51,6 @@ export default function StreamlitSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Streamlit
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Python으로 빠르게 데이터 앱과 대시보드를 구축하는 웹 프레임워크
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 85%
-            </Badge>
           </div>
 
           {/* 개인적 견해 */}
@@ -64,25 +58,26 @@ export default function StreamlitSkillPage() {
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Streamlit에 대한 개인적 견해
+내가 이해한 Streamlit
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Streamlit은 데이터 과학자를 위한 혁명적 도구</span>라고 생각합니다. 
-                  복잡한 웹 개발 지식 없이도 Python 스크립트만으로 
-                  <span className="font-bold text-cyan-400">인터랙티브한 웹 애플리케이션</span>을 순식간에 구축할 수 있습니다.
+                  <span className="font-bold text-cyan-400">Streamlit을 처음 접한 것은 머신러닝을 배우면서 프로젝트를 할 때였습니다.</span> 
+                  처음에는 머신러닝 기술에 집중하고 
+                  <span className="font-bold text-cyan-400">프론트는 빠르게 띄어주고 싶었습니다.</span>
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">리액티브 프로그래밍과 자동 재실행</span>이 인상적이었습니다. 
-                  코드 변경 시 즉시 반영되고, 사용자 입력에 따라 
-                  <span className="font-bold text-cyan-400">자동으로 화면이 업데이트</span>되는 것이 놀라웠습니다.
+                  그럴 때 <span className="font-bold text-cyan-400">가장 간단한 게 Streamlit이어서</span> 이걸 써봤습니다. 
+                  정말 Python 코드 몇 줄만으로 웹 인터페이스가 만들어지는 게 신기했어요. 
+                  <span className="font-bold text-cyan-400">HTML, CSS, JavaScript 몰라도</span> 바로 결과를 보여줄 수 있었습니다.
                 </p>
                 <p>
-                  신문 이탈 예측 프로젝트에서 <span className="font-bold text-cyan-400">머신러닝 모델의 성능 분석과 시각화</span>를 
-                  Streamlit으로 구현하면서, 복잡한 데이터 분석 결과를 
-                  <span className="font-bold text-cyan-400">직관적으로 전달</span>할 수 있는 강력함을 경험했습니다.
+                  다만 <span className="font-bold text-cyan-400">단점도 있었습니다.</span> 
+                  디자인 커스터마이징이 제한적이고, 복잡한 인터랙션은 구현하기 어려웠어요. 
+                  그래서 <span className="font-bold text-cyan-400">간단한 프로토타입이나 데이터 분석 결과 공유용</span>으로는 최고지만, 
+                  완성도 높은 서비스에는 한계가 있다고 느껴습니다.
                 </p>
               </div>
             </CardContent>
@@ -112,113 +107,55 @@ export default function StreamlitSkillPage() {
                     비즈니스 팀이 <span className="font-bold text-blue-300">복잡한 ML 결과</span>를 직관적으로 이해하고 
                     의사결정에 활용할 수 있도록 했습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 Streamlit 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Interactive Dashboard</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Real-time Visualization</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Model Comparison</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Data Exploration</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    개발 효율성
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">대시보드 개발 90% 단축</span></div>
-                    <div>• <span className="font-bold">프로토타입 제작 5분</span> 내</div>
-                    <div>• <span className="font-bold">웹 개발 지식 불필요</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    사용자 경험
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">인터랙티브 분석</span> 100%</div>
-                    <div>• <span className="font-bold">실시간 모델 비교</span></div>
-                    <div>• <span className="font-bold">직관적 결과 해석</span> 95%</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">Jupyter 노트북에만 익숙한 상태</span>에서 
-                    결과를 다른 사람에게 보여주려면 복잡한 웹 개발이 필요하다고 생각했습니다. 
-                    <span className="font-bold text-blue-300">HTML, CSS, JavaScript</span>를 모두 배워야 한다고 여겼죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">첫 Streamlit 앱을 만들어보면서</span> 
-                    완전히 생각이 바뀌었습니다. 
-                    특히 <span className="font-bold text-blue-300">st.write() 하나로 모든 것</span>이 
-                    자동으로 렌더링되는 것을 보고 감탄했습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">커스텀 컴포넌트, 상태 관리, 캐싱</span> 등을 
-                    활용해서 복잡한 데이터 애플리케이션도 효율적으로 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* Streamlit로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                Streamlit로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">빠른 프로토타이핑으로 데이터 인사이트의 비즈니스 가치 극대화</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Streamlit을 통한 <span className="font-bold text-cyan-400">인터랙티브한 데이터 대시보드</span> 구축으로 
-                    복잡한 ML 분석 결과를 비즈니스 팀이 직관적으로 이해할 수 있게 했습니다. 이는 단순한 시각화를 넘어선 <span className="font-bold text-cyan-400">데이터 민주화</span>입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">빠른 프로토타입 개발</span>을 통해 
-                    아이디어를 즉시 검증하고 스테이크홀더와 소통할 수 있게 되어, <span className="font-bold text-cyan-400">의사결정 속도</span>가 크게 향상되었습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">데이터 중심 조직</span>에서는 
-                    이런 빠른 데이터 앱 개발 능력이 <span className="font-bold text-cyan-400">비즈니스 민첩성과 데이터 활용도</span>를 
-                    동시에 높이는 핵심 역량이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 머신러닝에 집중하고 싶은데 프론트 작업 부담 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🤖</div>
+                    머신러닝에 집중하고 싶은데 프론트 작업 부담
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> ML 모델 개발에 집중하고 싶은데 결과 보여주려면 웹 개발까지 해야 함</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> Python 코드 몇 줄로 바로 웹 인터페이스 생성해서 빠르게 결과 확인</div>
+                  </div>
+                </div>
+                
+                {/* 빠른 프로토타입 필요 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚡</div>
+                    빠른 프로토타입 필요
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> 간단한 데이터 분석 결과도 보여주려면 시간이 오래 걸림</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 5분 내로 대시보드 만들어서 즉시 결과 공유 가능</div>
+                  </div>
+                </div>
+
+                {/* 완성도 높은 서비스의 한계 (단점) */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚠️</div>
+                    완성도 높은 서비스에는 한계
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 디자인 커스터마이징이나 복잡한 인터랙션 구현 어려움</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 프로토타입용으로만 사용하고, 실제 서비스는 React 등으로 별도 개발</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

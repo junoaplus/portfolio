@@ -16,6 +16,8 @@ export default function SkillsPage() {
       textColor: 'text-purple-400',
       skills: [
         { name: 'LangChain', level: 90, icon: '🔗', slug: 'langchain' },
+        { name: 'LangGraph', level: 85, icon: '🕸️', slug: 'langgraph' },
+        { name: 'Agent', level: 80, icon: '🤵', slug: 'agent' },
         { name: 'RAG', level: 85, icon: '📚', slug: 'rag' },
         { name: 'LLM', level: 85, icon: '🤖', slug: 'llm' },
         { name: 'Fine-tuning', level: 80, icon: '🔧', slug: 'fine-tuning' },
@@ -64,10 +66,7 @@ export default function SkillsPage() {
         { name: 'PostgreSQL', level: 80, icon: '🐘', slug: 'postgresql' },
         { name: 'Redis', level: 75, icon: '💾', slug: 'redis' },
         { name: 'SQLAlchemy', level: 75, icon: '🗄️', slug: 'sqlalchemy' },
-        { name: 'Pinecone', level: 80, icon: '🌲', slug: 'pinecone' },
         { name: 'Pydantic', level: 75, icon: '✅', slug: 'pydantic' },
-        { name: 'Uvicorn', level: 70, icon: '🦄', slug: 'uvicorn' },
-        { name: 'HTTPX', level: 65, icon: '🌐', slug: 'httpx' },
       ]
     },
     {
@@ -79,7 +78,6 @@ export default function SkillsPage() {
       skills: [
         { name: 'Docker', level: 70, icon: '🐳', slug: 'docker' },
         { name: 'AWS EC2', level: 65, icon: '☁️', slug: 'aws-ec2' },
-        { name: 'Nginx', level: 65, icon: '🔧', slug: 'nginx' },
         { name: 'Vercel', level: 85, icon: '▲', slug: 'vercel' },
       ]
     },
@@ -92,8 +90,6 @@ export default function SkillsPage() {
       skills: [
         { name: 'Next.js 15', level: 90, icon: '🔺', slug: 'next-js' },
         { name: 'React', level: 95, icon: '⚛️', slug: 'react' },
-        { name: 'TypeScript', level: 85, icon: '📘', slug: 'typescript' },
-        { name: 'Tailwind CSS', level: 90, icon: '🎨', slug: 'tailwind-css' },
         { name: 'Streamlit', level: 80, icon: '📊', slug: 'streamlit' },
       ]
     }
@@ -143,8 +139,193 @@ export default function SkillsPage() {
 
                 {/* 기술 카드 그리드 - 벽돌식 레이아웃 */}
                 <div className="space-y-4">
-                  {/* 첫 번째 줄: 6개 */}
-                  {category.skills.length > 6 ? (
+                  {/* LLM 카테고리: 4-5-4 레이아웃, ML 카테고리: 4-6-5 레이아웃 */}
+                  {category.title === 'LLM' ? (
+                    <>
+                      {/* 첫 번째 줄: 4개 (가운데 정렬) */}
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-2"></div>
+                        {category.skills.slice(0, 4).map((tech) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                        <div className="col-span-2"></div>
+                      </div>
+                      
+                      {/* 두 번째 줄: 5개 (가운데 정렬) */}
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-1"></div>
+                        {category.skills.slice(4, 9).map((tech) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                        <div className="col-span-1"></div>
+                      </div>
+                      
+                      {/* 세 번째 줄: 4개 (가운데 정렬) */}
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-2"></div>
+                        {category.skills.slice(9, 13).map((tech) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                        <div className="col-span-2"></div>
+                      </div>
+                    </>
+                  ) : category.title === 'ML' ? (
+                    <>
+                      {/* ML 카테고리: 4-6-5 완벽한 벽돌식 이음새 레이아웃 */}
+                      {/* 첫 번째 줄: 4개 - 벽돌 기준선 */}
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-1"></div>
+                        {category.skills.slice(0, 4).map((tech, index) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                        <div className="col-span-2"></div>
+                      </div>
+                      
+                      {/* 두 번째 줄: 6개 - 첫 번째 줄 블록들 사이사이 틈에 정확히 맞게 */}
+                      <div className="grid grid-cols-12 gap-3">
+                        {category.skills.slice(4, 10).map((tech) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                      </div>
+                      
+                      {/* 세 번째 줄: 5개 - 두 번째 줄 블록들 사이사이 틈에 정확히 맞게 */}
+                      <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-1"></div>
+                        {category.skills.slice(10, 15).map((tech) => (
+                          <Link
+                            key={tech.slug}
+                            href={`/skills/${tech.slug}`}
+                            className="col-span-2"
+                          >
+                            <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                              <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                  {tech.icon}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold text-white leading-tight truncate">
+                                    {tech.name}
+                                  </div>
+                                </div>
+                                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                  <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                        <div className="col-span-1"></div>
+                      </div>
+                    </>
+                  ) : (
+                    /* 다른 카테고리들: 기존 레이아웃 유지 */
+                    category.skills.length > 6 ? (
                     <>
                       <div className="grid grid-cols-6 gap-3">
                         {category.skills.slice(0, 6).map((tech) => (
@@ -169,11 +350,11 @@ export default function SkillsPage() {
                         ))}
                       </div>
                       
-                      {/* 두 번째 줄: 나머지 (벽돌식) */}
-                      {category.skills.length > 6 && (
+                      {/* 두 번째 줄: 6-10번째 (5개) */}
+                      {category.skills.length > 6 && category.skills.length <= 11 && (
                         <div className="grid grid-cols-12 gap-3">
                           <div className="col-span-1"></div>
-                          {category.skills.slice(6).map((tech) => (
+                          {category.skills.slice(6, 11).map((tech) => (
                             <Link
                               key={tech.slug}
                               href={`/skills/${tech.slug}`}
@@ -200,10 +381,74 @@ export default function SkillsPage() {
                           <div className="col-span-1"></div>
                         </div>
                       )}
+                      
+                      {/* ML 카테고리의 경우 두 번째 줄: 6-10번째 (5개) */}
+                      {category.skills.length > 11 && (
+                        <div className="grid grid-cols-12 gap-3">
+                          <div className="col-span-1"></div>
+                          {category.skills.slice(6, 11).map((tech) => (
+                            <Link
+                              key={tech.slug}
+                              href={`/skills/${tech.slug}`}
+                              className="col-span-2"
+                            >
+                              <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                                <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                  <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                    {tech.icon}
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-sm font-bold text-white leading-tight truncate">
+                                      {tech.name}
+                                    </div>
+                                  </div>
+                                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            </Link>
+                          ))}
+                          <div className="col-span-1"></div>
+                        </div>
+                      )}
+                      
+                      {/* 세 번째 줄: 나머지 4개 (가운데 정렬) */}
+                      {category.skills.length > 11 && (
+                        <div className="grid grid-cols-12 gap-3">
+                          <div className="col-span-2"></div>
+                          {category.skills.slice(11).map((tech) => (
+                            <Link
+                              key={tech.slug}
+                              href={`/skills/${tech.slug}`}
+                              className="col-span-2"
+                            >
+                              <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
+                                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                                <CardContent className="p-3 h-full flex items-center gap-3 relative z-10">
+                                  <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                                    {tech.icon}
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-sm font-bold text-white leading-tight truncate">
+                                      {tech.name}
+                                    </div>
+                                  </div>
+                                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <ArrowRight className={`w-4 h-4 ${category.textColor}`} />
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            </Link>
+                          ))}
+                          <div className="col-span-2"></div>
+                        </div>
+                      )}
                     </>
-                  ) : (
-                    /* 6개 이하일 때는 한 줄에 모두 배치 */
-                    <div className={`grid gap-3 ${category.skills.length <= 5 ? 'grid-cols-5' : 'grid-cols-6'} justify-center`}>
+                    ) : (
+                      /* 6개 이하일 때는 한 줄에 모두 배치 */
+                      <div className={`grid gap-3 justify-center ${category.skills.length === 3 ? 'grid-cols-3 mx-auto max-w-2xl' : category.skills.length <= 5 ? 'grid-cols-5' : 'grid-cols-6'}`}>
                       {category.skills.map((tech) => (
                         <Link key={tech.slug} href={`/skills/${tech.slug}`}>
                           <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer group relative overflow-hidden">
@@ -224,7 +469,8 @@ export default function SkillsPage() {
                           </Card>
                         </Link>
                       ))}
-                    </div>
+                      </div>
+                    )
                   )}
                 </div>
               </div>

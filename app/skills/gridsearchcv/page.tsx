@@ -53,7 +53,7 @@ export default function GridSearchCVSkillPage() {
             </h1>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 GridSearchCV */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
@@ -64,16 +64,16 @@ export default function GridSearchCVSkillPage() {
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">저의 수고를 덜어준 고마운 도구</span>입니다. 
+                  <span className="font-bold text-cyan-400">GridSearchCV는 저의 수고를 덜어준 고마운 도구입니다.</span> 
                   수작업으로 하이퍼파라미터 조정하다가 해가 지는 것을 많이 경험했는데, 
-                  <span className="font-bold text-cyan-400">최적값을 찾아서 너무 편했습니다</span>.
+                  <span className="font-bold text-cyan-400">최적값을 자동으로 찾아서 너무 편했습니다</span>.
                 </p>
                 <p>
                   간호사 퇴사 예측에서 <span className="font-bold text-cyan-400">여러 모델을 GridSearchCV로 튜닝</span>해서 
                   어떤 모델이 제일 좋은지 확실하게 알 수 있었습니다.
                 </p>
                 <p>
-                  <span className="font-bold text-cyan-400">StratifiedKFold랑 같이 써서 교차검증</span>하니까 
+                  <span className="font-bold text-cyan-400">StratifiedKFold와 함께 사용해서 교차검증</span>하니까 
                   더 신뢰할 만한 결과가 나왔습니다.
                 </p>
               </div>
@@ -114,27 +114,39 @@ export default function GridSearchCVSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-1 gap-6">
-                {/* 수작업 하이퍼파라미터 튜닝의 한계 */}
+                {/* 하이퍼파라미터 튜닝 비효율 */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                     <div className="text-2xl">🎯</div>
-                    하이퍼파라미터 수작업 튜닝으로 해가 지는 경우
+                    하이퍼파라미터 튜닝 비효율
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">감으로 하다가 시간만 버리는 문제</span></div>
-                    <div>• <span className="font-bold text-cyan-400">GridSearchCV로 자동으로 최적값 탐색</span></div>
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 감으로 하이퍼파라미터 조정하다가 시간만 버림</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 모든 조합을 체계적으로 테스트해서 최적값 자동 탐색</div>
                   </div>
                 </div>
                 
-                {/* 여러 모델 성능 비교의 공정성 */}
+                {/* 모델 비교 공정성 문제 */}
                 <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                     <div className="text-2xl">⚖️</div>
-                    여러 모델 중 어떤게 진짜 좋은지 모르겠는 경우
+                    모델 비교 공정성 문제
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">각 모델을 최적 상태로 만들어서 공정하게 비교</span></div>
-                    <div>• <span className="font-bold text-cyan-400">어떤 모델이 좋은지 명확하게 알 수 있음</span></div>
+                    <div>• <span className="font-bold text-green-400">기존:</span> 각 모델이 최적화 안 된 상태로 비교해서 부정확함</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 모든 모델을 최적 상태로 튜닝해서 공정하게 비교</div>
+                  </div>
+                </div>
+
+                {/* 성능 개선 한계 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">📈</div>
+                    성능 개선 한계
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 기본 파라미터로만 써서 모델의 진짜 잠재력을 못 끌어냄</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 파라미터 조합으로 성능을 극한까지 끌어올림</div>
                   </div>
                 </div>
               </div>

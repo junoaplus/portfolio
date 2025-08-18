@@ -51,26 +51,20 @@ export default function PydanticSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Pydantic
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Python 데이터 검증과 설정 관리를 위한 타입 안전 라이브러리
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 75%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 Pydantic */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Pydantic에 대한 개인적 견해
+                내가 이해한 Pydantic
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Pydantic은 Python에 타입 안전성을 가져다주는 혁신</span>이라고 생각합니다. 
+                  <span className="font-bold text-cyan-400">Pydantic은 Python에 타입 안전성을 가져다주는 혁신입니다.</span> 
                   런타임에서의 데이터 검증과 직렬화를 자동화하면서 
                   <span className="font-bold text-cyan-400">개발자 경험을 크게 향상</span>시키는 핵심 라이브러리입니다.
                 </p>
@@ -112,113 +106,55 @@ export default function PydanticSkillPage() {
                     <span className="font-bold text-blue-300">API 문서 자동 생성</span>을 통해 
                     프론트엔드 팀과의 협업 효율성을 크게 향상시켰습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 Pydantic 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Data Validation</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Type Safety</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Schema Generation</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Configuration Management</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    코드 안정성
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">런타임 오류 90% 감소</span></div>
-                    <div>• <span className="font-bold">타입 안전성 99%</span> 보장</div>
-                    <div>• <span className="font-bold">API 스키마 100% 자동화</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">API 문서 자동 생성</span></div>
-                    <div>• <span className="font-bold">데이터 검증 80%</span> 자동화</div>
-                    <div>• <span className="font-bold">개발 생산성 60%</span> 향상</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">수동 데이터 검증에 익숙한 상태</span>에서 Pydantic의 
-                    자동 검증이 복잡해 보였습니다. 매번 if문으로 체크하는 것이 
-                    <span className="font-bold text-blue-300">더 직관적</span>이라고 생각했죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">복잡한 API 스키마를 다루면서</span> 
-                    Pydantic의 강력함을 체감했습니다. 
-                    특히 <span className="font-bold text-blue-300">중첩된 모델과 복잡한 검증 규칙</span>에서 
-                    수동 검증의 한계를 확실히 느꼈습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">커스텀 밸리데이터, 시리얼라이저, 설정 관리</span> 등을 
-                    활용해서 엔터프라이즈급 API도 안전하고 효율적으로 구축할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* Pydantic으로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                Pydantic으로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">타입 안전성으로 서비스 품질과 개발 생산성 동시 확보</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Pydantic의 <span className="font-bold text-cyan-400">자동 데이터 검증과 타입 안전성</span>을 통해 
-                    런타임 오류를 90% 감소시키고 서비스 안정성을 크게 향상시켰습니다. 이는 단순한 오류 방지를 넘어선 <span className="font-bold text-cyan-400">사용자 신뢰성</span>의 확보입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">API 문서 자동 생성</span>과 스키마 기반 개발을 통해 
-                    팀 간 협업 효율성이 향상되고, <span className="font-bold text-cyan-400">개발 속도</span>가 크게 빨라졌습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 API 서비스</span>에서는 
-                    이런 타입 안전성과 자동 검증이 <span className="font-bold text-cyan-400">서비스 품질과 개발 생산성</span>을 
-                    동시에 보장하는 핵심 기술이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 수동 데이터 검증 번거로움 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔍</div>
+                    수동 데이터 검증 번거로움
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> if문으로 일일이 데이터 타입과 값 검증해야 함</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 모델 정의만으로 자동 검증과 타입 안전성 보장</div>
+                  </div>
+                </div>
+                
+                {/* API 문서화 자동화 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">📚</div>
+                    API 문서화 자동화 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> API 스키마와 문서를 수동으로 작성하고 동기화</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> FastAPI와 연동해서 Swagger 문서 자동 생성</div>
+                  </div>
+                </div>
+
+                {/* 런타임 오류 위험성 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💥</div>
+                    런타임 오류 위험성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 잘못된 데이터 타입으로 런타임에서 예기치 못한 오류</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 요청 시점에 데이터 검증으로 런타임 오류 90% 감소</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

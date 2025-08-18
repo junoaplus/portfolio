@@ -34,13 +34,13 @@ export default function HomePage() {
     { name: 'PostgreSQL', level: 80, icon: '🐘', slug: 'postgresql' },
     { name: 'Redis', level: 75, icon: '💾', slug: 'redis' },
     { name: 'Qdrant', level: 80, icon: '🔍', slug: 'qdrant' },
-    { name: 'FAISS', level: 75, icon: '🎯', slug: 'faiss' },
+    { name: 'LangGraph', level: 75, icon: '📊', slug: 'langgraph' },
     { name: 'Vector DB', level: 85, icon: '🗃️', slug: 'vector-db' },
 
     // 2줄: ML 알고리즘 & 데이터 처리 (실제 사용) - 5개
     { name: 'XGBoost', level: 80, icon: '🚀', slug: 'xgboost' },
     { name: 'LightGBM', level: 80, icon: '💡', slug: 'lightgbm' },
-    { name: 'RandomForest', level: 85, icon: '🌲', slug: 'randomforest' },
+    { name: 'agent', level: 85, icon: '🤖', slug: 'agent' },
     { name: 'pandas', level: 90, icon: '🐼', slug: 'pandas' },
     { name: 'SVM', level: 75, icon: '🎯', slug: 'svm' },
 
@@ -50,7 +50,7 @@ export default function HomePage() {
     { name: 'LLM', level: 85, icon: '🤖', slug: 'llm' },
     { name: 'Fine-tuning', level: 80, icon: '🔧', slug: 'fine-tuning' },
     { name: 'OpenAI', level: 85, icon: '🧠', slug: 'openai' },
-    { name: 'scikit-learn', level: 85, icon: '🔬', slug: 'scikit-learn' },
+    { name: 'RandomForest', level: 85, icon: '🌲', slug: 'randomforest' },
   ]
 
   const projects = [
@@ -291,31 +291,37 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Project 1 - AI 챗봇 포트폴리오 */}
-            <Link href="/projects/1" className="block h-full">
+            <Link href="/ai-chatbot-portfolio" className="block h-full group">
               <Card style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }} className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer">
                 <div className="relative rounded-t-2xl overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=320&width=500"
+                    src="/portfoio.png"
                     alt="AI 챗봇 포트폴리오 스크린샷"
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-                  <Badge style={{ background: 'rgb(37 99 235)' }} className="absolute top-6 left-6 text-white text-sm px-3 py-1">Live Service</Badge>
                 </div>
-                <CardContent className="p-8">
+                <CardContent className="p-8 relative">
                   <h3 className="text-2xl font-bold text-white mb-4">
                     AI 챗봇 포트폴리오
                   </h3>
-                  <p className="text-gray-300 mb-6 text-base leading-relaxed">
-                    <strong className="text-blue-400">실시간으로 내 경험을 답변</strong>하는 지능형 포트폴리오
-                  </p>
+                  <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
+                    <div><strong className="text-blue-400">Multi-Agent</strong> 시스템으로 전문 분야별 답변</div>
+                    <div><strong className="text-green-400">LangGraph</strong> 조건부 라우팅 워크플로우</div>
+                    <div><strong className="text-purple-400">실시간 대화형</strong> AI 포트폴리오 구축</div>
+                  </div>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">LangGraph</Badge>
-                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
-                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">Next.js</Badge>
+                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">Multi-Agent</Badge>
+                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">LangGraph</Badge>
+                    <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">FastAPI</Badge>
                   </div>
 
+                  {/* 화살표 아이콘 */}
+                  <div className="absolute bottom-6 right-6">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                      <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all duration-300" />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </Link>
@@ -748,9 +754,11 @@ export default function HomePage() {
             언제든지 편하게 연락주세요
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6">
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/junoaplus"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
               className="flex flex-col items-center p-8 backdrop-blur-sm rounded-2xl hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2"
             >
@@ -759,12 +767,11 @@ export default function HomePage() {
               </div>
               <div className="font-bold text-lg text-white mb-2">GitHub</div>
               <div className="text-sm text-gray-400">
-                github.com/your-username
+                github.com/junoaplus
               </div>
             </a>
 
-            <a
-              href="mailto:your-email@gmail.com"
+            <div
               style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
               className="flex flex-col items-center p-8 backdrop-blur-sm rounded-2xl hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2"
             >
@@ -772,11 +779,17 @@ export default function HomePage() {
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <div className="font-bold text-lg text-white mb-2">Email</div>
-              <div className="text-sm text-gray-400">your-email@gmail.com</div>
-            </a>
+              <div className="text-sm text-gray-400 mb-3">junehoo4248@naver.com</div>
+              <Button
+                onClick={() => navigator.clipboard.writeText('junehoo4248@naver.com')}
+                size="sm"
+                className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 text-sm rounded-lg transition-colors"
+              >
+                복사하기
+              </Button>
+            </div>
 
-            <a
-              href="tel:+82-10-1234-5678"
+            <div
               style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
               className="flex flex-col items-center p-8 backdrop-blur-sm rounded-2xl hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2"
             >
@@ -784,18 +797,15 @@ export default function HomePage() {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <div className="font-bold text-lg text-white mb-2">Phone</div>
-              <div className="text-sm text-gray-400">010-1234-5678</div>
-            </a>
-          </div>
-
-          <div>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-blue-500 text-blue-300 hover:bg-blue-900/30 hover:border-blue-400 hover:text-white px-8 py-4 text-lg rounded-xl transition-all duration-200 transform hover:scale-105"
-            >
-              이력서 다운로드
-            </Button>
+              <div className="text-sm text-gray-400 mb-3">010-2125-4247</div>
+              <Button
+                onClick={() => navigator.clipboard.writeText('010-2125-4247')}
+                size="sm"
+                className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 text-sm rounded-lg transition-colors"
+              >
+                복사하기
+              </Button>
+            </div>
           </div>
         </div>
       </section>

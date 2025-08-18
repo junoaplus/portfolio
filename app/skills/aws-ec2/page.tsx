@@ -51,38 +51,32 @@ export default function AWSEC2SkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               AWS EC2
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Amazon Elastic Compute Cloud로 확장 가능한 클라우드 인프라 구축
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 75%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 AWS EC2 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                AWS EC2에 대한 개인적 견해
+                내가 이해한 AWS EC2
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">AWS EC2는 현대 클라우드 컴퓨팅의 기반</span>이라고 생각합니다. 
-                  물리적 서버의 제약에서 벗어나 필요에 따라 
-                  <span className="font-bold text-cyan-400">탄력적으로 확장</span>할 수 있는 혁신적인 플랫폼입니다.
+                  <span className="font-bold text-cyan-400">AWS EC2의 가장 큰 장점은 원하는 컴퓨터 사양을 선택해서 비용을 최적화할 수 있다는 점입니다.</span> 
+                  CPU, 메모리, 스토리지를 프로젝트 요구사항에 맞게 선택할 수 있어서 
+                  <span className="font-bold text-cyan-400">필요한 만큼만 비용을 지불</span>할 수 있습니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">다양한 인스턴스 타입과 요금 모델</span>이 인상적이었습니다. 
-                  개발 환경부터 고성능 컴퓨팅까지 모든 요구사항을 충족하고 
-                  <span className="font-bold text-cyan-400">비용 최적화</span>도 동시에 달성할 수 있습니다.
+                  특히 <span className="font-bold text-cyan-400">로컬 터미널과 SSH로 연결해서 원격 조작이 가능한 점이 편리했습니다.</span> 
+                  마치 로컬 환경처럼 서버를 관리할 수 있어서 
+                  <span className="font-bold text-cyan-400">개발과 운영의 효율성</span>이 크게 향상되었습니다.
                 </p>
                 <p>
-                  보드게임 룰 챗봇 프로젝트에서 <span className="font-bold text-cyan-400">EC2 인스턴스에 전체 시스템을 배포</span>하면서, 
-                  Django, FastAPI, PostgreSQL이 통합된 복잡한 아키텍처도 
-                  <span className="font-bold text-cyan-400">안정적으로 운영</span>할 수 있음을 경험했습니다.
+                  다만 <span className="font-bold text-cyan-400">RDS와 함께 사용할 때는 비용 관리에 주의가 필요합니다.</span> 
+                  인스턴스와 데이터베이스를 별도로 운영하면 비용이 증가하므로 
+                  <span className="font-bold text-cyan-400">예산 계획을 사전에 수립하는 것이 중요합니다.</span>
                 </p>
               </div>
             </CardContent>
@@ -104,121 +98,58 @@ export default function AWSEC2SkillPage() {
                 </h3>
                 <div className="text-gray-300 space-y-3">
                   <p>
-                    <span className="font-bold text-cyan-400">AWS EC2 인스턴스</span>에 Django 웹서버, FastAPI AI 엔진, 
-                    PostgreSQL 데이터베이스를 통합 배포하여 <span className="font-bold text-cyan-400">완전한 프로덕션 환경</span>을 구축했습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">Elastic IP와 보안 그룹</span> 설정을 통해 
-                    안정적인 네트워크 환경을 구성하고 <span className="font-bold text-blue-300">24/7 서비스 운영</span>을 
-                    실현했습니다.
-                  </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 AWS EC2 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Instance Management</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Security Groups</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Elastic IP</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Auto Scaling</Badge>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    인프라 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">서비스 가용성 99.9%</span></div>
-                    <div>• <span className="font-bold">자동 확장</span> 완벽 구현</div>
-                    <div>• <span className="font-bold">글로벌 접근</span> 최적화</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    비용 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">인프라 비용 60% 절감</span></div>
-                    <div>• <span className="font-bold">탄력적 자원 관리</span></div>
-                    <div>• <span className="font-bold">운영 관리 자동화</span></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">로컬 개발 환경에만 의존</span>하고 있었습니다. 
-                    "내 컴퓨터에서 잘 되니까" 식으로 생각하다가 
-                    <span className="font-bold text-blue-300">실제 배포</span>에서 많은 문제를 겪었죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">EC2로 첫 배포를 경험하면서</span> 
-                    클라우드의 강력함을 깨달았습니다. 
-                    특히 <span className="font-bold text-blue-300">보안 그룹과 네트워크 설정</span>에서 
-                    인프라의 중요성을 확실히 이해하게 되었습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">Auto Scaling, Load Balancer, CloudWatch</span> 등을 
-                    활용해서 엔터프라이즈급 클라우드 아키텍처도 설계할 수 있게 되었습니다.
+                    <span className="font-bold text-cyan-400">AWS EC2 Ubuntu 인스턴스</span>에 Django + Nginx + Gunicorn으로 
+                    웹서버를 구축하고, FastAPI로 AI 백엔드를 배포하여 <span className="font-bold text-cyan-400">217개 게임의 RAG 시스템</span>을 운영했습니다.
                   </p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 비즈니스 임팩트 */}
+          {/* AWS EC2로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                AWS EC2로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">클라우드 인프라로 비즈니스 민첩성과 확장성 확보</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    AWS EC2의 <span className="font-bold text-cyan-400">탄력적 확장성</span>을 통해 
-                    비즈니스 성장에 맞춰 인프라를 즉시 조정할 수 있게 되었습니다. 이는 단순한 기술 도입을 넘어선 <span className="font-bold text-cyan-400">비즈니스 민첩성</span>의 확보입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">글로벌 인프라와 높은 가용성</span>을 통해 
-                    서비스 중단 없이 안정적인 운영이 가능해져, <span className="font-bold text-cyan-400">고객 신뢰도</span>가 크게 향상되었습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">스케일업 기업</span>에서는 
-                    이런 클라우드 기술이 <span className="font-bold text-cyan-400">급속한 성장과 글로벌 확장</span>의 
-                    핵심 기반이 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 서버 사양 선택의 유연성 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚙️</div>
+                    서버 사양 선택의 유연성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 고정된 서버 사양으로 오버스펙이나 언더스펙 문제 발생</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 프로젝트에 맞는 인스턴스 타입 선택으로 비용 최적화</div>
+                  </div>
+                </div>
+                
+                {/* 원격 서버 관리 어려움 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💻</div>
+                    원격 서버 관리 어려움
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> 물리 서버는 직접 방문해야 하는 경우가 많음</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> SSH로 어디서든 터미널로 서버 관리 가능</div>
+                  </div>
+                </div>
+
+                {/* 클라우드 비용 관리 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💰</div>
+                    클라우드 비용 관리 (주의사항)
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> RDS와 EC2 함께 사용시 예상치 못한 비용 발생</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 사전 비용 계산과 모니터링으로 예산 통제</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

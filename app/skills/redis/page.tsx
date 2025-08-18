@@ -51,40 +51,33 @@ export default function RedisSkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               Redis
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              고성능 인메모리 데이터 구조 저장소
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 75%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 Redis */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                Redis에 대한 개인적 견해
+                내가 이해한 Redis
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">Redis는 현대 웹 애플리케이션의 성능 가속기</span>라고 생각합니다. 
-                  단순한 캐시를 넘어서 세션 저장소, 메시지 브로커, 실시간 리더보드까지 
-                  <span className="font-bold text-cyan-400">다양한 용도로 활용할 수 있는 멀티툴</span>입니다.
+                  <span className="font-bold text-cyan-400">Redis를 처음 접한 건 리뷰를 따로 관리해서 순위를 보여주는 기능 때문이었습니다.</span> 
+                  리뷰 데이터와 장소 데이터를 조인해서 순위를 계산하다 보니 
+                  <span className="font-bold text-cyan-400">쿼리 시간이 너무 느려지는 문제</span>가 발생했습니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">마이크로초 단위의 응답 시간과 초당 수백만 연산</span>이 인상적이었습니다. 
-                  데이터베이스 부하를 급격히 줄여주면서도 사용자에게는 
-                  <span className="font-bold text-cyan-400">즉각적인 반응성</span>을 제공할 수 있어 
-                  사용자 경험이 극적으로 개선됩니다.
+                  어떻게 해결해야 할지 찾아보다가 <span className="font-bold text-cyan-400">Redis를 알게 되었습니다.</span> 
+                  복잡한 조인 결과를 미리 계산해서 Redis에 저장하고, 
+                  <span className="font-bold text-cyan-400">10분에 한 번씩 업데이트</span>해주면서 
+                  최신성도 유지하고 사용자 편리성도 챙길 수 있었습니다.
                 </p>
                 <p>
-                  토스와 같은 <span className="font-bold text-cyan-400">대규모 금융 서비스</span>에서는 실시간 거래 데이터, 
-                  사용자 세션 관리, API 속도 제한 등에 Redis가 필수적입니다. 
-                  <span className="font-bold text-cyan-400">고가용성 클러스터링과 지속성 보장</span>으로 
-                  미션 크리티컬한 서비스에서도 안심하고 사용할 수 있는 인프라입니다.
+                  결과적으로 <span className="font-bold text-cyan-400">응답 시간을 2초에서 200ms로 대폭 단축</span>했고, 
+                  사용자들이 실시간으로 순위를 확인할 수 있게 되었습니다. 
+                  <span className="font-bold text-cyan-400">Redis는 복잡한 쿼리 성능 문제의 해결사</span>입니다.
                 </p>
               </div>
             </CardContent>
@@ -115,116 +108,55 @@ export default function RedisSkillPage() {
                     복잡한 JOIN 쿼리 결과를 캐싱하여 <span className="font-bold text-cyan-400">평균 응답 시간을 2초에서 200ms로 단축</span>했고, 
                     다중 사용자가 동시에 접속해도 안정적인 성능을 보장했습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 Redis 활용:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">Data Caching</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Session Management</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Query Result Cache</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">TTL Management</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    성능 최적화
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">응답 시간 90% 단축</span> (2초 → 200ms)</div>
-                    <div>• <span className="font-bold">DB 부하 90% 감소</span></div>
-                    <div>• <span className="font-bold">동시 접속자 10배 확장</span></div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    캐시 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">캐시 히트율 95%</span> 달성</div>
-                    <div>• <span className="font-bold">TTL 기반 자동 갱신</span></div>
-                    <div>• <span className="font-bold">메모리 사용량 최적화</span></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">단순 캐시 용도</span>로만 생각했던 Redis가 
-                    실제로는 <span className="font-bold text-blue-300">다양한 데이터 구조와 고급 기능</span>을 제공한다는 걸 
-                    프로젝트를 통해 깨달았습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-cyan-400">TTL 설정과 메모리 관리 전략</span>을 
-                    체계적으로 학습하면서 캐시 무효화 문제를 해결할 수 있었습니다. 
-                    특히 <span className="font-bold text-blue-300">대용량 데이터의 효율적인 캐싱 패턴</span>을 
-                    실험하며 최적의 성능을 찾아가는 과정이 흥미로웠습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">Redis 클러스터링, 지속성 설정, 모니터링</span> 등을 
-                    활용해서 프로덕션 환경에서도 안정적이고 고성능인 캐시 시스템을 설계할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* Redis로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                Redis로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">초고속 응답으로 사용자 경험 혁신</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    Redis 캐싱 시스템으로 <span className="font-bold text-cyan-400">응답 시간을 90% 단축</span>하여 
-                    사용자들이 데이트 코스 추천을 거의 실시간으로 받을 수 있게 되었습니다. 
-                    이는 사용자 만족도와 서비스 이탈률에 직접적인 긍정적 영향을 미쳤습니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">데이터베이스 부하 90% 감소</span>로 
-                    서버 비용을 대폭 절감하면서도 <span className="font-bold text-cyan-400">더 많은 동시 사용자를 처리</span>할 수 있게 되어 
-                    서비스 확장성과 경제성을 동시에 확보했습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 핀테크 서비스</span>에서는 
-                    Redis의 <span className="font-bold text-cyan-400">초고속 처리 능력</span>이 
-                    실시간 거래 승인, 사기 탐지, 개인화 추천 등에서 
-                    <span className="font-bold text-cyan-400">경쟁 우위의 핵심 인프라</span>가 될 것입니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 복잡한 조인 쿼리 성능 문제 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔗</div>
+                    복잡한 조인 쿼리 성능 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 리뷰와 장소 데이터 조인으로 순위 계산 시간 2초 이상</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 계산 결과를 Redis에 캐싱해서 200ms로 단축</div>
+                  </div>
+                </div>
+                
+                {/* 데이터베이스 부하 문제 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">💥</div>
+                    데이터베이스 부하 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> 동일한 쿼리 반복 실행으로 DB 서버 과부하</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> 쿼리 결과 캐싱으로 DB 부하 90% 감소</div>
+                  </div>
+                </div>
+
+                {/* 실시간성과 최신성 양립 문제 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⏰</div>
+                    실시간성과 최신성 양립 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 실시간 순위는 빨라야 하지만 최신 데이터도 반영해야 함</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> TTL 10분으로 설정해서 실시간성과 최신성을 동시에 확보</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

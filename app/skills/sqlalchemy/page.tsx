@@ -51,26 +51,20 @@ export default function SQLAlchemySkillPage() {
             <h1 className="text-4xl font-black text-white mb-4">
               SQLAlchemy
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Python의 강력한 ORM 라이브러리로 데이터베이스 연동
-            </p>
-            <Badge style={{ background: 'rgb(37 99 235)' }} className="text-white text-lg px-6 py-2">
-              Proficiency Level: 75%
-            </Badge>
           </div>
 
-          {/* 개인적 견해 */}
+          {/* 내가 이해한 SQLAlchemy */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Lightbulb className="w-6 h-6 text-yellow-500" />
-                SQLAlchemy에 대한 개인적 견해
+                내가 이해한 SQLAlchemy
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">SQLAlchemy는 Python ORM의 완성체</span>라고 생각합니다. 
+                  <span className="font-bold text-cyan-400">SQLAlchemy는 Python ORM의 완성체입니다.</span> 
                   단순한 객체-관계 매핑을 넘어서 복잡한 쿼리 최적화와 데이터베이스 스키마 관리까지 
                   <span className="font-bold text-cyan-400">엔터프라이즈급 데이터베이스 솔루션</span>을 제공합니다.
                 </p>
@@ -112,113 +106,55 @@ export default function SQLAlchemySkillPage() {
                     <span className="font-bold text-blue-300">평균 100ms 이내</span>의 데이터 조회 성능을 달성하고, 
                     FastAPI와의 완벽한 비동기 통합을 구현했습니다.
                   </p>
-                  <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-                    <div className="text-sm text-gray-400 mb-2">핵심 SQLAlchemy 기술들:</div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-cyan-700 text-cyan-100">ORM Models</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Query Optimization</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Async Support</Badge>
-                      <Badge className="bg-cyan-700 text-cyan-100">Relationships</Badge>
-                    </div>
-                  </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 핵심 성과/결과 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <TrendingUp className="w-6 h-6 text-green-500" />
-                핵심 성과 & 결과
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    쿼리 성능
-                  </h4>
-                  <div className="text-cyan-300 space-y-2">
-                    <div>• <span className="font-bold">89,321개 데이터</span> 안정적 관리</div>
-                    <div>• <span className="font-bold">평균 쿼리 시간 100ms</span> 이내</div>
-                    <div>• <span className="font-bold">복잡한 조인 쿼리</span> 최적화</div>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-600/30">
-                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    개발 효율성
-                  </h4>
-                  <div className="text-green-300 space-y-2">
-                    <div>• <span className="font-bold">DB 스키마 자동 관리</span></div>
-                    <div>• <span className="font-bold">마이그레이션 100% 자동화</span></div>
-                    <div>• <span className="font-bold">타입 안전성 95%</span> 보장</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 학습/경험 스토리 */}
-          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
-                <Target className="w-6 h-6 text-blue-500" />
-                학습 & 경험 스토리
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <div className="text-lg text-gray-300 leading-relaxed space-y-4">
-                  <p>
-                    처음엔 <span className="font-bold text-cyan-400">원시 SQL에 익숙한 상태</span>에서 ORM의 
-                    추상화 레이어가 오히려 불투명하게 느껴졌습니다. 어떤 SQL이 실행되는지 
-                    <span className="font-bold text-blue-300">예측하기 어려워서</span> 불안했죠.
-                  </p>
-                  <p>
-                    하지만 <span className="font-bold text-cyan-400">대용량 데이터베이스를 다루면서</span> 
-                    SQLAlchemy의 지연 로딩과 쿼리 최적화 기능을 체험했습니다. 
-                    특히 <span className="font-bold text-blue-300">복잡한 관계 설정</span>과 
-                    N+1 쿼리 문제 해결에서 ORM의 진가를 깨달았습니다.
-                  </p>
-                  <p>
-                    지금은 <span className="font-bold text-cyan-400">고급 쿼리 최적화, 커넥션 풀링, 트랜잭션 관리</span> 등을 
-                    활용해서 대규모 데이터베이스도 효율적으로 관리할 수 있게 되었습니다.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 비즈니스 임팩트 */}
+          {/* SQLAlchemy로 해결할 수 있는 문제들 */}
           <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-12">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-white flex items-center gap-3">
                 <Award className="w-6 h-6 text-blue-500" />
-                비즈니스 임팩트
+                SQLAlchemy로 해결할 수 있는 문제들
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
-                <h4 className="font-bold text-white mb-4">안정적인 데이터 관리로 서비스 신뢰성 확보</h4>
-                <div className="text-gray-300 space-y-3">
-                  <p>
-                    SQLAlchemy를 통해 <span className="font-bold text-cyan-400">89,321개 장소 데이터</span>를 안정적으로 관리하고, 
-                    복잡한 비즈니스 로직을 데이터베이스 레벨에서 효율적으로 처리할 수 있었습니다. 이는 단순한 데이터 저장을 넘어선 <span className="font-bold text-cyan-400">비즈니스 인텔리전스</span>의 구축입니다.
-                  </p>
-                  <p>
-                    <span className="font-bold text-blue-300">자동화된 스키마 관리와 마이그레이션</span>을 통해 
-                    데이터베이스 변경 작업의 위험성을 크게 줄이고, <span className="font-bold text-cyan-400">개발팀의 생산성</span>을 향상시켰습니다.
-                  </p>
-                  <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">데이터 중심 서비스</span>에서는 
-                    이런 데이터베이스 관리 역량이 <span className="font-bold text-cyan-400">서비스 안정성과 확장성</span>의 
-                    핵심 요소가 될 것이라고 확신합니다.
-                  </p>
+              <div className="grid md:grid-cols-1 gap-6">
+                {/* 원시 SQL 관리 복잡성 */}
+                <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">📝</div>
+                    원시 SQL 관리 복잡성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> 복잡한 SQL 쿼리 직접 작성하고 유지보수 어려움</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> ORM으로 Python 객체 방식으로 쿼리 작성, 가독성 향상</div>
+                  </div>
+                </div>
+                
+                {/* DB 스키마 변경 위험성 */}
+                <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">⚠️</div>
+                    DB 스키마 변경 위험성
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-green-400">기존:</span> 스키마 변경 시 수동으로 처리해서 실수 위험 높음</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> Alembic 마이그레이션으로 안전하고 자동화된 스키마 관리</div>
+                  </div>
+                </div>
+
+                {/* N+1 쿼리 성능 문제 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🔄</div>
+                    N+1 쿼리 성능 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> 관계 데이터 조회 시 불필요한 반복 쿼리로 성능 저하</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> Eager Loading과 지연 로딩으로 쿼리 최적화</div>
+                  </div>
                 </div>
               </div>
             </CardContent>

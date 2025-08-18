@@ -64,19 +64,19 @@ export default function SeabornSkillPage() {
             <CardContent>
               <div className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  <span className="font-bold text-cyan-400">seaborn은 matplotlib의 예쁜 버전</span>이라고 생각합니다. 
+                  <span className="font-bold text-cyan-400">seaborn은 matplotlib의 예쁜 버전입니다.</span> 
                   matplotlib이 너무 복잡하고 만들어지는 그래프가 예쁘지 않아서 스트레스받았는데, 
                   <span className="font-bold text-cyan-400">한 줄만 써도 예쁘고 통계적인 그래프</span>를 만들어줍니다.
                 </p>
                 <p>
-                  특히 <span className="font-bold text-cyan-400">EDA할 때 정말 편하다</span>고 생각합니다. 
+                  특히 <span className="font-bold text-cyan-400">EDA할 때 정말 편리합니다.</span> 
                   pairplot 하나만 써도 전체 변수들의 관계를 한번에 볼 수 있고, 
                   <span className="font-bold text-cyan-400">heatmap으로 상관계수도 예쁘게</span> 보여줍니다.
                 </p>
                 <p>
                   하지만 세밀한 커스터마이징은 한계가 있어서, 
-                  <span className="font-bold text-cyan-400">진짜 완성된 결과물을 만들 때는 matplotlib과 섞어 쓰는 게 최고</span>라고 생각합니다. 
-                  seaborn으로 빠르게 탐색하고, matplotlib으로 정리하는 식으로요.
+                  <span className="font-bold text-cyan-400">완성된 결과물을 만들 때는 matplotlib과 함께 사용하는 것이 최적</span>입니다. 
+                  seaborn으로 빠르게 탐색하고, matplotlib으로 정리하는 방식입니다.
                 </p>
               </div>
             </CardContent>
@@ -133,27 +133,39 @@ export default function SeabornSkillPage() {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-1 gap-6">
-                {/* 빠른 EDA */}
+                {/* matplotlib 복잡함 */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-blue-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
                     <div className="text-2xl">🚀</div>
-                    빠른 탐색적 데이터 분석
+                    matplotlib 복잡함
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">pairplot 하나로 전체 변수 관계를 한번에 파악</span></div>
-                    <div>• <span className="font-bold text-cyan-400">상관계수 heatmap으로 직관적 시각화</span></div>
+                    <div>• <span className="font-bold text-cyan-400">기존:</span> matplotlib 코드가 너무 복잡하고 어려움</div>
+                    <div>• <span className="font-bold text-cyan-400">해결:</span> 한 줄만 써도 예쁘고 통계적인 그래프 생성</div>
                   </div>
                 </div>
-                
-                {/* 통계적 시각화 */}
+
+                {/* EDA 시간 문제 */}
                 <div className="bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl p-6 border border-green-600/30">
                   <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="text-2xl">📈</div>
-                    복잡한 데이터의 그룹별 비교 분석
+                    <div className="text-2xl">💡</div>
+                    EDA 시간 문제
                   </h4>
                   <div className="text-gray-300 space-y-2">
-                    <div>• <span className="font-bold text-cyan-400">boxplot으로 그룹별 분포 차이를 한눈에 비교</span></div>
-                    <div>• <span className="font-bold text-cyan-400">violinplot으로 데이터 밀도까지 동시 확인</span></div>
+                    <div>• <span className="font-bold text-green-400">기존:</span> 변수 관계 파악하는데 시간이 너무 오래 걸림</div>
+                    <div>• <span className="font-bold text-green-400">해결:</span> pairplot 하나로 전체 변수 관계를 5초만에 파악</div>
+                  </div>
+                </div>
+
+                {/* 그래프 퀄리티 문제 */}
+                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-600/30">
+                  <h4 className="font-bold text-white mb-3 flex items-center gap-2">
+                    <div className="text-2xl">🎯</div>
+                    그래프 퀄리티 문제
+                  </h4>
+                  <div className="text-gray-300 space-y-2">
+                    <div>• <span className="font-bold text-purple-400">기존:</span> matplotlib 기본 그래프가 못생겨서 발표용으로 부적합</div>
+                    <div>• <span className="font-bold text-purple-400">해결:</span> 예쁜 색상과 스타일이 기본 제공되어 바로 사용 가능</div>
                   </div>
                 </div>
               </div>

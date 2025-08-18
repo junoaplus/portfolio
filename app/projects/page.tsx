@@ -201,23 +201,17 @@ export default function ProjectsPage() {
             
             <div className="grid lg:grid-cols-3 gap-12 mb-16">
               {projects.filter(project => project.id <= 3).map(project => (
-                <Link href={project.id === 3 ? '/boardgame-chatbot' : project.id === 2 ? '/date-recommendation' : `/projects/${project.id}`} key={project.id} className="block h-full group">
+                <Link href={project.id === 3 ? '/boardgame-chatbot' : project.id === 2 ? '/date-recommendation' : project.id === 1 ? '/ai-chatbot-portfolio' : `/projects/${project.id}`} key={project.id} className="block h-full group">
                   <Card
                     style={{ background: 'rgb(17 24 39)', border: '1px solid rgb(31 41 55)' }}
                     className="h-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 cursor-pointer"
                   >
                   <div className="relative rounded-t-2xl overflow-hidden">
                     <img
-                      src={project.image || '/placeholder.svg'}
+                      src={project.id === 1 ? '/portfoio.png' : project.image || '/placeholder.svg'}
                       alt={project.title}
                       className="w-full h-64 object-cover"
                     />
-                    {project.id === 1 && (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-                        <Badge style={{ background: 'rgb(37 99 235)' }} className="absolute top-6 left-6 text-white text-sm px-3 py-1">Live Service</Badge>
-                      </>
-                    )}
                   </div>
 
                   <CardContent className="p-8 relative">
@@ -226,9 +220,11 @@ export default function ProjectsPage() {
                     </h3>
                     
                     {project.id === 1 ? (
-                      <p className="text-gray-300 mb-6 text-base leading-relaxed">
-                        <strong className="text-blue-400">실시간으로 내 경험을 답변</strong>하는 지능형 포트폴리오
-                      </p>
+                      <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
+                        <div><strong className="text-blue-400">Multi-Agent</strong> 시스템으로 전문 분야별 답변</div>
+                        <div><strong className="text-green-400">LangGraph</strong> 조건부 라우팅 워크플로우</div>
+                        <div><strong className="text-purple-400">실시간 대화형</strong> AI 포트폴리오 구축</div>
+                      </div>
                     ) : (
                       <div className="text-gray-300 mb-6 text-base leading-relaxed space-y-1">
                         {project.id === 2 ? (
@@ -252,9 +248,9 @@ export default function ProjectsPage() {
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.id === 1 ? (
                         <>
-                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">LangGraph</Badge>
-                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">RAG</Badge>
-                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">Next.js</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-blue-400 text-sm px-3 py-1 border border-gray-700">Multi-Agent</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-green-400 text-sm px-3 py-1 border border-gray-700">LangGraph</Badge>
+                          <Badge style={{ background: 'rgb(31 41 55)' }} className="text-purple-400 text-sm px-3 py-1 border border-gray-700">FastAPI</Badge>
                         </>
                       ) : project.id === 2 ? (
                         <>
