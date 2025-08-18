@@ -46,6 +46,9 @@ const companyConfigs: Record<string, CompanyConfig> = {
 }
 
 export default function ChatbotPage() {
+  // API Base URL 환경변수 설정
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
+  
   const [showCompanySelection, setShowCompanySelection] = useState(true)
   const [selectedCompany, setSelectedCompany] = useState<string>('')
   const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(
@@ -54,6 +57,7 @@ export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [isServerWarming, setIsServerWarming] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -73,7 +77,7 @@ export default function ChatbotPage() {
     
     try {
       // 1. 세션 생성
-      const sessionResponse = await fetch('http://localhost:8000/api/sessions', {
+      const sessionResponse = await fetch(`${API_BASE_URL}/api/sessions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +93,7 @@ export default function ChatbotPage() {
         const sessionId = sessionData.session_id
         
         // 2. 초기 대화 시작
-        const initialResponse = await fetch('http://localhost:8000/api/chat/initial', {
+        const initialResponse = await fetch(`${API_BASE_URL}/api/chat/initial`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -144,6 +148,37 @@ export default function ChatbotPage() {
     scrollToBottom()
   }, [messages])
 
+  // Cold Start 방지 - 컴포넌트 마운트 시 서버 깨우기
+  useEffect(() => {
+    const warmUpServer = async () => {
+      setIsServerWarming(true)
+      console.log('🔥 서버 warming up 시작...')
+      
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/health`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        
+        if (response.ok) {
+          console.log('✅ 서버 warm-up 성공!')
+        } else {
+          console.log('⚠️ 서버 warm-up 응답 이상:', response.status)
+        }
+      } catch (error) {
+        console.log('⚠️ 서버 warm-up 오류:', error)
+        // 에러가 발생해도 사용자에게는 알리지 않음 (백그라운드 작업)
+      } finally {
+        setIsServerWarming(false)
+        console.log('🏁 서버 warming up 완료')
+      }
+    }
+
+    warmUpServer()
+  }, [])
+
   const handleSendMessage = async (content: string) => {
     if (!content.trim()) return
 
@@ -166,7 +201,7 @@ export default function ChatbotPage() {
       }
       
       // 챗봇 API 호출
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -384,9 +419,13 @@ export default function ChatbotPage() {
 
             <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-400 font-medium">
-                  AI 에이전트 온라인
+                <div className={`w-2 h-2 rounded-full animate-pulse ${
+                  isServerWarming ? 'bg-yellow-500' : 'bg-green-500'
+                }`}></div>
+                <span className={`font-medium ${
+                  isServerWarming ? 'text-yellow-400' : 'text-green-400'
+                }`}>
+                  {isServerWarming ? 'AI 에이전트 준비중...' : 'AI 에이전트 온라인'}
                 </span>
               </div>
               <Badge className={`bg-${currentCompany?.color} text-white`}>

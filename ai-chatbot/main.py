@@ -15,6 +15,7 @@ uvicorn main:app --reload --port 8000
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+import os
 
 # 라우터 import
 from api.chat import router as chat_router  
@@ -92,14 +93,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS 설정 (Next.js 프론트엔드 접근 허용)
+# CORS 설정 (환경변수 기반)
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",  # Next.js 개발 서버
-        "http://127.0.0.1:3000",
-        # TODO: 프로덕션 도메인 추가
-    ],
+    allow_origins=[origin.strip() for origin in allowed_origins],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

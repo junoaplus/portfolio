@@ -23,6 +23,7 @@ import uuid
 # 완벽한 세션 및 대화 관리 서비스
 from services.session_manager import session_manager
 from services.conversation_service import conversation_service
+from config.settings import Config
 
 router = APIRouter()
 
@@ -275,11 +276,11 @@ async def start_initial_chat(request: InitialChatRequest) -> ChatResponse:
             success=True,
             answer=initial_message,
             links={
-                "AI 챗봇 포트폴리오": "http://localhost:3000/ai-chatbot-portfolio",
-                "데이트 코스 AI 추천": "http://localhost:3000/date-recommendation",
-                "보드게임 RAG 챗봇": "http://localhost:3000/boardgame-chatbot", 
-                "신문 이탈 예측": "http://localhost:3000/newspaper-churn",
-                "간호사 급여 예측": "http://localhost:3000/nurse-salary"
+                "AI 챗봇 포트폴리오": f"{Config.PORTFOLIO_BASE_URL}/ai-chatbot-portfolio",
+                "데이트 코스 AI 추천": f"{Config.PORTFOLIO_BASE_URL}/date-recommendation",
+                "보드게임 RAG 챗봇": f"{Config.PORTFOLIO_BASE_URL}/boardgame-chatbot", 
+                "신문 이탈 예측": f"{Config.PORTFOLIO_BASE_URL}/newspaper-churn",
+                "간호사 급여 예측": f"{Config.PORTFOLIO_BASE_URL}/nurse-salary"
             },
             session_id=request.session_id,
             metadata={
