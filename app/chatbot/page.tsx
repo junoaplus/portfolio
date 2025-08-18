@@ -192,28 +192,6 @@ export default function ChatbotPage() {
     scrollToBottom()
   }, [messages])
 
-  // Cold Start 방지 - 컴포넌트 마운트 시 서버 깨우기
-  useEffect(() => {
-    const warmUpServer = async () => {
-      setIsServerWarming(true)
-      console.log('🔥 서버 warming up 시작...')
-      
-      try {
-        // Runpod Serverless Health Check
-        const response = await callRunpodAPI('/api/health', {})
-        
-        console.log('✅ 서버 warm-up 성공!')
-      } catch (error) {
-        console.log('⚠️ 서버 warm-up 오류:', error)
-        // 에러가 발생해도 사용자에게는 알리지 않음 (백그라운드 작업)
-      } finally {
-        setIsServerWarming(false)
-        console.log('🏁 서버 warming up 완료')
-      }
-    }
-
-    warmUpServer()
-  }, [])
 
   const handleSendMessage = async (content: string) => {
     if (!content.trim()) return

@@ -26,8 +26,77 @@ import {
   Database,
 } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function HomePage() {
+  // API Base URL 환경변수 설정 (Runpod Serverless)
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
+  
+  // Runpod Serverless API 호출 함수 (챗봇 페이지와 동일)
+  const callRunpodAPI = async (path: string, body: any) => {
+    const response = await fetch(API_BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}`
+      },
+      body: JSON.stringify({
+        input: {
+          method: 'POST',
+          path: path,
+          headers: { 'Content-Type': 'application/json' },
+          body: body
+        }
+      })
+    })
+    
+    const data = await response.json()
+    
+    // Runpod Serverless 응답 구조 확인
+    if (data.status === 'IN_QUEUE' || data.status === 'IN_PROGRESS') {
+      throw new Error('Job이 아직 처리 중입니다. 잠시 후 다시 시도해주세요.')
+    }
+    
+    // 응답 형식에 따라 처리
+    if (data.output) {
+      if (typeof data.output === 'object' && !data.output.body) {
+        return {
+          ok: true,
+          json: () => Promise.resolve(data.output)
+        }
+      }
+      if (data.output.body) {
+        return {
+          ok: data.output.status_code ? data.output.status_code < 400 : true,
+          json: () => Promise.resolve(data.output.body)
+        }
+      }
+    }
+    
+    if (data.error) {
+      throw new Error(data.error)
+    }
+    
+    throw new Error('Runpod API 응답 형식을 알 수 없습니다')
+  }
+
+  // 홈페이지 접속 시 백엔드 서버 깨우기
+  useEffect(() => {
+    const warmUpServer = async () => {
+      console.log('🔥 백엔드 서버 warming up 시작...')
+      
+      try {
+        await callRunpodAPI('/api/health', {})
+        console.log('✅ 백엔드 서버 미리 깨웠음!')
+      } catch (error) {
+        console.log('⚠️ 백엔드 서버 깨우기 실패:', error)
+        // 에러가 발생해도 사용자에게는 알리지 않음 (백그라운드 작업)
+      }
+    }
+
+    warmUpServer()
+  }, [])
+
   const techStack = [
     // 1줄: 토스 핵심 빅데이터/DB 기술 (실제 사용) - 6개
     { name: 'PySpark', level: 85, icon: '⚡', slug: 'pyspark' },
