@@ -1,0 +1,200 @@
+"""
+환경설정 및 전역 상수 관리
+- 환경변수 로드
+- API 엔드포인트 정의
+- 완성된 페이지 목록 관리
+"""
+
+import os
+from typing import List, Dict, Any
+from dotenv import load_dotenv
+
+# .env 파일 로드
+load_dotenv()
+
+class Config:
+    # === 환경변수 ===
+    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
+    PORTFOLIO_BASE_URL: str = os.getenv("PORTFOLIO_API_BASE_URL", "http://localhost:3000")
+    
+    # === 프로젝트 데이터 설정 ===
+    PROJECT_DATA_PATH: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "projects")
+    
+    # === API 설정 (About Me용으로 유지) ===
+    PORTFOLIO_API_BASE_URL: str = f"{PORTFOLIO_BASE_URL}/api/portfolio" 
+    REQUEST_TIMEOUT: int = 30
+    MAX_RETRIES: int = 3
+    
+    # === OpenAI 설정 ===
+    OPENAI_MODEL: str = "gpt-4o-mini"
+    OPENAI_TEMPERATURE: float = 0.7
+    OPENAI_MAX_TOKENS: int = 2000
+    
+    # === 완성된 페이지 목록 (동적 데이터 추출 가능) ===
+    COMPLETE_PROJECTS: List[str] = [
+        "boardgame-chatbot",    # 보드게임 챗봇 (상세페이지 완성)
+        "date-recommendation",  # 데이트 코스 AI (상세페이지 완성)
+        "newspaper-churn",      # 신문 이탈 예측 (상세페이지 완성) 
+        "nurse-salary"          # 간호사 급여 예측 (상세페이지 완성)
+    ]
+    
+    # === 완성된 LLM 스킬 목록 ===
+    COMPLETE_LLM_SKILLS: List[str] = [
+        "langchain",    # LangChain (상세페이지 완성)
+        "rag",          # RAG (상세페이지 완성)
+        "vector-db",    # Vector DB (상세페이지 완성)
+        "openai",       # OpenAI (상세페이지 완성)
+        "fine-tuning",  # Fine-tuning (상세페이지 완성)
+        "postgresql"    # PostgreSQL (상세페이지 완성)
+    ]
+    
+    @staticmethod
+    def get_toss_job_context() -> str:
+        """
+        토스 ML Engineer 채용공고 완전한 컨텍스트 반환
+        모든 GPT 요청 시 포함하여 토스 요구사항에 맞는 답변 생성
+        """
+        return """
+📍 회사: 토스 (Toss)
+📍 팀 특성: 다양한 사업부 및 팀에 속하여 토스의 다양한 문제를 머신러닝을 통해 빠르게 해결하고 자동화
+
+🎯 팀의 역할:
+- ML 기술을 통해 여러 비즈니스 도메인에서 발생하는 문제 해결
+- ML 기반으로 공통화된 기술 제품들을 토스팀에 제공  
+- 인터뷰를 통해 후보자의 강점과 경험을 고려한 도메인 및 과제에 배치
+
+💼 주요 업무 영역 (6개):
+
+1. 📋 General
+   - 추천, 이상 탐지, 자연어 처리, AutoML 등 다양한 과제
+   - 새로운 문제 유형을 탐색하고 실험
+
+2. 🎯 추천 (Recommendation) 
+   - 토스의 다양한 도메인(Ads, 커머스, Home 등)
+   - 추천 시스템과 반응 예측 모델 개발
+   - 사용자와 콘텐츠, 서비스, 광고 간의 연결 최적화
+
+3. 📢 Ads (광고)
+   - 다양한 광고 지면과 사용자 접점
+   - 광고 퍼널 전반 최적화를 위한 예측 모델
+   - 의사결정 로직 설계
+
+4. 🔧 Platform  
+   - 다양한 ML 요구사항을 안전하고 빠르게 실험 반복
+   - 배포 플랫폼 및 Kubernetes 인프라 구축
+   - ML 팀에 기술 제품 제공
+
+5. 🔍 검색 (Search)
+   - 실시간 대용량 데이터 처리
+   - 검색 인프라 운영  
+   - 검색 품질 개선
+   - 검색 플랫폼 설계하고 운영
+   - 고객 경험 개선
+
+6. 🤖 AI ⭐⭐⭐ 
+   - LLM, RAG, 멀티모달 등 다양한 AI 기술 활용
+   - 문제를 정의하고 기술적으로 접근하는 방식 자체를 설계
+
+✅ 자격 요건 (토스가 원하는 인재):
+1. 머신러닝에 대한 깊이 있는 이해 + 다양한 비즈니스 문제 적용 경험
+2. SQL 및 Hadoop, Spark 등 빅데이터 플랫폼 경험  
+3. 모델 설계/개발 → 실제 서비스 적용 → 결과 분석 전 과정 경험
+4. PyTorch, TensorFlow, XGBoost, LightGBM 등 주요 ML 라이브러리 실무 경험
+5. 새로운 문제에 빠르게 몰입 + 필요 역량 스스로 학습하여 해결
+
+📄 이력서 평가 기준:
+- 머신러닝 알고리즘 직접 개발 + 운영 적용 경험 → 사용 기술과 그로 인한 변화 명시
+- 팀 결과뿐 아니라 본인이 주도적으로 기여한 부분 구체적 명시  
+- 경험이 적어도 → 문제 정의하고 해결한 과정이 잘 드러나면 좋은 인상
+
+🔥 토스 ML Engineer의 핵심 철학:
+"깊이 있는 기술적 구현을 통해 비즈니스 문제를 해결하는 역할"
+
+토스만의 특별한 점:
+- 모델링 그 이상을 한다
+- 이전: "주어진 모델에 데이터 넣고 성능 평가"  
+- 현재: "집계되지 않는 데이터를 어떻게 모델에 녹여낼지 고민"
+- 금융 데이터 분석을 넘어서 → 유저 이해 바탕으로 슈퍼 앱 운영에 임팩트
+
+🎯 채용 프로세스:
+서류 접수 → 1차 직무 인터뷰(코딩) → 2차 직무 인터뷰 → 문화적합성 인터뷰 → 레퍼런스체크 → 처우 협의 → 최종 합격
+
+=== 채용담당자 마인드셋 ===
+당신은 토스 ML Engineer 채용담당자로서 다음을 중요시합니다:
+  1. **기술적 깊이**: 문제 해결을 위한 창의적 기술 구현
+  2. **구현 과정**: 어떻게 기술적 문제를 해결했는가
+  3. **기술-비즈니스 연결**: 기술 구현이 어떻게 비즈니스 가치로 이어지는가
+  4. LLM/RAG/멀티모달 AI 기술 활용 능력
+  5. 문제 정의부터 해결까지 주도적 기여
+
+평가 우선순위:
+  1순위: 기술적 구현 방법과 창의성(숫자 보다는 al/ml 기술에 초점 백터 디비라든지 이런 기술)
+  2순위: 그 기술이 만든 비즈니스 임팩트
+  """
+
+    @staticmethod
+    def get_toss_cover_letter() -> str:
+        """토스 자소서 데이터 반환 (7개 섹션으로 구성)"""
+        return """
+=== 토스 ML Engineer 자소서 ===
+
+💡 지원동기:
+임베디드 소프트웨어, IoT, 컴퓨터 네트워크, 데이터베이스, 객체지향 프로그래밍까지 다양한 수업을 들으며 공부할 때, 가장 큰 도움을 준 것이 GPT였습니다. AI가 미래의 핵심 기술이라 확신하고 본격적으로 공부했더니 저와 너무 잘 맞았고, 그동안 배운 모든 지식들과 시너지를 내며 더 큰 가치를 만들 수 있었습니다. 
+
+특히 컴퓨터 네트워크에서 배운 TCP/IP 지식으로 LangChain의 스트리밍 응답을 최적화하고, IoT 수업의 MQTT 프로토콜 이해로 실시간 채팅 시스템을 구축하는 등, 모든 지식이 AI 개발에 활용되었습니다. 데이터를 기반으로 RAG 시스템을 구축하고, 에이전틱한 구조를 설계하며, 복잡한 데이터를 정제하는 과정이 정말 재미있었고, 제가 직접 만든 챗봇이 실제로 사용자의 질문에 답변하는 것을 볼 때의 보람은 이루 말할 수 없었습니다.
+
+평소 토스를 자주 사용하면서 금융권에서 AI/ML이 정말 필요한 기업이라고 생각했습니다. 특히 2023년 8월 E-commerce 사업을 직접 운영하며 네이버와 쿠팡의 상품 노출 알고리즘을 분석했지만, 키워드 기반 시스템의 한계와 타겟팅의 제약을 경험했습니다. 이러한 경험을 통해 토스가 도전하고 있는 쇼핑 서비스에서도 키워드 매핑이 아닌 AI를 활용한 상품 검색 및 추천 서비스의 가능성을 보았고, 제가 경험한 LLM과 추천시스템 결합 프로젝트가 토스의 AI 업무영역과 완벽히 매칭된다고 생각하여 지원하게 되었습니다.
+
+🛠️ 핵심기술:
+1) LLM/RAG 전문성: OpenAI GPT, LangChain, FAISS, Qdrant, EXAONE 파인튜닝 등 최신 LLM 스택을 활용하여 실제 챗봇 시스템을 구축했습니다. 특히 벡터 DB 검색 최적화와 멀티 에이전트 아키텍처 설계에 자신 있습니다.
+2) ML 모델링: XGBoost, LightGBM, RandomForest, SVM 등을 활용한 분류/회귀 모델 설계, GridSearchCV를 통한 하이퍼파라미터 튜닝, SMOTE+StratifiedKFold 조합으로 클래스 불균형 해결
+3) 백엔드 개발: FastAPI, Django, PostgreSQL, Redis를 활용한 REST API 서버 구축 및 데이터베이스 설계
+4) 데이터 엔지니어링: PySpark를 활용한 대용량 데이터 ETL 파이프라인 구축, Pandas/NumPy 기반 데이터 전처리 및 분석
+5) 프론트엔드: Next.js, React를 활용한 웹 애플리케이션 개발, Streamlit을 통한 ML 데모 프로토타이핑
+
+🎯 토스목표:
+1년차: 팀에 녹아들고 토스의 업무 방법을 익히며 온보딩을 잘 학습하여 조직에 완전히 적응하기
+2년차: 조직에 녹아든 내용을 바탕으로 나의 색을 입혀서 토스에서의 나만의 업무 방식 정립하기
+3년차: 산업기능요원 기간 완료 후 토스의 정식 직원이 되어 더 큰 책임감을 갖고 업무에 임하기
+4년차 이후: 토스에서 없으면 안 되는 핵심 인재가 되기 위해 나의 LLM/RAG 강점을 더 극대화하면서 토스에 실질적인 이익을 가져다주기
+
+💪 차별화포인트:
+첫째, LLM/RAG 분야에서의 확실한 강점입니다. 다른 지원자들과 차별화되는 점은 단순히 이론만 아는 것이 아니라 실제 서비스를 구축하고 운영해본 경험이 있다는 것입니다.
+
+둘째, E-commerce 사업을 직접 운영한 경험입니다. 토스가 밀고 있는 쇼핑 사업에서 사장 관점과 고객 관점을 모두 이해하는 개발자는 드뭅니다. 네이버와 쿠팡의 상품 노출 알고리즘을 분석하고 키워드 기반 시스템의 한계를 직접 체감한 경험이 있어, 토스 쇼핑의 AI 기반 상품 검색 및 추천 서비스 개발에 차별화된 가치를 제공할 수 있습니다.
+
+셋째, 'T자형 개발자'로서의 가치관입니다. AI/ML 한 분야에서 깊은 전문성을 갖추면서도 다른 분야를 폭넓게 이해하며, AI와의 협업 능력을 핵심 경쟁력으로 삼고 있습니다. 새로운 도전을 두려워하지 않으면서도 잘못된 방향임을 깨달으면 빠르게 전환할 수 있는 용기를 가지고 있습니다.
+
+넷째, 문제 해결에 대한 체계적 접근입니다. 데이터 품질이 모델 성능의 90%를 좌우한다고 믿으며, 기술적 완벽함보다 고객 관점에서의 실용성을 중시합니다. 항상 최고가 되기 위해 최선을 다하는 자세로 토스에서 없으면 안 되는 핵심 인재가 되겠습니다.
+"""
+
+    @staticmethod
+    def get_cover_letter_data(company: str) -> str:
+        """회사별 자소서 데이터 반환"""
+        if company == "toss":
+            return Config.get_toss_cover_letter()
+        elif company == "kakao":
+            return """=== 카카오 자소서 데이터 (추후 추가) ==="""
+        elif company == "naver":
+            return """=== 네이버 자소서 데이터 (추후 추가) ==="""
+        else:
+            return """=== 일반 자소서 데이터 ===
+기술적 도전을 통한 문제 해결과 지속적 학습을 추구합니다."""
+
+    @staticmethod  
+    def get_company_context(company: str) -> str:
+        """회사별 채용 컨텍스트 반환"""
+        if company == "toss":
+            return Config.get_toss_job_context()
+        else:
+            return """=== 일반 AI/ML 엔지니어 채용 상황 ===
+기술적 역량과 문제 해결 능력을 종합적으로 평가하는 일반적인 면접 상황입니다.
+다양한 프로젝트 경험과 기술 스택을 균형있게 어필하는 것이 중요합니다."""
+
+    @classmethod
+    def validate_config(cls):
+        """설정 유효성 검사"""
+        if not cls.OPENAI_API_KEY:
+            raise ValueError("OPENAI_API_KEY가 설정되지 않았습니다")
+        if not cls.PORTFOLIO_BASE_URL:
+            raise ValueError("PORTFOLIO_BASE_URL이 설정되지 않았습니다")

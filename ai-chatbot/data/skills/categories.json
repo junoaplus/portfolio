@@ -1,0 +1,7 @@
+{
+  "llm": ["langchain", "langgraph", "agent", "rag", "llm", "fine-tuning", "openai", "claude-code", "exaone", "qdrant", "faiss", "vector-db", "pyspark"],
+  "ml": ["xgboost", "lightgbm", "randomforest", "logisticregression", "svm", "knn", "mlp", "scikit-learn", "pandas", "numpy", "matplotlib", "seaborn", "smote", "stratifiedkfold", "gridsearchcv"],
+  "backend": ["fastapi", "django", "postgresql", "redis", "sqlalchemy", "pydantic"],
+  "infra": ["docker", "aws-ec2", "vercel"],
+  "frontend": ["next-js", "react", "streamlit"]
+}
