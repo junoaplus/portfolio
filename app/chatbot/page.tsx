@@ -146,7 +146,17 @@ export default function ChatbotPage() {
     const saved = sessionStorage.getItem(key)
     if (saved) {
       console.log(`📂 ${company} 데이터 로드 완료`)
-      return JSON.parse(saved)
+      const data = JSON.parse(saved)
+      
+      // timestamp를 Date 객체로 변환
+      if (data.messages) {
+        data.messages = data.messages.map((msg: any) => ({
+          ...msg,
+          timestamp: new Date(msg.timestamp)
+        }))
+      }
+      
+      return data
     }
     return null
   }
@@ -441,12 +451,14 @@ export default function ChatbotPage() {
   // 회사별 새 세션 생성 함수
   const createNewSessionForCompany = async (company: string) => {
     try {
-      // 🔥 기존 메시지 변환
-      const previousMessages = messages.map(msg => ({
-        type: msg.type,
-        content: msg.content,
-        timestamp: msg.timestamp?.toISOString() || new Date().toISOString()
-      }))
+      // 🔥 해당 회사의 저장된 메시지만 가져오기
+      const companyData = loadCompanyData(company)
+      const previousMessages = companyData?.messages ? 
+        companyData.messages.map((msg: Message) => ({
+          type: msg.type,
+          content: msg.content,
+          timestamp: msg.timestamp?.toISOString() || new Date().toISOString()
+        })) : []
       
       const sessionResponse = await callRunpodAPI('/api/sessions', {
         company_context: company,
@@ -504,7 +516,7 @@ export default function ChatbotPage() {
       
       const currentComp = selectedCompany || getCurrentCompany() || 'general'
       
-      // 🔥 현재 메시지를 백엔드 형식으로 변환
+      // 🔥 현재 회사의 메시지만 전송 (다른 회사 메시지 섞이지 않도록)
       const previousMessages = messages.map(msg => ({
         type: msg.type,
         content: msg.content,
@@ -576,6 +588,12 @@ export default function ChatbotPage() {
       
       console.log('백엔드 응답:', data)
 
+      // 🔥 404 에러 (세션 없음) 감지
+      if (!response.ok && response.status === 404) {
+        console.log('❌ 404 에러 감지 - 세션 없음')
+        throw new Error('SESSION_NOT_FOUND')
+      }
+
       if (data.success) {
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -595,8 +613,10 @@ export default function ChatbotPage() {
           saveCurrentCompanyData(newMessages, sessionId, selectedCompany, currentCompany)
         }
       } else {
-        // 🔥 세션 관련 에러 감지
-        if (data.message?.includes('session') || data.message?.includes('세션')) {
+        // 🔥 세션 관련 에러 감지 (detail.message도 확인)
+        if (data.detail?.message?.includes('세션을 찾을 수 없습니다') || 
+            data.message?.includes('session') || 
+            data.message?.includes('세션')) {
           console.log('❌ 세션 관련 에러 감지, 복구 시도')
           throw new Error('SESSION_ERROR')
         }
@@ -617,6 +637,7 @@ export default function ChatbotPage() {
       if (error instanceof Error && (
           error.message === 'SESSION_MISSING' || 
           error.message === 'SESSION_ERROR' ||
+          error.message === 'SESSION_NOT_FOUND' ||  // 🔥 추가
           error.message.includes('session') ||
           error.message.includes('404')
         )) {
@@ -625,11 +646,49 @@ export default function ChatbotPage() {
         const recovered = await recoverSession()
         
         if (recovered) {
-          // 복구 메시지 표시
+          // 🔥 복구 메시지 대신 원래 질문 재시도
+          console.log('✅ 세션 복구 완료, 원래 질문 재시도')
+          
+          try {
+            const newSessionId = localStorage.getItem('chatbot_session_id')
+            const retryResponse = await callRunpodAPI('/api/chat', {
+              session_id: newSessionId,
+              question: content.trim(), // 원래 질문 그대로
+            })
+            
+            const retryData = await retryResponse.json()
+            
+            if (retryData.success) {
+              // 원래 답변처럼 표시 (복구 언급 없이)
+              const aiMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                type: 'ai',
+                content: retryData.answer,
+                timestamp: new Date(),
+                links: retryData.links || {},
+                sources: retryData.metadata?.key_points || [],
+              }
+              
+              const newMessages = [...messages, userMessage, aiMessage]
+              setMessages(newMessages)
+              
+              // 저장
+              if (newSessionId && selectedCompany && currentCompany) {
+                saveCurrentCompanyData(newMessages, newSessionId, selectedCompany, currentCompany)
+              }
+              
+              console.log('🎉 복구 후 재시도 성공!')
+              return // 성공적으로 처리 완료
+            }
+          } catch (retryError) {
+            console.error('❌ 복구 후 재시도 실패:', retryError)
+          }
+          
+          // 재시도도 실패하면 복구 메시지라도 표시
           const recoveryMessage: Message = {
             id: (Date.now() + 1).toString(),
             type: 'ai',
-            content: '세션이 재연결되었습니다. 다시 질문해주세요! 🔄',
+            content: '연결을 복구했습니다. 다시 질문해주세요! 🔄',
             timestamp: new Date(),
           }
           setMessages(prev => [...prev, recoveryMessage])
@@ -661,6 +720,65 @@ export default function ChatbotPage() {
 
   const handleQuickQuestion = (question: string) => {
     handleSendMessage(question)
+  }
+
+  const handleRestartChat = async () => {
+    if (!selectedCompany || !currentCompany) return
+
+    try {
+      console.log(`🔄 ${selectedCompany} 채팅 새로 시작`)
+      
+      // 1. 현재 회사 데이터 완전 삭제
+      const key = getCompanyDataKey(selectedCompany)
+      sessionStorage.removeItem(key)
+      
+      // 2. localStorage 세션 ID 삭제
+      localStorage.removeItem('chatbot_session_id')
+      
+      // 3. 새 세션 생성
+      const sessionResponse = await callRunpodAPI('/api/sessions', {
+        company_context: selectedCompany,
+      })
+      
+      const sessionData = await sessionResponse.json()
+      
+      if (sessionData.success) {
+        const sessionId = sessionData.session_id
+        localStorage.setItem('chatbot_session_id', sessionId)
+        
+        // 4. 초기 메시지로 리셋
+        const initialMessage = getInitialMessage(selectedCompany)
+        const aiMessage: Message = {
+          id: Date.now().toString(),
+          type: 'ai',
+          content: initialMessage,
+          timestamp: new Date(),
+          sources: [],
+          links: {
+            "AI 챗봇 포트폴리오": "/ai-chatbot-portfolio",
+            "데이트 코스 AI 추천": "/date-recommendation", 
+            "보드게임 RAG 챗봇": "/boardgame-chatbot",
+            "신문 이탈 예측": "/newspaper-churn",
+            "간호사 급여 예측": "/nurse-salary"
+          }
+        }
+        
+        setMessages([aiMessage])
+        
+        // 5. 새 데이터 저장
+        saveCurrentCompanyData([aiMessage], sessionId, selectedCompany, currentCompany)
+        
+        console.log(`✅ ${selectedCompany} 새로 시작 완료: ${sessionId}`)
+        
+      } else {
+        console.error('새 세션 생성 실패:', sessionData)
+        alert('새로 시작에 실패했습니다.')
+      }
+      
+    } catch (error) {
+      console.error('새로 시작 오류:', error)
+      alert('새로 시작 중 오류가 발생했습니다.')
+    }
   }
 
 
@@ -833,13 +951,11 @@ export default function ChatbotPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-300 hover:text-white hover:bg-gray-700/50"
-                onClick={() => {
-                  setShowCompanySelection(true)
-                  setMessages([])
-                }}
+                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                onClick={handleRestartChat}
               >
-                모드 변경
+                <RefreshCw className="w-3 h-3 mr-1" />
+                새로 시작
               </Button>
             </div>
           </div>
