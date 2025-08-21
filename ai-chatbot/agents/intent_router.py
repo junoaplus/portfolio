@@ -38,6 +38,30 @@ class IntentRouter:
                 "company": "Game N",
                 "focus": "게임 AI, 사용자 개인화, 실시간 추천, 데이터 분석",
                 "culture": "창의성과 자율성, 게임 사용자 경험, 크로스 플랫폼"
+            },
+            "ably": {
+                "position": "AI Engineer",
+                "company": "에이블리",
+                "focus": "생성형 AI, Virtual Try-On, Stable Diffusion, Computer Vision",
+                "culture": "One Team, Grit, Impact 중심, 최신 AI 기술 빠른 적용"
+            },
+            "nuua": {
+                "position": "AI 에이전트 개발자",
+                "company": "누아",
+                "focus": "AI 에이전트, 여행사 업무 자동화, 비정형 데이터 구조화, 항공권 유통",
+                "culture": "당연해야 할 것들에 도전, 기술로 여행 산업 혁신"
+            },
+            "lbox": {
+                "position": "Machine Learning Engineer",
+                "company": "엘박스",
+                "focus": "LLM/RAG 시스템, 법률 AI, 검색 모델 최적화, ML 파이프라인",
+                "culture": "법을 사람들에게 더 가깝게, 국내 1위 리걸테크"
+            },
+            "estsoft": {
+                "position": "LLM Engineer",
+                "company": "이스트소프트",
+                "focus": "LLM 모델 개발, Perso SaaS, Alan AI, OpenLLM 파인튜닝, Azure 클라우드",
+                "culture": "실용주의 인공지능으로 일상에 편리함을 더하다, 30년 SW 전문기업"
             }
             # 추후 kakao, naver, coupang 등 추가 가능
         }

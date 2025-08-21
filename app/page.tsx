@@ -323,6 +323,47 @@ export default function HomePage() {
           </div>
         </div>
         
+        {/* AI 포트폴리오 체험 가이드 - 일자로 */}
+        <div className="absolute bottom-44 left-1/2 transform -translate-x-1/2 text-center">
+          <h3 className="text-xl font-bold text-blue-400 mb-6 flex items-center justify-center">
+            <Bot className="w-5 h-5 mr-2" />
+            AI 포트폴리오 사용 가이드
+          </h3>
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+              <div className="text-left">
+                <span className="text-white block">AI 채팅 시작하기</span>
+                <span className="text-gray-400 text-xs">위 버튼 클릭해서 채팅방 입장</span>
+              </div>
+              <ArrowRight className="w-3 h-3 text-gray-400" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+              <div className="text-left">
+                <span className="text-white block">회사 선택</span>
+                <span className="text-gray-400 text-xs">귀하의 회사를 선택해주세요</span>
+              </div>
+              <ArrowRight className="w-3 h-3 text-gray-400" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+              <div className="text-left">
+                <span className="text-white block">맞춤 포트폴리오 확인</span>
+                <span className="text-gray-400 text-xs">회사에 맞춘 포트폴리오를 확인하세요</span>
+              </div>
+              <ArrowRight className="w-3 h-3 text-gray-400" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-semibold">4</span>
+              <div className="text-left">
+                <span className="text-white block">자유롭게 질문</span>
+                <span className="text-gray-400 text-xs">저에 대해 궁금한 점을 질문하세요</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-300 animate-bounce">
           <span className="text-sm mb-2 font-medium tracking-wide">아래로 스크롤하여 프로젝트 보기</span>
