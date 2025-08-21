@@ -40,6 +40,10 @@ class SessionCreateRequest(BaseModel):
         None,
         description="클라이언트 정보 (브라우저, IP 등)"
     )
+    previous_messages: Optional[List[Dict[str, Any]]] = Field(
+        None,
+        description="이전 대화 기록 (세션 복구용)"
+    )
     
     @validator('company_context')
     def validate_company_context(cls, v):
@@ -148,6 +152,34 @@ async def create_session(request: SessionCreateRequest) -> SessionCreateResponse
         
         print(f"✅ 새 세션 생성 완료: {session_id}")
         print(f"   회사 컨텍스트: {request.company_context}")
+        
+        # 🔥 이전 대화 기록 복구
+        if request.previous_messages:
+            print(f"🔄 이전 대화 {len(request.previous_messages)}개 복구 중...")
+            
+            for msg in request.previous_messages:
+                if msg.get("type") in ["user", "ai"]:
+                    # 타입 매핑: ai -> assistant
+                    message_type = "assistant" if msg["type"] == "ai" else "user"
+                    
+                    await session_manager.add_message(
+                        session_id=session_id,
+                        message_type=message_type,
+                        content=msg.get("content", ""),
+                        metadata={
+                            "restored": True,
+                            "original_timestamp": msg.get("timestamp"),
+                            "from_recovery": True
+                        }
+                    )
+            
+            print(f"✅ 대화 기록 복구 완료: {len(request.previous_messages)}개")
+            
+            # 대화 서비스에도 세션 시작 알림 (컨텍스트 초기화)
+            await conversation_service.start_conversation(
+                session_id=session_id,
+                company_context=request.company_context
+            )
         
         return SessionCreateResponse(
             success=True,
@@ -368,6 +400,17 @@ async def process_chat(request: ChatRequest) -> ChatResponse:
     """
     
     try:
+        # 🔥 헬스체크 요청 처리
+        if request.question == "__health_check__":
+            print(f"🏥 헬스체크 요청: {request.session_id}")
+            return ChatResponse(
+                success=True,
+                answer="healthy",
+                links={},
+                session_id=request.session_id,
+                metadata={"type": "health_check"}
+            )
+        
         # 세션 존재 확인
         session_info = await session_manager.get_session_info(request.session_id)
         if not session_info:

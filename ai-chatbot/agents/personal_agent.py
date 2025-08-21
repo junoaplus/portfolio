@@ -22,7 +22,7 @@ Personal Agent - 개인 관련 질문 전문 (motivation + experience 통합)
 
 import json
 import os
-from typing import Dict, Any
+from typing import Dict, Any, List
 from workflow.state import ChatState
 from config.settings import Config
 from utils.openai_client import get_openai_client
