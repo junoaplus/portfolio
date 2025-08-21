@@ -131,6 +131,113 @@ export default function ChatbotPage() {
     '가장 도전적이었던 프로젝트는?',
   ]
 
+  const getInitialMessage = (companyKey: string): string => {
+    if (companyKey === "toss") {
+      return `# 토스 ML Engineer 황준호
+
+**지금 이 순간 면접관님과 대화하고 있는 이 AI 시스템이 제가 구축한 멀티 에이전트 포트폴리오입니다**
+
+## 채용 공고를 통해 분석한 토스가 원하는 경험
+
+🤖 **AI 도메인 - LLM/RAG/멀티모달**: LangGraph 멀티 에이전트 포트폴리오  
+   토스 AI팀이 원하는 "문제 정의→기술적 접근 설계" 방식을 직접 구현  
+   질문 의도 파악 후 전문 에이전트 조건부 라우팅으로 실시간 대화 AI 완성  
+   👉 [이 프로젝트 자세히 보기](/ai-chatbot-portfolio)
+
+🔍 **추천 시스템 - 사용자/콘텐츠 연결**: 데이트 코스 AI 추천  
+   토스 커머스/광고팀이 원하는 개인화 추천 시스템 경험  
+   Qdrant 벡터DB + 151개 카테고리 필터링으로 89K 장소 개인화 달성  
+   👉 [이 프로젝트 자세히 보기](/date-recommendation)
+
+🤖 **자연어 처리 - LLM 파인튜닝**: 보드게임 RAG 챗봇  
+   토스 AI팀의 LLM 기반 서비스 구축 요구사항과 직접 매칭  
+   EXAONE 파인튜닝 + FAISS 벡터 검색으로 217개 게임 전문 지식 자동화  
+   👉 [이 프로젝트 자세히 보기](/boardgame-chatbot)
+
+📊 **이상 탐지 - 예측 모델**: 신문 이탈 예측  
+   토스 General팀의 이상 탐지/새로운 문제 탐색 역할과 정확히 일치  
+   RandomForest 87% F1-Score로 TOP 50 위험고객 실시간 분석 시스템 구축  
+   👉 [이 프로젝트 자세히 보기](/newspaper-churn)
+
+⚡ **대용량 처리 - 빅데이터 플랫폼**: 데이트 코스 AI 추천 
+   토스가 요구하는 Spark 등 빅데이터 플랫폼 숙련도 직접 증명  
+   PySpark ETL로 20만→9만 고품질 데이터 정제, 클래스 불균형 SMOTE 해결  
+   👉 [이 프로젝트 자세히 보기](/date-recommendation)
+
+🛒 **E-commerce 실전 운영 경험**: 온라인 쇼핑몰 사업 운영  
+   2023년 8월 직접 온라인 쇼핑몰 운영하며 네이버/쿠팡 알고리즘 분석  
+   키워드 기반 시스템의 한계를 몸소 체감, AI 기반 상품 검색/추천의 필요성 확신  
+   토스 쇼핑 사업부의 AI 기반 상품 발견/추천 시스템 구축에 직접 기여 가능  
+   👉 [사업 운영 경험 자세히 보기](/about#ecommerce)
+
+## 저에 대해 더 궁금하거나 프로젝트에 대해 궁금한 게 있으시면 언제든 질문해주세요!`;
+
+    } else if (companyKey === "game_n") {
+      return `# Game N AI Engineer 황준호
+
+**지금 이 순간 면접관님과 대화하고 있는 이 AI 시스템이 제가 구축한 게임 사용자 경험 혁신 포트폴리오입니다**
+
+## 채용 공고를 통해 분석한 Game N이 원하는 AI 경험
+
+🎮 **게임 개인화 추천 시스템**: 보드게임 추천 챗봇  
+   217개 게임 데이터로 플레이어 취향 분석 및 맞춤 게임 추천  
+   게임별 독립 벡터DB 아키텍처로 정확한 게임 매칭 시스템 구현  
+   👉 [이 프로젝트 자세히 보기](/boardgame-chatbot)
+
+⚡ **실시간 게임 AI 최적화**: 데이트 코스 AI 추천  
+   33초→3.4초 90% 성능 향상으로 게임 내 실시간 AI 응답 수준 달성  
+   인메모리 벡터 검색 + 병렬 처리로 게임 플레이 중단 없는 AI 구현  
+   👉 [이 프로젝트 자세히 보기](/date-recommendation)
+
+📊 **플레이어 행동 데이터 분석**: 신문 이탈 예측  
+   사용자 패턴 분석으로 87% F1-Score 달성, 게임 이탈 예측에 직접 적용 가능  
+   RandomForest + Feature Importance로 플레이어 성향 핵심 요소 분석  
+   👉 [이 프로젝트 자세히 보기](/newspaper-churn)
+
+🤖 **게임 내 AI 어시스턴트**: LangGraph 멀티 에이전트  
+   EXAONE 파인튜닝 + RAG로 게임 룰 설명 및 힌트 제공 AI 구축  
+   사용자 질문 의도 파악 후 적절한 게임 가이드 자동 제공  
+   👉 [이 프로젝트 자세히 보기](/ai-chatbot-portfolio)
+
+🌐 **크로스 플랫폼 게임 데이터**: 대용량 데이터 처리  
+   PySpark ETL로 4개 API 20만→9만 데이터 통합, 게임 플랫폼 데이터 융합 경험  
+   웹/모바일 환경 호환 Next.js + FastAPI로 HTML5 게임과 동일한 기술 스택  
+   👉 [이 프로젝트 자세히 보기](/date-recommendation)
+
+## Game N에서 AI로 게임 경험을 혁신하고 싶습니다. 궁금한 점이 있으시면 언제든 질문해주세요!`;
+
+    } else {
+      return `**안녕하세요! AI/ML 엔지니어 황준호입니다!**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**실전 프로젝트를 통해 AI 기술의 비즈니스 적용 경험을 쌓아왔습니다:**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 데이트 코스 AI 추천 시스템 (최고 완성도)
+→ 89,321개 장소 DB + Qdrant Vector DB로 실시간 개인화 추천
+→ 벡터 DB 인메모리 최적화로 33초→3.4초 성능 향상 달성
+→ 3개 독립 마이크로서비스 + PySpark ETL + Redis 캐싱으로 확장성 확보
+
+🤖 보드게임 RAG 챗봇
+→ EXAONE 파인튜닝 + 217개 게임별 FAISS 벡터 검색 시스템
+→ LangChain 대화 관리 + 자동 세션 시스템 구현
+
+📊 이탈/퇴사 예측 ML 시스템
+→ 8가지 알고리즘 비교로 87% F1-Score 달성  
+→ SMOTE/Faker 데이터 증강으로 클래스 불균형 해결 + Feature Importance 분석
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**궁금한 프로젝트나 기술이 있으시면 언제든 질문해주세요!**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**각 프로젝트 링크를 클릭하시면 더 자세한 기술적 구현 내용과 성과를 확인하실 수 있습니다.**`;
+    }
+  }
+
   const handleCompanySelect = async (companyKey: string) => {
     const company = companyConfigs[companyKey]
     setCurrentCompany(company)
@@ -138,7 +245,7 @@ export default function ChatbotPage() {
     setIsTyping(true)
     
     try {
-      // 1. 세션 생성 (Runpod Serverless)
+      // 1. 세션 생성만 수행 (initial chat API 호출 제거)
       const sessionResponse = await callRunpodAPI('/api/sessions', {
         company_context: companyKey,
       })
@@ -148,35 +255,35 @@ export default function ChatbotPage() {
       if (sessionData.success) {
         const sessionId = sessionData.session_id
         
-        // 2. 초기 대화 시작 (Runpod Serverless)
-        const initialResponse = await callRunpodAPI('/api/chat/initial', {
-          session_id: sessionId,
-        })
+        // 2. 클라이언트에서 직접 초기 메시지 생성 (API 호출 제거)
+        const initialMessage = getInitialMessage(companyKey)
         
-        const initialData = await initialResponse.json()
+        // 상태 업데이트
+        setShowCompanySelection(false)
         
-        if (initialData.success) {
-          // 상태 업데이트
-          setShowCompanySelection(false)
-          
-          // 초기 메시지 추가
-          const aiMessage: Message = {
-            id: Date.now().toString(),
-            type: 'ai',
-            content: initialData.answer,
-            timestamp: new Date(),
-            sources: initialData.metadata?.key_points || []
+        // 초기 메시지 추가
+        const aiMessage: Message = {
+          id: Date.now().toString(),
+          type: 'ai',
+          content: initialMessage,
+          timestamp: new Date(),
+          sources: [],
+          links: {
+            "AI 챗봇 포트폴리오": "/ai-chatbot-portfolio",
+            "데이트 코스 AI 추천": "/date-recommendation",
+            "보드게임 RAG 챗봇": "/boardgame-chatbot", 
+            "신문 이탈 예측": "/newspaper-churn",
+            "간호사 급여 예측": "/nurse-salary"
           }
-          
-          setMessages([aiMessage])
-          
-          // 세션 ID 저장 (localStorage 또는 state로)
-          localStorage.setItem('chatbot_session_id', sessionId)
-          
-        } else {
-          console.error('초기 대화 시작 실패:', initialData)
-          alert('초기 대화 시작에 실패했습니다.')
         }
+        
+        setMessages([aiMessage])
+        
+        // 세션 ID 저장
+        localStorage.setItem('chatbot_session_id', sessionId)
+        
+        console.log(`✅ 세션 생성 성공: ${sessionId}`)
+        
       } else {
         console.error('세션 생성 실패:', sessionData)
         alert('세션 생성에 실패했습니다.')
@@ -198,6 +305,62 @@ export default function ChatbotPage() {
     scrollToBottom()
   }, [messages])
 
+  // 🔥 재시도 API 호출 함수 추가
+  const callRunpodAPIWithRetry = async (path: string, body: any, maxRetries = 3) => {
+    let lastError: Error
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        console.log(`🔄 API 호출 시도 ${attempt}/${maxRetries}: ${path}`)
+        const response = await callRunpodAPI(path, body)
+        console.log(`✅ API 호출 성공 (${attempt}번째 시도)`)
+        return response
+        
+      } catch (error) {
+        console.log(`❌ API 호출 실패 ${attempt}/${maxRetries}:`, error)
+        lastError = error as Error
+        
+        // 마지막 시도가 아니면 대기 후 재시도
+        if (attempt < maxRetries) {
+          const delay = Math.min(1000 * attempt, 3000) // 1초, 2초, 3초
+          console.log(`⏳ ${delay}ms 대기 후 재시도...`)
+          await new Promise(resolve => setTimeout(resolve, delay))
+        }
+      }
+    }
+    
+    throw lastError
+  }
+
+  // 🔥 세션 복구 함수 추가
+  const recoverSession = async () => {
+    try {
+      console.log('🔄 세션 복구 중...')
+      
+      // 기존 세션 ID 제거
+      localStorage.removeItem('chatbot_session_id')
+      
+      // 새 세션 생성
+      const sessionResponse = await callRunpodAPIWithRetry('/api/sessions', {
+        company_context: selectedCompany || 'general',
+      }, 2)
+      
+      const sessionData = await sessionResponse.json()
+      
+      if (sessionData.success) {
+        localStorage.setItem('chatbot_session_id', sessionData.session_id)
+        console.log(`✅ 세션 복구 성공: ${sessionData.session_id}`)
+        return true
+      } else {
+        console.error('❌ 세션 복구 실패:', sessionData)
+        return false
+      }
+      
+    } catch (error) {
+      console.error('❌ 세션 복구 중 오류:', error)
+      return false
+    }
+  }
 
   const handleSendMessage = async (content: string) => {
     if (!content.trim()) return
@@ -214,23 +377,22 @@ export default function ChatbotPage() {
     setIsTyping(true)
 
     try {
-      // 세션 ID 가져오기
+      // 🔥 세션 ID 검증 강화
       const sessionId = localStorage.getItem('chatbot_session_id')
       if (!sessionId) {
-        throw new Error('세션 ID가 없습니다. 다시 시작해주세요.')
+        console.log('❌ 세션 ID가 없음, 새로 생성 필요')
+        throw new Error('SESSION_MISSING')
       }
       
-      // 챗봇 API 호출 (Runpod Serverless)
-      const response = await callRunpodAPI('/api/chat', {
+      // 🔥 재시도 로직으로 API 호출
+      const response = await callRunpodAPIWithRetry('/api/chat', {
         session_id: sessionId,
         question: content.trim(),
-      })
+      }, 3) // 최대 3회 재시도
 
       const data = await response.json()
       
-      // 디버깅용 로그
-      console.log('백엔드 응답 전체:', data)
-      console.log('링크 데이터:', data.links)
+      console.log('백엔드 응답:', data)
 
       if (data.success) {
         const aiMessage: Message = {
@@ -238,12 +400,18 @@ export default function ChatbotPage() {
           type: 'ai',
           content: data.answer,
           timestamp: new Date(),
-          links: data.links || {},  // 백엔드에서 받은 링크 추가
+          links: data.links || {},
           sources: data.metadata?.key_points || [],
         }
         setMessages(prev => [...prev, aiMessage])
       } else {
-        // 에러 처리
+        // 🔥 세션 관련 에러 감지
+        if (data.message?.includes('session') || data.message?.includes('세션')) {
+          console.log('❌ 세션 관련 에러 감지, 복구 시도')
+          throw new Error('SESSION_ERROR')
+        }
+        
+        // 일반 에러 처리
         const errorMessage: Message = {
           id: (Date.now() + 1).toString(),
           type: 'ai',
@@ -255,13 +423,47 @@ export default function ChatbotPage() {
     } catch (error) {
       console.error('API 호출 실패:', error)
       
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'ai',
-        content: error instanceof Error ? error.message : '연결 에러가 발생했습니다.',
-        timestamp: new Date(),
+      // 🔥 세션 관련 에러면 자동 복구
+      if (error instanceof Error && (
+          error.message === 'SESSION_MISSING' || 
+          error.message === 'SESSION_ERROR' ||
+          error.message.includes('session') ||
+          error.message.includes('404')
+        )) {
+        
+        console.log('🔄 세션 자동 복구 시작...')
+        const recovered = await recoverSession()
+        
+        if (recovered) {
+          // 복구 메시지 표시
+          const recoveryMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            type: 'ai',
+            content: '세션이 재연결되었습니다. 다시 질문해주세요! 🔄',
+            timestamp: new Date(),
+          }
+          setMessages(prev => [...prev, recoveryMessage])
+        } else {
+          // 복구 실패 메시지
+          const failMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            type: 'ai',
+            content: '세션 복구에 실패했습니다. 페이지를 새로고침해주세요.',
+            timestamp: new Date(),
+          }
+          setMessages(prev => [...prev, failMessage])
+        }
+        
+      } else {
+        // 일반 네트워크 에러
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          type: 'ai',
+          content: '연결 에러가 발생했습니다. 잠시 후 다시 시도해주세요.',
+          timestamp: new Date(),
+        }
+        setMessages(prev => [...prev, errorMessage])
       }
-      setMessages(prev => [...prev, errorMessage])
     } finally {
       setIsTyping(false)
     }

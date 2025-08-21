@@ -32,6 +32,12 @@ class IntentRouter:
                 "company": "토스",
                 "focus": "LLM/RAG 기술, 추천 시스템, 대용량 데이터 처리, 이상 탐지",
                 "culture": "빠른 실행, 비즈니스 임팩트, 기술적 깊이"
+            },
+            "game_n": {
+                "position": "AI Engineer",
+                "company": "Game N",
+                "focus": "게임 AI, 사용자 개인화, 실시간 추천, 데이터 분석",
+                "culture": "창의성과 자율성, 게임 사용자 경험, 크로스 플랫폼"
             }
             # 추후 kakao, naver, coupang 등 추가 가능
         }

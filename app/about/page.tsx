@@ -436,6 +436,96 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
+          {/* 5. 성격의 장단점 */}
+          <Card className="bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 shadow-2xl mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-white">
+                🧠 성격의 장단점
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-8">
+              {/* 장점 섹션 */}
+              <div>
+                <h4 className="text-xl font-bold text-green-400 mb-6 flex items-center gap-2">
+                  <Star className="w-5 h-5" />
+                  장점
+                </h4>
+                <div className="grid gap-6">
+                  <div className="border-l-4 border-green-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">강한 호기심과 빠른 학습력</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      Claude Code, GPT-4o, LangGraph 같은 새로운 AI 도구가 출시되면 바로 공식 문서를 읽고 실제 프로젝트에 적용해봅니다. 최신 기술 트렌드를 놓치지 않으려 노력하며, 배운 것을 즉시 실무에 활용하는 실행력이 강합니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">극한 상황에서도 흔들리지 않는 책임감</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      십자인대 파열로 2개월간 목발을 짚고 다녀야 했지만, 부학생회장 업무와 3개의 팀프로젝트를 모두 완수하기 위해 수술을 미루며 끝까지 책임을 다했습니다. 한 번 맡은 일은 어떤 어려움이 있어도 반드시 해냅니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">진심으로 다가가는 소통 능력</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      처음 만나는 사람에게도 벽을 두지 않고 먼저 다가가며, 나이나 직급에 상관없이 진심으로 소통하려 노력합니다. 복학생 형들과 자연스럽게 친해지고, 교수진과도 허심탄해하게 대화할 수 있는 것이 강점입니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">에너지가 넘치고 활발한 성격</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      새로운 일에 도전할 때 주변 사람들까지 동기부여시키는 긍정적인 에너지를 가지고 있습니다. 팀프로젝트에서 분위기 메이커 역할을 자주 맡으며, 어려운 상황에서도 팀 전체의 사기를 북돋우는 편입니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-green-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">솔직하고 직설적인 커뮤니케이션</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      돌려 말하지 않고 생각하는 바를 명확히 전달합니다. 때로는 너무 직설적일 수 있지만, 오해 없는 명확한 소통으로 프로젝트 진행에서 혼선을 줄이는 데 도움이 됩니다
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 단점 및 개선 과정 섹션 */}
+              <div>
+                <h4 className="text-xl font-bold text-orange-400 mb-6 flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5" />
+                  단점 및 개선 과정
+                </h4>
+                <div className="grid gap-6">
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">고집이 강하고 밀어붙이는 성향</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      자신이 맞다고 생각하는 방향이 있으면 끝까지 밀어붙이는 경향이 있습니다. 하지만 부학생회장 활동을 통해 언제 밀어붙여야 하고 언제 다른 사람의 의견을 들어야 하는지 균형감각을 터득했습니다. 이끌어가는 사람에게는 너무 말을 잘 들어서도 안 되고, 상황을 잘 판단해서 맞다고 생각하면 밀어붙이고 아니라고 생각하면 양보할 줄 아는 것이 중요하다는 걸 깨달았습니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">순간 욱하는 성향</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      예상과 다른 결과가 나오거나 답답한 상황에서 감정적으로 반응하는 경향이 있었습니다. 특히 팀프로젝트에서 진행이 안 될 때나 교수진과의 의견 충돌 상황에서 감정이 앞서는 경우가 많았습니다. 하지만 교수진과의 지속적인 소통 경험을 통해 감정적 대응으로는 아무것도 얻을 수 없다는 것을 깨달았고, 한 번 숨을 고르고 논리적으로 접근하는 방법을 체득했습니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">완벽주의 성향으로 인한 시간 과소비</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      코드나 결과물의 품질에 대한 기준이 높아서 세부사항까지 계속 수정하려는 경향이 있습니다. 특히 프로젝트 마무리 단계에서 "조금 더 개선하면..."이라는 생각으로 데드라인을 넘기는 경우가 종종 있었습니다. 하지만 최근에는 우선순위를 명확히 정하고 MVP(최소 기능 제품) 개념을 적용해서 꼭 필요한 기능부터 완성하도록 개선하고 있습니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">새로운 기술에 대한 과도한 열정</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      Claude Code, GPT-4o 같은 새로운 AI 도구가 나오면 바로 프로젝트에 적용해보려는 성향이 강합니다. 때로는 안정성보다 새로운 기술 시도를 우선시해서 프로젝트 일정에 차질을 빚기도 했습니다. 현재는 새 기술을 개인 프로젝트나 별도 브랜치에서 먼저 검증한 후 팀 프로젝트에 적용하는 방식으로 개선하고 있습니다
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-orange-500 pl-6">
+                    <h5 className="font-bold text-cyan-400 mb-2">욕심이 많아 팀원들이 따라오기 어려워함</h5>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      프로젝트에 대한 열정이 너무 강해서 밤늦게까지 개발하고, 팀원들에게도 높은 기준을 요구하는 경향이 있습니다. 특히 5명 팀프로젝트에서 혼자 너무 앞서 나가서 다른 팀원들이 부담스러워하는 상황이 있었습니다. 지금은 팀원들의 진도와 역량을 고려해서 적절한 속도로 함께 가려고 노력하며, 무엇보다 팀원들이 성장할 수 있도록 도와주는 것에 집중하고 있습니다
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* 구분선 */}
           <div className="relative h-16 flex items-center justify-center my-12">
             <div className="w-full max-w-md h-px opacity-50" style={{ background: 'linear-gradient(to right, transparent, #3b82f6, transparent)' }}></div>

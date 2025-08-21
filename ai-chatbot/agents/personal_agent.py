@@ -21,7 +21,7 @@ Personal Agent - 개인 관련 질문 전문 (motivation + experience 통합)
 """
 
 import json
-import httpx
+import os
 from typing import Dict, Any
 from workflow.state import ChatState
 from config.settings import Config
@@ -32,7 +32,7 @@ class PersonalAgent:
     """개인 관련 질문 전문 에이전트 (motivation + experience 통합)"""
     
     def __init__(self):
-        self.about_api_base = f"{Config.PORTFOLIO_BASE_URL}/api/about"
+        self.personal_data_path = Config.PERSONAL_DATA_PATH
         
     async def process(self, state: ChatState) -> ChatState:
         """개인 관련 질문 처리 (자소서 + About Me 데이터 통합)"""
@@ -42,23 +42,26 @@ class PersonalAgent:
         print(f"   회사: {state.company_context}")
         
         try:
-            # 1단계: 자소서 데이터 조회
+            # 1단계: GPT로 필요한 섹션 선택 (메타데이터만 제공)
+            selected_sections = await self._select_personal_sections(state)
+            print(f"   선택된 섹션: {selected_sections}")
+            
+            # 2단계: 자소서 데이터 조회
             cover_letter_data = Config.get_cover_letter_data(state.company_context)
             print(f"   📄 자소서 데이터 로드: {len(cover_letter_data)}자")
             
-            # 2단계: About Me 데이터 조회
-            about_me_data = await self._get_about_me_data()
-            print(f"   📄 About Me 데이터 조회: {len(str(about_me_data))}자")
+            # 3단계: About Me 파일 읽기
+            about_me_data = await self._read_about_me_file()
+            print(f"   📄 About Me 파일 읽기: {len(about_me_data)}자")
             
-            # 3단계: 질문 분석 후 적절한 데이터 조합
-            combined_data = await self._combine_personal_data(
-                state.question, cover_letter_data, about_me_data
-            )
+            # 4단계: 선택된 섹션들의 내용 추출
+            combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
+            print(f"   📄 추출된 데이터: {len(combined_data)}자")
             
-            # 4단계: GPT로 개인 관련 답변 생성
+            # 5단계: GPT로 개인 관련 답변 생성
             answer = await self._generate_personal_answer(state, combined_data)
             
-            # 5단계: 관련 링크 생성
+            # 6단계: 관련 링크 생성
             links = self._generate_personal_links(state.question, about_me_data)
             
             # 6단계: State 업데이트
@@ -79,57 +82,117 @@ class PersonalAgent:
         
         return state
     
-    async def _get_about_me_data(self) -> Dict[str, Any]:
-        """About Me API에서 개인 데이터 조회"""
+    async def _read_about_me_file(self) -> str:
+        """About Me MD 파일 읽기"""
         
         try:
-            async with httpx.AsyncClient() as client:
-                response = await client.get(self.about_api_base)
-                if response.status_code == 200:
-                    data = response.json()
-                    return data
-                else:
-                    print(f"   ❌ About Me API 조회 실패: {response.status_code}")
-                    return {}
+            about_me_path = os.path.join(self.personal_data_path, "about-me.md")
+            
+            if os.path.exists(about_me_path):
+                with open(about_me_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    return content
+            else:
+                print(f"   ❌ about-me.md 파일 없음: {about_me_path}")
+                return ""
+                
         except Exception as e:
-            print(f"   ❌ About Me API 오류: {str(e)}")
-            return {}
+            print(f"   ❌ about-me.md 읽기 실패: {str(e)}")
+            return ""
     
-    async def _combine_personal_data(self, question: str, cover_letter: str, about_me: Dict) -> str:
-        """질문에 따라 자소서와 About Me 데이터를 선택적으로 조합"""
+    def _get_personal_sections_metadata(self, company_context: str) -> str:
+        """자소서 + About Me 섹션들의 제목과 간단한 설명만 반환"""
+        
+        metadata = ""
+        
+        # 자소서 섹션들 (회사별로 다름)
+        if company_context == "toss":
+            metadata += """
+=== 자소서 섹션들 ===
+- 지원동기: AI 기술 열정과 토스 분석, E-commerce 경험
+- 핵심기술: LLM/RAG, ML 모델링, 백엔드, 데이터 엔지니어링, 프론트엔드 5가지
+- 토스목표: 1-4년차 단계별 성장 계획
+- 차별화포인트: LLM/RAG 강점, E-commerce 경험, T자형 개발자, 체계적 접근
+"""
+        elif company_context == "game_n":
+            metadata += """
+=== 자소서 섹션들 ===
+- 지원동기: 게임과 AI의 융합에 대한 철학, Game N 가치관 매칭
+- 핵심기술: 개인화 추천, 실시간 AI, 사용자 행동 분석, 크로스 플랫폼, LLM/RAG
+- Game N 목표: 1-3년차 게임 AI 발전 계획
+- 차별화포인트: 게임과 AI 이해, 사용자 중심 설계, 창의적 문제 해결
+"""
+        else:
+            metadata += """
+=== 자소서 섹션들 ===
+- 지원동기: AI 기술에 대한 열정과 회사 분석
+- 핵심기술: LLM/RAG, ML 모델링, 백엔드, 데이터 엔지니어링, 프론트엔드
+- 차별화포인트: 기술적 강점과 독특한 경험들
+"""
+        
+        metadata += """
+=== About Me 섹션들 ===
+- 핵심 가치관 & 개발 철학: 왜 AI 엔지니어가 되었나, 어떤 개발자 되고 싶나, 일할 때 중요한 것
+- 핵심 강점: 문제 해결 능력, 기술 적응력, 팀 커뮤니케이션, 긍정적 마인드
+- 프로젝트 경험과 배운 점: 데이트 코스 프로젝트의 어려움/성취/실패 경험
+- 팀워크 & 협업: 기술 리드, 병합 담당, 갈등 중재자 역할 경험
+- 문제 해결 프로세스: 4단계 체계적 문제 해결 방법론
+- 업무 스타일: 하루 시작/진행/마무리 패턴
+- 대외활동 상세: SK Networks AI Camp, 부학생회장, 해커톤 운영진, E-commerce, 과대표
+- 연락처 정보: GitHub, Email, Phone
+- 학력 및 배경: 한국항공대 소프트웨어학과, 하노이한국국제학교
+- 성격의 장단점: 호기심/끈기/긍정성 vs 성급함/감정적 반응과 개선 과정
+"""
+        
+        return metadata
+
+    async def _select_personal_sections(self, state: ChatState) -> Dict[str, List[str]]:
+        """GPT가 필요한 섹션들의 제목만 선택"""
         
         try:
             client = get_openai_client()
+            company_context = Config.get_company_context(state.company_context)
             
-            # About Me 데이터를 텍스트로 변환
-            about_me_text = self._format_about_me_data(about_me)
+            # 섹션 메타데이터 가져오기
+            sections_metadata = self._get_personal_sections_metadata(state.company_context)
+            
+            # 대화 히스토리 포맷팅 (최근 2개)
+            history_context = ""
+            if state.conversation_history:
+                recent = state.conversation_history[-2:]
+                for msg in recent:
+                    role = "질문" if msg['role'] == 'user' else "답변"
+                    history_context += f"{role}: {msg['content'][:200]}...\n\n"
             
             prompt = f"""
-다음 개인 관련 질문에 답변하기 위해 필요한 데이터를 선택하세요.
+{company_context}
 
-질문: "{question}"
+=== 이전 대화 ===
+{history_context if history_context else "첫 번째 질문입니다."}
 
-=== 자소서 데이터 (회사 맞춤) ===
-{cover_letter}
+=== 현재 질문 ===
+"{state.question}"
 
-=== About Me 데이터 (개인 경험/가치관) ===
-{about_me_text}
+=== 사용 가능한 섹션들 ===
+{sections_metadata}
 
-이 질문에 답변하기 위해 어떤 데이터가 필요한지 분석하고, 필요한 부분만 추출하여 조합하세요.
+질문에 답변하기 위해 필요한 섹션들의 정확한 제목만 선택해주세요.
+
+: 전이 제목 임
 
 JSON으로만 응답하세요:
 {{
-    "question_type": "질문 유형 (지원동기/강점/팀워크/성장/가치관/목표 중 하나)",
-    "primary_source": "주요 데이터 소스 (자소서/About Me/둘다 중 하나)",
-    "cover_letter_sections": ["필요한 자소서 섹션들"],
-    "about_me_sections": ["필요한 About Me 섹션들"],
+    "selected_cover_letter_sections": ["세션제목1", "세션제목2"],
+    "selected_about_me_sections": ["세션제목1", "세션제목2", "세션제목3"],
     "reasoning": "선택 이유"
 }}
+
+갯수에 맞도록 프로젝트 명을 써서 보내주면 됨
 """
             
             response = await client.chat_completion_with_retry(
                 messages=[
-                    {"role": "system", "content": "당신은 개인 데이터 분석 전문가입니다."},
+                    {"role": "system", "content": "당신은 개인 데이터 섹션 선택 전문가입니다. 정확한 섹션 제목만 선택하세요."},
                     {"role": "user", "content": prompt}
                 ],
                 model="gpt-4o-mini",
@@ -138,9 +201,9 @@ JSON으로만 응답하세요:
             )
             
             result_text = response.choices[0].message.content.strip()
-            print(f"   🤖 데이터 조합 분석: {result_text}")
+            print(f"   🤖 섹션 선택 GPT 응답: {result_text}")
             
-            # JSON 파싱 (마크다운 코드블록 제거)
+            # JSON 파싱
             if result_text.startswith("```json"):
                 result_text = result_text[7:]
             if result_text.startswith("```"):
@@ -149,88 +212,17 @@ JSON으로만 응답하세요:
                 result_text = result_text[:-3]
             result_text = result_text.strip()
             
-            analysis = parse_json_response(result_text)
+            selection = parse_json_response(result_text)
             
-            # 분석 결과에 따라 데이터 조합
-            combined_data = self._extract_relevant_sections(
-                cover_letter, about_me, analysis
-            )
-            
-            return combined_data
+            return selection
             
         except Exception as e:
-            print(f"   ❌ 데이터 조합 오류: {str(e)}")
-            # 폴백: 모든 데이터 포함
-            about_me_text = self._format_about_me_data(about_me)
-            return f"""
-=== 자소서 데이터 ===
-{cover_letter}
-
-=== About Me 데이터 ===
-{about_me_text}
-"""
-    
-    def _format_about_me_data(self, about_me: Dict) -> str:
-        """About Me 딕셔너리를 텍스트로 변환"""
-        
-        formatted_text = ""
-        
-        # 핵심 가치관
-        if 'coreValues' in about_me:
-            formatted_text += "💡 핵심 가치관:\n"
-            for item in about_me['coreValues'].get('items', []):
-                formatted_text += f"Q: {item.get('question', '')}\n"
-                formatted_text += f"A: {item.get('answer', '')}\n\n"
-        
-        # 강점
-        if 'strengths' in about_me:
-            formatted_text += "💪 강점:\n"
-            for item in about_me['strengths'].get('items', []):
-                formatted_text += f"- {item.get('name', '')}: {item.get('description', '')}\n"
-            formatted_text += "\n"
-        
-        # 성장 스토리
-        if 'growthStories' in about_me:
-            formatted_text += "💡 성장 스토리:\n"
-            for item in about_me['growthStories'].get('items', []):
-                formatted_text += f"- {item.get('title', '')}: {item.get('description', '')}\n"
-            formatted_text += "\n"
-        
-        # 팀워크
-        if 'teamwork' in about_me:
-            formatted_text += "🤝 팀워크:\n"
-            for item in about_me['teamwork'].get('items', []):
-                formatted_text += f"- {item.get('role', '')}: {item.get('description', '')}\n"
-            formatted_text += "\n"
-        
-        # 활동
-        if 'activities' in about_me:
-            formatted_text += "🏃 대외 활동:\n"
-            for item in about_me['activities'].get('items', []):
-                if item.get('name'):
-                    formatted_text += f"- {item.get('name', '')} ({item.get('period', '')})\n"
-            formatted_text += "\n"
-        
-        return formatted_text
-    
-    def _extract_relevant_sections(self, cover_letter: str, about_me: Dict, analysis: Dict) -> str:
-        """분석 결과에 따라 필요한 섹션만 추출"""
-        
-        combined_data = ""
-        
-        # 자소서 섹션 추출
-        if analysis.get('cover_letter_sections'):
-            combined_data += "=== 자소서 관련 내용 ===\n"
-            # 간단히 전체 자소서 포함 (섹션별 파싱은 복잡함)
-            combined_data += cover_letter + "\n\n"
-        
-        # About Me 섹션 추출
-        if analysis.get('about_me_sections'):
-            combined_data += "=== 개인 경험 및 가치관 ===\n"
-            about_me_text = self._format_about_me_data(about_me)
-            combined_data += about_me_text + "\n"
-        
-        return combined_data
+            print(f"   ❌ 섹션 선택 오류: {str(e)}")
+            # 폴백: 모든 섹션 선택
+            return {
+                "selected_cover_letter_sections": ["지원동기", "핵심기술", "차별화포인트"],
+                "selected_about_me_sections": ["핵심 가치관 & 개발 철학", "핵심 강점"]
+            }
     
     async def _generate_personal_answer(self, state: ChatState, combined_data: str) -> str:
         """GPT로 개인 관련 답변 생성"""
@@ -262,7 +254,7 @@ JSON으로만 응답하세요:
 매우 중요한 규칙:
 1. 제공된 데이터에만 기반하여 답변하세요
 2. 없는 직장 경험이나 프로젝트 지어내기 절대 금지
-3. 자소서의 토스 맞춤 내용과 About Me의 개인 경험을 자연스럽게 조합
+3. 자소서의 회사 맞춤 내용과 About Me의 개인 경험을 자연스럽게 조합
 4. 개인적 동기/가치관 → 구체적 경험 사례 → 회사와의 연결점 순서로 구성
 5. 150-250단어로 답변
 
@@ -288,7 +280,68 @@ JSON으로만 응답하세요:
             print(f"   ❌ 답변 생성 오류: {str(e)}")
             return f"죄송합니다. '{state.question}' 질문에 대한 답변 생성 중 오류가 발생했습니다."
     
-    def _generate_personal_links(self, question: str, about_me: Dict) -> Dict[str, str]:
+    def _extract_selected_content(self, cover_letter: str, about_me: str, selected_sections: Dict) -> str:
+        """선택된 섹션들의 전체 내용 추출"""
+        
+        combined_data = ""
+        
+        # 자소서 섹션 추출
+        if selected_sections.get('selected_cover_letter_sections'):
+            combined_data += "=== 자소서 관련 내용 ===\n"
+            for section_title in selected_sections['selected_cover_letter_sections']:
+                section_content = self._extract_cover_letter_section(cover_letter, section_title)
+                if section_content:
+                    combined_data += f"\n--- {section_title} ---\n{section_content}\n"
+            combined_data += "\n"
+        
+        # About Me 섹션 추출
+        if selected_sections.get('selected_about_me_sections'):
+            combined_data += "=== About Me 관련 내용 ===\n"
+            for section_title in selected_sections['selected_about_me_sections']:
+                section_content = self._extract_about_me_section(about_me, section_title)
+                if section_content:
+                    combined_data += f"\n--- {section_title} ---\n{section_content}\n"
+        
+        return combined_data
+
+    def _extract_cover_letter_section(self, cover_letter: str, section_title: str) -> str:
+        """자소서에서 특정 섹션 추출"""
+        
+        import re
+        
+        if section_title == "지원동기":
+            pattern = r"💡 지원동기:(.*?)(?=🛠️|$)"
+        elif section_title == "핵심기술":
+            pattern = r"🛠️ 핵심기술:(.*?)(?=🎯|$)"
+        elif section_title == "토스목표":
+            pattern = r"🎯 토스목표:(.*?)(?=💪|$)"
+        elif section_title == "Game N 목표":
+            pattern = r"🎯 Game N 목표:(.*?)(?=💪|$)"
+        elif section_title == "차별화포인트":
+            pattern = r"💪 차별화포인트:(.*?)$"
+        else:
+            return ""
+        
+        match = re.search(pattern, cover_letter, re.DOTALL)
+        if match:
+            return match.group(1).strip()
+        return ""
+
+    def _extract_about_me_section(self, about_me: str, section_title: str) -> str:
+        """About Me에서 특정 섹션 추출"""
+        
+        import re
+        
+        # ## 섹션 제목으로 시작해서 다음 ## 까지 추출
+        escaped_title = re.escape(section_title)
+        pattern = rf"## {escaped_title}(.*?)(?=## |$)"
+        
+        match = re.search(pattern, about_me, re.DOTALL)
+        if match:
+            return match.group(1).strip()
+        return ""
+    
+    def _generate_personal_links(self, question: str, about_me: str) -> Dict[str, str]:
         """개인 관련 링크 생성"""
         
         links = {}

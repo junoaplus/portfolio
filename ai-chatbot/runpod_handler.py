@@ -158,22 +158,17 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
                 "success": False
             }
         
-        # 동기 요청 처리 (runpod 환경에서)
+        # 🔥 글로벌 TestClient 사용 (메모리 공유)
         try:
-            # FastAPI TestClient는 동기적으로 작동
-            from main import app
-            from fastapi.testclient import TestClient
-            
-            client = TestClient(app)
-            
             method = job_input.get("method", "GET")
             path = job_input.get("path", "/")
             headers = job_input.get("headers", {})
             body = job_input.get("body", {})
             
             print(f"🔄 요청 처리: {method} {path}")
+            print(f"🔍 세션 관리자 상태: 활성 세션 수 확인")
             
-            # 동기 요청 실행
+            # 🔥 동일한 client 인스턴스 사용 (메모리 상태 유지)
             if method == "GET":
                 response = client.get(path, headers=headers)
             elif method == "POST":

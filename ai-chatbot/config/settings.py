@@ -17,8 +17,9 @@ class Config:
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
     PORTFOLIO_BASE_URL: str = os.getenv("PORTFOLIO_BASE_URL", "http://localhost:3000")
     
-    # === 프로젝트 데이터 설정 ===
+    # === 데이터 경로 설정 ===
     PROJECT_DATA_PATH: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "projects")
+    PERSONAL_DATA_PATH: str = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "personal")
     
     # === API 설정 (About Me용으로 유지) ===
     PORTFOLIO_API_BASE_URL: str = f"{PORTFOLIO_BASE_URL}/api/portfolio" 
