@@ -120,7 +120,7 @@ export default function ChatbotPage() {
   }
 
   // 2. 현재 회사 설정
-  const setCurrentCompany = (company: string) => {
+  const setCurrentCompanyStorage = (company: string) => {
     sessionStorage.setItem('chatbot_current_company', company)
   }
 
@@ -325,7 +325,7 @@ export default function ChatbotPage() {
     // 1. 현재 회사 설정
     setCurrentCompany(company)
     setSelectedCompany(companyKey)
-    setCurrentCompany(companyKey) // sessionStorage 업데이트
+    setCurrentCompanyStorage(companyKey) // sessionStorage 업데이트
     
     // 2. 기존 데이터 확인
     const existingData = loadCompanyData(companyKey)
