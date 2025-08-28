@@ -215,7 +215,7 @@ export default function TypeScriptSkillPage() {
                     <span className="font-bold text-cyan-400">개발팀의 협업 효율성</span>을 크게 향상시켰습니다.
                   </p>
                   <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">미션 크리티컬한 서비스</span>에서는 
+                    특히 <span className="font-bold text-blue-300">미션 크리티컬한 서비스</span>에서는 
                     이런 타입 안전성이 <span className="font-bold text-cyan-400">서비스 안정성과 개발자 생산성</span> 
                     모두를 보장하는 핵심 역량이 될 것이라고 확신합니다.
                   </p>

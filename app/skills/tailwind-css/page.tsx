@@ -215,7 +215,7 @@ export default function TailwindCSSSkillPage() {
                     사용자 피드백을 즉시 반영할 수 있게 되었고, <span className="font-bold text-cyan-400">개발팀의 협업 효율성</span>도 크게 향상되었습니다.
                   </p>
                   <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">대규모 서비스 환경</span>에서는 
+                    특히 <span className="font-bold text-blue-300">대규모 서비스 환경</span>에서는 
                     이런 디자인 시스템의 일관성이 <span className="font-bold text-cyan-400">사용자 경험과 개발 생산성</span> 
                     모두를 보장하는 핵심 역량이 될 것이라고 확신합니다.
                   </p>

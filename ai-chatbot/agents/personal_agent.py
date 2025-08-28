@@ -106,31 +106,7 @@ class PersonalAgent:
         metadata = ""
         
         # 자소서 섹션들 (회사별로 다름)
-        if company_context == "toss":
-            metadata += """
-=== 자소서 섹션들 ===
-- 지원동기: AI 기술 열정과 토스 분석, E-commerce 경험
-- 핵심기술: LLM/RAG, ML 모델링, 백엔드, 데이터 엔지니어링, 프론트엔드 5가지
-- 토스목표: 1-4년차 단계별 성장 계획
-- 차별화포인트: LLM/RAG 강점, E-commerce 경험, T자형 개발자, 체계적 접근
-"""
-        elif company_context == "game_n":
-            metadata += """
-=== 자소서 섹션들 ===
-- 지원동기: 게임과 AI의 융합에 대한 철학, Game N 가치관 매칭
-- 핵심기술: 개인화 추천, 실시간 AI, 사용자 행동 분석, 크로스 플랫폼, LLM/RAG
-- Game N 목표: 1-3년차 게임 AI 발전 계획
-- 차별화포인트: 게임과 AI 이해, 사용자 중심 설계, 창의적 문제 해결
-"""
-        elif company_context == "ably":
-            metadata += """
-=== 자소서 섹션들 ===
-- 지원동기: 패션 테크와 생성형 AI 관심, One Team 문화 공감
-- 핵심기술: 생성형 AI 백엔드, Computer Vision, 클라우드 MLOps, 대용량 데이터, LLM/RAG
-- 에이블리 목표: 1-3년차 Virtual Try-On 및 AI 플랫폼 구축 계획
-- 차별화포인트: 생성형 AI 실제 적용, 패션-AI 융합 이해, 빠른 기술 적용
-"""
-        elif company_context == "nuua":
+        if company_context == "nuua":
             metadata += """
 === 자소서 섹션들 ===
 - 지원동기: 당연해야 할 것들에 도전 철학 공감, AI 그랜드 챌린지 인상
@@ -153,6 +129,14 @@ class PersonalAgent:
 - 핵심기술: LLM 모델 개발, 자연어 처리, 프로토타입 개발, 클라우드 환경, 최적화 경험
 - 이스트소프트 목표: 1-3년차 AI 서비스 핵심 개발자 성장 계획
 - 차별화포인트: 실제 LLM 서비스 구축, 실용주의적 접근, 빠른 프로토타입 개발
+"""
+        elif company_context == "liner":
+            metadata += """
+=== 자소서 섹션들 ===
+- 지원동기: 세상에서 가장 신뢰할 수 있는 AI 비전 공감, AI 검색과 정보 탐색 시스템에 대한 열정
+- 핵심기술: AI Search Agent, 벡터 검색 시스템, 정보 탐색 최적화, 대화형 AI, 데이터 처리
+- 라이너 목표: 1-3년차 AI Search Agent와 Research Agent 혁신 계획
+- 차별화포인트: 대규모 검색 시스템 구축 경험, 멀티 에이전트 시스템 설계, 성능 최적화 전문성
 """
         else:
             metadata += """
@@ -345,18 +329,14 @@ JSON으로만 응답하세요:
             pattern = r"💡 지원동기:(.*?)(?=🛠️|$)"
         elif section_title == "핵심기술":
             pattern = r"🛠️ 핵심기술:(.*?)(?=🎯|$)"
-        elif section_title == "토스목표":
-            pattern = r"🎯 토스목표:(.*?)(?=💪|$)"
-        elif section_title == "Game N 목표":
-            pattern = r"🎯 Game N 목표:(.*?)(?=💪|$)"
-        elif section_title == "에이블리 목표":
-            pattern = r"🎯 에이블리 목표:(.*?)(?=💪|$)"
         elif section_title == "누아 목표":
             pattern = r"🎯 누아 목표:(.*?)(?=💪|$)"
         elif section_title == "엘박스 목표":
             pattern = r"🎯 엘박스 목표:(.*?)(?=💪|$)"
         elif section_title == "이스트소프트 목표":
             pattern = r"🎯 이스트소프트 목표:(.*?)(?=💪|$)"
+        elif section_title == "라이너 목표":
+            pattern = r"🎯 라이너 목표:(.*?)(?=💪|$)"
         elif section_title == "차별화포인트":
             pattern = r"💪 차별화포인트:(.*?)$"
         else:

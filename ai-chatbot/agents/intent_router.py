@@ -27,24 +27,6 @@ class IntentRouter:
     def __init__(self):
         # 회사별 컨텍스트 (확장 가능)
         self.company_contexts = {
-            "toss": {
-                "position": "ML Engineer",
-                "company": "토스",
-                "focus": "LLM/RAG 기술, 추천 시스템, 대용량 데이터 처리, 이상 탐지",
-                "culture": "빠른 실행, 비즈니스 임팩트, 기술적 깊이"
-            },
-            "game_n": {
-                "position": "AI Engineer",
-                "company": "Game N",
-                "focus": "게임 AI, 사용자 개인화, 실시간 추천, 데이터 분석",
-                "culture": "창의성과 자율성, 게임 사용자 경험, 크로스 플랫폼"
-            },
-            "ably": {
-                "position": "AI Engineer",
-                "company": "에이블리",
-                "focus": "생성형 AI, Virtual Try-On, Stable Diffusion, Computer Vision",
-                "culture": "One Team, Grit, Impact 중심, 최신 AI 기술 빠른 적용"
-            },
             "nuua": {
                 "position": "AI 에이전트 개발자",
                 "company": "누아",
@@ -62,6 +44,12 @@ class IntentRouter:
                 "company": "이스트소프트",
                 "focus": "LLM 모델 개발, Perso SaaS, Alan AI, OpenLLM 파인튜닝, Azure 클라우드",
                 "culture": "실용주의 인공지능으로 일상에 편리함을 더하다, 30년 SW 전문기업"
+            },
+            "liner": {
+                "position": "ML Engineer(Agent)",
+                "company": "라이너",
+                "focus": "AI Search, Research Agent, 검색 에이전트 시스템, 정보 탐색 혁신",
+                "culture": "세상에서 가장 신뢰할 수 있는 AI, 정보 탐색의 어려움 해결, 글로벌 임팩트"
             }
             # 추후 kakao, naver, coupang 등 추가 가능
         }

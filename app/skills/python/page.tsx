@@ -238,7 +238,7 @@ export default function PythonSkillPage() {
                     아이디어를 즉시 구현하고 검증할 수 있게 되어, <span className="font-bold text-cyan-400">비즈니스 민첩성</span>을 크게 향상시켰습니다.
                   </p>
                   <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">데이터 기반 핀테크</span>에서는 
+                    특히 <span className="font-bold text-blue-300">데이터 기반 핀테크</span>에서는 
                     이런 Python 기반 통합 개발 능력이 <span className="font-bold text-cyan-400">기술적 일관성과 개발 생산성</span>의 
                     핵심 경쟁력이 될 것이라고 확신합니다.
                   </p>

@@ -214,7 +214,7 @@ export default function OneHotEncodingSkillPage() {
                     모델의 안정성과 일반화 성능이 향상되어, <span className="font-bold text-cyan-400">비즈니스 의사결정의 신뢰성</span>을 높였습니다.
                   </p>
                   <p>
-                    특히 토스와 같은 <span className="font-bold text-blue-300">데이터 기반 서비스</span>에서는 
+                    특히 <span className="font-bold text-blue-300">데이터 기반 서비스</span>에서는 
                     이런 기초적이지만 중요한 전처리 기술이 <span className="font-bold text-cyan-400">AI/ML 시스템의 품질과 안정성</span>을 
                     좌우하는 핵심 요소가 될 것이라고 확신합니다.
                   </p>

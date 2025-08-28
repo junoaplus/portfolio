@@ -98,7 +98,7 @@ export default function HomePage() {
   }, [])
 
   const techStack = [
-    // 1줄: 토스 핵심 빅데이터/DB 기술 (실제 사용) - 6개
+    // 1줄: 핵심 빅데이터/DB 기술 (실제 사용) - 6개
     { name: 'PySpark', level: 85, icon: '⚡', slug: 'pyspark' },
     { name: 'PostgreSQL', level: 80, icon: '🐘', slug: 'postgresql' },
     { name: 'Redis', level: 75, icon: '💾', slug: 'redis' },
