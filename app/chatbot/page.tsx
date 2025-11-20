@@ -200,7 +200,7 @@ export default function ChatbotPage() {
   const defaultCompanyKey = 'mindlogic'
   const defaultCompany = companyConfigs[defaultCompanyKey]
 
-  const [showCompanySelection, setShowCompanySelection] = useState(false)
+  const [showCompanySelection, setShowCompanySelection] = useState(true)
   const [selectedCompany, setSelectedCompany] = useState<string>(defaultCompanyKey)
   const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(defaultCompany)
   const [messages, setMessages] = useState<Message[]>([])
@@ -225,10 +225,7 @@ export default function ChatbotPage() {
       return
     }
     // 기본 회사 고정 저장
-    setCurrentCompanyStorage(defaultCompanyKey)
-    setSelectedCompany(defaultCompanyKey)
-    setCurrentCompany(defaultCompany)
-    setMessages([])
+    setShowCompanySelection(true)
   }, [])
 
   const quickQuestions = [
