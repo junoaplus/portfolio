@@ -54,9 +54,20 @@ class PersonalAgent:
             about_me_data = await self._read_about_me_file()
             print(f"   📄 About Me 파일 읽기: {len(about_me_data)}자")
             
-            # 4단계: 선택된 섹션들의 내용 추출
-            combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
-            print(f"   📄 추출된 데이터: {len(combined_data)}자")
+            # 3-1단계: 협업/소통 질문이면 About의 관련 섹션을 우선 포함
+            collaboration_keywords = ["협업", "소통", "부서", "팀워크", "갈등", "조율", "부회장", "과대표"]
+            if any(keyword in state.question for keyword in collaboration_keywords):
+                collab_section = self._extract_about_me_section(about_me_data, "팀 커뮤니케이션과 리더십")
+                if collab_section:
+                    combined_data = collab_section
+                    print(f"   📄 협업 섹션 강제 포함: {len(combined_data)}자")
+                else:
+                    combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
+                    print(f"   📄 협업 섹션 없음, 기본 추출: {len(combined_data)}자")
+            else:
+                # 4단계: 선택된 섹션들의 내용 추출
+                combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
+                print(f"   📄 추출된 데이터: {len(combined_data)}자")
             
             # 5단계: GPT로 개인 관련 답변 생성
             answer = await self._generate_personal_answer(state, combined_data)
