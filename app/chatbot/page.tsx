@@ -142,6 +142,7 @@ export default function ChatbotPage() {
 
   // 2. 현재 회사 설정
   const setCurrentCompanyStorage = (company: string) => {
+    if (typeof window === 'undefined') return
     sessionStorage.setItem('chatbot_current_company', company)
   }
 
@@ -152,6 +153,7 @@ export default function ChatbotPage() {
 
   // 4. 회사별 데이터 저장
   const saveCompanyData = (company: string, data: any) => {
+    if (typeof window === 'undefined') return
     const key = getCompanyDataKey(company)
     const saveData = {
       ...data,
@@ -163,6 +165,7 @@ export default function ChatbotPage() {
 
   // 5. 회사별 데이터 로드
   const loadCompanyData = (company: string): any | null => {
+    if (typeof window === 'undefined') return null
     const key = getCompanyDataKey(company)
     const saved = sessionStorage.getItem(key)
     if (saved) {
@@ -197,51 +200,36 @@ export default function ChatbotPage() {
   const defaultCompanyKey = 'mindlogic'
   const defaultCompany = companyConfigs[defaultCompanyKey]
 
-  // 7. 페이지 로드시 복구 함수 (마인드로직 단일 컨텍스트)
-  const restoreFromSessionStorage = (): {
-    restoredData?: any
-  } => {
-    const savedData = loadCompanyData(defaultCompanyKey)
-    if (savedData && savedData.messages?.length > 0) {
-      console.log(`🔄 ${defaultCompanyKey} 데이터 복구`)
-      return { restoredData: savedData }
-    }
-    // 기본 회사 고정 저장
-    setCurrentCompanyStorage(defaultCompanyKey)
-    return {
-      restoredData: {
-        selectedCompany: defaultCompanyKey,
-        currentCompany: defaultCompany,
-        messages: []
-      }
-    }
-  }
-
-  // 초기 복구 데이터 계산
-  const initialRestore = restoreFromSessionStorage()
-
   const [showCompanySelection, setShowCompanySelection] = useState(false)
-  const [selectedCompany, setSelectedCompany] = useState<string>(
-    initialRestore.restoredData?.selectedCompany || defaultCompanyKey
-  )
-  const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(
-    initialRestore.restoredData?.currentCompany || defaultCompany
-  )
-  const [messages, setMessages] = useState<Message[]>(
-    initialRestore.restoredData?.messages || []
-  )
+  const [selectedCompany, setSelectedCompany] = useState<string>(defaultCompanyKey)
+  const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(defaultCompany)
+  const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [isServerWarming, setIsServerWarming] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // 기본 회사(마인드로직) 자동 초기화
+  // 기본 회사(마인드로직) 초기 복구 - 클라이언트에서만 실행
   useEffect(() => {
-    if (!showCompanySelection && selectedCompany === defaultCompanyKey && messages.length === 0) {
-      handleCompanySelect(defaultCompanyKey)
+    if (typeof window === 'undefined') return
+    const savedData = loadCompanyData(defaultCompanyKey)
+    if (savedData && savedData.messages?.length > 0) {
+      setMessages(savedData.messages)
+      setSelectedCompany(savedData.selectedCompany || defaultCompanyKey)
+      setCurrentCompany(savedData.currentCompany || defaultCompany)
+      setShowCompanySelection(false)
+      if (savedData.sessionId) {
+        localStorage.setItem('chatbot_session_id', savedData.sessionId)
+      }
+      return
     }
-  }, [showCompanySelection, selectedCompany, messages.length])
+    // 기본 회사 고정 저장
+    setCurrentCompanyStorage(defaultCompanyKey)
+    setSelectedCompany(defaultCompanyKey)
+    setCurrentCompany(defaultCompany)
+    setMessages([])
+  }, [])
 
   const quickQuestions = [
     'LangGraph 멀티 에이전트 설계를 설명해 주세요',
