@@ -354,10 +354,11 @@ export default function ChatbotPage() {
 
   // 복구된 데이터가 있으면 세션 검증
   useEffect(() => {
-    const restored = initialRestore.restoredData
+    if (typeof window === 'undefined') return
+    const restored = loadCompanyData(defaultCompanyKey)
     if (restored && restored.sessionId) {
       console.log('🔍 복구된 세션 검증 중...')
-      validateRestoredSession(restored.sessionId, restored.selectedCompany)
+      validateRestoredSession(restored.sessionId, restored.selectedCompany || defaultCompanyKey)
     }
   }, [])
 
