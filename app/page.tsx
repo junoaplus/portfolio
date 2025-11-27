@@ -28,7 +28,7 @@ import {
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-export default function HomePage() {
+export function HomePageContent() {
   // API Base URL 환경변수 설정 (Runpod Serverless)
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'
   
@@ -928,4 +928,8 @@ export default function HomePage() {
       </footer>
     </div>
   )
+}
+
+export default function HomePage() {
+  return <HomePageContent />
 }

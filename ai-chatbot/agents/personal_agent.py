@@ -7,14 +7,6 @@ Personal Agent - 개인 관련 질문 전문 (motivation + experience 통합)
 3. 목표, 포부, 성장계획 답변
 4. 자소서 + About Me 데이터 통합 활용
 
-처리하는 질문 예시:
-- "왜 우리 회사에 지원했나요?"
-- "당신의 강점은 무엇인가요?"
-- "팀워크 경험을 말해주세요"
-- "5년 후 커리어 목표는?"
-- "가치관은 무엇인가요?"
-- "성장 과정에서 어려웠던 점은?"
-
 데이터 소스:
 - Config 자소서 데이터 (7개 섹션)
 - About Me API 데이터 (7개 섹션)
@@ -54,26 +46,15 @@ class PersonalAgent:
             about_me_data = await self._read_about_me_file()
             print(f"   📄 About Me 파일 읽기: {len(about_me_data)}자")
             
-            # 3-1단계: 협업/소통 질문이면 About의 관련 섹션을 우선 포함
-            collaboration_keywords = ["협업", "소통", "부서", "팀워크", "갈등", "조율", "부회장", "과대표"]
-            if any(keyword in state.question for keyword in collaboration_keywords):
-                collab_section = self._extract_about_me_section(about_me_data, "팀 커뮤니케이션과 리더십")
-                if collab_section:
-                    combined_data = collab_section
-                    print(f"   📄 협업 섹션 강제 포함: {len(combined_data)}자")
-                else:
-                    combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
-                    print(f"   📄 협업 섹션 없음, 기본 추출: {len(combined_data)}자")
-            else:
-                # 4단계: 선택된 섹션들의 내용 추출
-                combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
-                print(f"   📄 추출된 데이터: {len(combined_data)}자")
+            # 4단계: 선택된 섹션들의 내용 추출 (키워드 하드코딩 없이 LLM 선택만 사용)
+            combined_data = self._extract_selected_content(cover_letter_data, about_me_data, selected_sections)
+            print(f"   📄 추출된 데이터: {len(combined_data)}자")
             
             # 5단계: GPT로 개인 관련 답변 생성
             answer = await self._generate_personal_answer(state, combined_data)
             
             # 6단계: 관련 링크 생성
-            links = self._generate_personal_links(state.question, about_me_data)
+            links = self._generate_personal_links(state)
             
             # 6단계: State 업데이트
             state.response = answer
@@ -124,6 +105,14 @@ class PersonalAgent:
 - 핵심기술: AI 에이전트 설계, 비정형 데이터 구조화, 업무 자동화, 대규모 처리, 문제 해결
 - 누아 목표: 1-4년차 여행 산업 자동화 혁신 계획
 - 차별화포인트: AI 에이전트 구축 경험, 비정형 데이터 전문성, 끈기와 성실함, 실무 문제 이해
+"""
+        elif company_context == "mindlogic":
+            metadata += """
+=== 자소서 섹션들 ===
+- 지원동기: 함께 더 이야기하고 싶은 AI, 페르소나 챗봇 비전 공감
+- 핵심기술: LLM/RAG/에이전트, 스트리밍 최적화(33초→3.4초), PyTorch/HF, FastAPI/Next.js
+- 마인드로직 목표: 페르소나 그라운딩·장기기억 고도화, 스트리밍 응답 품질 향상, 프롬프트·메타데이터 실험 고속화
+- 차별화포인트: LangGraph 멀티 에이전트 설계, 성능 집착형 튜닝 경험, 데이터 파이프라인(PySpark/벡터DB)과 풀스택 서빙 모두 경험
 """
         elif company_context == "lbox":
             metadata += """
@@ -280,10 +269,11 @@ JSON으로만 응답하세요:
 
 매우 중요한 규칙:
 1. 제공된 데이터에만 기반하여 답변하세요
-2. 없는 직장 경험이나 프로젝트 지어내기 절대 금지
-3. 자소서의 회사 맞춤 내용과 About Me의 개인 경험을 자연스럽게 조합
-4. 개인적 동기/가치관 → 구체적 경험 사례 → 회사와의 연결점 순서로 구성
-5. 150-250단어로 답변
+2. 데이터가 부족하면 솔직히 모른다고 말하고, 이미 검증된 강점/계획만 짧게 언급하세요
+3. 없는 직장 경험이나 프로젝트 지어내기 절대 금지
+4. 자소서의 회사 맞춤 내용과 About Me의 개인 경험을 자연스럽게 조합
+5. 개인적 동기/가치관 → 구체적 경험 사례 → 회사와의 연결점 순서로 구성
+6. 150-250단어로 답변
 
 면접관에게 하는 자연스러운 대화체로 답변하되, 진정성 있는 개인 경험과 회사 적합성을 균형있게 어필하세요.
 """
@@ -372,18 +362,17 @@ JSON으로만 응답하세요:
             return match.group(1).strip()
         return ""
     
-    def _generate_personal_links(self, question: str, about_me: str) -> Dict[str, str]:
+    def _generate_personal_links(self, state: ChatState) -> Dict[str, str]:
         """개인 관련 링크 생성"""
         
         links = {}
         
-        # 강점이나 경험 관련 질문이면 About Me 페이지 링크
-        personal_keywords = ["강점", "경험", "가치관", "성장", "팀워크", "리더십", "활동"]
-        if any(keyword in question for keyword in personal_keywords):
+        # 개인 의도일 때 About 링크 제공
+        if getattr(state, "intent", None) == "personal":
             links["👤 About Me - 개인 소개"] = "/about"
         
-        # 프로젝트 관련 내용이 포함된 경우 프로젝트 링크
-        if "프로젝트" in question or "개발" in question:
+        # 프로젝트 의도일 때 포트폴리오 프로젝트 링크
+        if getattr(state, "intent", None) == "project":
             links["📦 AI 챗봇 포트폴리오"] = "/ai-chatbot-portfolio"
             links["📦 데이트 코스 AI 추천 시스템"] = "/date-recommendation"
             links["📦 보드게임 RAG 챗봇"] = "/boardgame-chatbot"

@@ -10,7 +10,7 @@ Intent Router Agent - 질문 의도 파악 전문
 - technical: 기술 스택, 프레임워크, 도구 관련
 - project: 특정 프로젝트 상세 설명
 - problem_solving: 문제 해결, 최적화, 창의적 해결
-- personal: 지원동기, 강점, 가치관, 팀워크, 리더십, 성장, 목표
+- personal: 지원동기, 강점, 가치관, 팀워크, 리더십, 성장, 목표, 협업
 - inappropriate: 채용 무관 또는 부적절한 질문
 """
 
@@ -27,11 +27,29 @@ class IntentRouter:
     def __init__(self):
         # 회사별 컨텍스트 (확장 가능)
         self.company_contexts = {
+            "mindlogic": {
+                "position": "AI Software Engineer",
+                "company": "마인드로직",
+                "focus": "페르소나 챗봇, LLM/RAG/에이전트, 스트리밍 최적화, 장기기억",
+                "culture": "함께 더 이야기하고 싶은 AI, 6년 상용 서비스 경험, 페르소나 그라운딩과 장기기억을 중시"
+            },
             "nuua": {
-                "position": "AI 에이전트 개발자",
+                "position": "AI 에이전트 개발자 (신입)",
                 "company": "누아",
-                "focus": "AI 에이전트, 여행사 업무 자동화, 비정형 데이터 구조화, 항공권 유통",
-                "culture": "당연해야 할 것들에 도전, 기술로 여행 산업 혁신"
+                "focus": "여행사 업무 자동화, 항공권 유통 솔루션, 비정형 데이터 구조화, 글로벌 확장",
+                "culture": "당연해야 할 것들에 도전, IATA 인증·AI 챌린지 수상, 8년 흑자·42% 성장 기반으로 실용적 자동화"
+            },
+            "dalpha": {
+                "position": "AI Engineer",
+                "company": "DALPHA",
+                "focus": "실행형 AI Agent, Ontology 기반 데이터 해석, Self-Improving 워크플로우, Human-in-the-loop",
+                "culture": "200개+ 기업 AI 프로젝트 인사이트, 능동적 AI로 비즈니스 임팩트, 실행형 에이전트·데이터 주도"
+            },
+            "onthelook": {
+                "position": "AI Agent 개발자 (인턴)",
+                "company": "온더룩",
+                "focus": "크리에이터-브랜드 협업 자동화, 실행형 LLM 에이전트, 빠른 성장",
+                "culture": "고민보다 실행, 100억 투자 기반, 1년 내 표준 서비스 목표, 응답률/보상 강조"
             },
             "lbox": {
                 "position": "Machine Learning Engineer",
@@ -118,7 +136,7 @@ class IntentRouter:
 1. technical - 기술적 역량, 프로그래밍 능력, 도구/프레임워크 숙련도를 확인하려는 의도
 2. project - 구체적인 프로젝트 경험, 구현 내용, 결과물을 알고 싶어하는 의도  
 3. problem_solving - 문제 해결 과정, 사고력, 창의성, 최적화 능력을 보려는 의도
-4. personal - 지원동기, 강점, 가치관, 팀워크, 리더십, 성장, 목표, 개인 경험, 성격 등 을 파악하려는 의도(자소서, 나의소개등)
+4. personal - 지원동기, 강점, 가치관, 팀워크, 리더십, 성장, 목표, 개인 경험, 성격, 협업, 커뮤니케이션 등 을 파악하려는 의도(자소서, 나의소개등)
 5. inappropriate - 채용 면접과 무관하거나 부적절한 내용 (욕설, 비속어, 의미없는 텍스트, 채용과 관련없는 일상 질문 등)
 
 오타나 줄임말이 있어도 문맥으로 이해하고, 표면적 단어가 아닌 진짜 의도를 파악하세요.

@@ -43,33 +43,24 @@ const companyConfigs: Record<string, CompanyConfig> = {
     focus: ['페르소나 챗봇', 'LLM/에이전트', 'RAG', '스트리밍 최적화'],
     description: 'AI Software Engineer - 페르소나 챗봇',
   },
-  /*
-  // 기존 회사 컨텍스트는 보관용으로 유지 (사용 안 함)
   nuua: {
     name: '누아',
     color: 'green-500',
     focus: ['AI 에이전트', '여행사 업무 자동화', '비정형 데이터 구조화', '항공권 유통'],
     description: 'AI 에이전트 개발자 - 여행 산업 혁신',
   },
-  lbox: {
-    name: '엘박스',
+  dalpha: {
+    name: 'DALPHA',
     color: 'purple-500',
-    focus: ['LLM/RAG', '법률 AI', '검색 모델', 'ML 파이프라인'],
-    description: 'ML Engineer - 법률 AI 제품 개발',
+    focus: ['실행형 AI Agent', 'Ontology/데이터 해석', 'Self-Improving 워크플로우', 'HITL 협업'],
+    description: 'AI Engineer - 실행형 에이전트/기업용 AI',
   },
-  estsoft: {
-    name: '이스트소프트',
-    color: 'orange-500',
-    focus: ['LLM 개발', 'Perso SaaS', 'Alan AI', 'Azure Cloud'],
-    description: 'LLM Engineer - 실용주의 인공지능',
+  onthelook: {
+    name: '온더룩',
+    color: 'pink-500',
+    focus: ['크리에이터-브랜드 협업 자동화', '실행형 LLM 에이전트', '빠른 성장'],
+    description: 'AI Agent 개발자 인턴 - 크리에이터 솔루션',
   },
-  liner: {
-    name: '라이너',
-    color: 'blue-500',
-    focus: ['AI Search', 'Research Agent', '검색 에이전트', '정보 탐색 혁신'],
-    description: 'ML Engineer(Agent) - 신뢰할 수 있는 AI',
-  },
-  */
 }
 
 export default function ChatbotPage() {
@@ -137,13 +128,19 @@ export default function ChatbotPage() {
   // 1. 현재 회사 확인
   const getCurrentCompany = (): string | null => {
     if (typeof window === 'undefined') return null
-    return sessionStorage.getItem('chatbot_current_company')
+    return sessionStorage.getItem('chatbot_current_company') || localStorage.getItem('chatbot_current_company')
   }
 
   // 2. 현재 회사 설정
   const setCurrentCompanyStorage = (company: string) => {
     if (typeof window === 'undefined') return
     sessionStorage.setItem('chatbot_current_company', company)
+    localStorage.setItem('chatbot_current_company', company)
+
+    const currentSource = sessionStorage.getItem('chatbot_company_source')
+    const sourceToSave = currentSource === 'slug' ? 'slug' : 'manual'
+    sessionStorage.setItem('chatbot_company_source', sourceToSave)
+    localStorage.setItem('chatbot_company_source', sourceToSave)
   }
 
   // 3. 회사별 데이터 키 생성
@@ -200,9 +197,19 @@ export default function ChatbotPage() {
   const defaultCompanyKey = 'mindlogic'
   const defaultCompany = companyConfigs[defaultCompanyKey]
 
+  const getInitialCompanyKey = () => {
+    if (typeof window === 'undefined') return defaultCompanyKey
+    const stored = getCurrentCompany()
+    if (stored && companyConfigs[stored]) return stored
+    return defaultCompanyKey
+  }
+
+  const [initialCompanyKey] = useState(getInitialCompanyKey)
   const [showCompanySelection, setShowCompanySelection] = useState(true)
-  const [selectedCompany, setSelectedCompany] = useState<string>(defaultCompanyKey)
-  const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(defaultCompany)
+  const [selectedCompany, setSelectedCompany] = useState<string>(initialCompanyKey)
+  const [currentCompany, setCurrentCompany] = useState<CompanyConfig | null>(
+    companyConfigs[initialCompanyKey] || defaultCompany
+  )
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -210,33 +217,131 @@ export default function ChatbotPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // 기본 회사(마인드로직) 초기 복구 - 클라이언트에서만 실행
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const savedData = loadCompanyData(defaultCompanyKey)
-    if (savedData && savedData.messages?.length > 0) {
-      setMessages(savedData.messages)
-      setSelectedCompany(savedData.selectedCompany || defaultCompanyKey)
-      setCurrentCompany(savedData.currentCompany || defaultCompany)
-      setShowCompanySelection(false)
-      if (savedData.sessionId) {
-        localStorage.setItem('chatbot_session_id', savedData.sessionId)
-      }
-      return
+  const getQuickQuestions = () => {
+    if (selectedCompany === 'nuua') {
+      return [
+        '비정형 항공권/여행 데이터 구조화를 어떻게 설계할 수 있나요?',
+        'LangGraph로 발권/취소/환불 프로세스를 에이전트로 나누는 방법은?',
+        'PySpark+Qdrant로 대규모 데이터 검색/캐싱 최적화한 사례를 설명해 주세요.',
+        '보드게임 룰 RAG 경험을 항공권 규칙 처리에 어떻게 응용할 수 있나요?',
+        '실시간 API/스트리밍 응답을 어떻게 안정화했나요?',
+      ]
     }
-    // 기본 회사 고정 저장
-    setShowCompanySelection(true)
-  }, [])
+    if (selectedCompany === 'dalpha') {
+      return [
+        'Ontology/워크플로우를 LangGraph 에이전트로 어떻게 모델링할 수 있나요?',
+        '실행형 에이전트에서 Action/검증/롤백을 어떻게 분리하나요?',
+        'PySpark+Qdrant로 비정형 데이터 표준화·검색 최적화한 사례는?',
+        'Self-Improving/피드백 루프를 어떻게 구성했나요?',
+        '스트리밍/재시도/복구로 실시간 응답을 어떻게 안정화했나요?',
+      ]
+    }
+    if (selectedCompany === 'onthelook') {
+      return [
+        '크리에이터-브랜드 협업 플로우를 에이전트로 어떻게 분리하나요?',
+        'LLM 에이전트 핵심 로직을 LangGraph로 어떻게 설계했나요?',
+        '비정형 브리프/캠페인 데이터를 표준화하고 검색 최적화한 사례는?',
+        '액션/검증/예외 경로를 어떻게 나눠 운영 이슈에 대응했나요?',
+        '실시간 API/스트리밍 품질을 어떻게 개선했나요?',
+      ]
+    }
+    return [
+      'LangGraph 멀티 에이전트 설계를 설명해 주세요',
+      'RAG 성능을 어떻게 높였나요?',
+      '스트리밍 응답 속도를 33초→3.4초로 줄인 방법은?',
+      'Codex/GPT Pro 전환으로 얻은 이점은?',
+      'PySpark ETL과 Qdrant 벡터 검색 구축 과정을 알려주세요',
+    ]
+  }
 
-  const quickQuestions = [
-    'LangGraph 멀티 에이전트 설계를 설명해 주세요',
-    'RAG 성능을 어떻게 높였나요?',
-    '스트리밍 응답 속도를 33초→3.4초로 줄인 방법은?',
-    'Codex/GPT Pro 전환으로 얻은 이점은?',
-    'PySpark ETL과 Qdrant 벡터 검색 구축 과정을 알려주세요',
-  ]
+  const getInitialMessage = (companyKey: string): string => {
+    const company = companyConfigs[companyKey] || defaultCompany
+    const focusList = company.focus.map(f => `- ${f}`).join('\n')
+    
+    if (companyKey === 'nuua') {
+      return `# 누아 AI 에이전트 개발자 지원자 황준호입니다 (포트폴리오 Q&A)
 
-  const getInitialMessage = (): string => {
+이 챗봇은 면접 모드가 아닌 **포트폴리오 Q&A** 모드입니다. 누아가 여행사 발권/취소·환불 자동화와 항공권 유통을 고도화한다는 전제에서 답변합니다.
+
+## 누아 소개 (사실)
+- IATA 차세대 항공권 유통 최상위 인증, AI 그랜드 챌린지 4회 입상(장관상)
+- 8년 연속 흑자, 4년 연속 42% 성장, 2024년 130억 투자
+- 제품: 누아 오피스(발권/취소/환불 자동화), 워짜이날(150만명), 누아 메트로(24개 도시 오프라인 지하철), 우리WON트래블(항공/호텔 예약 플랫폼)
+
+## 제 실무 경험(포트폴리오 기반, 사실만)
+- 에이전트: LangGraph 멀티 에이전트로 의도 라우팅+전문 에이전트 협업(포트폴리오 챗봇)
+- 데이터/검색: PySpark로 20만→9만 정제, Qdrant/pgvector 검색·캐싱 최적화(데이트 추천)
+- 비정형 텍스트: 217개 룰을 RAG/파인튜닝으로 응답화(보드게임)
+- 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도 로직 구성
+
+## 적용 계획(누아 맥락)
+- 발권/취소/환불 등 프로세스를 에이전트로 분리하고 규칙·검증을 단계화
+- 공급자별 다른 포맷의 비정형 항공권 데이터를 PySpark로 표준화, 벡터 검색으로 유사 규칙 빠른 조회
+- 검색·캐싱·스트리밍 최적화 경험을 응답 속도 개선에 활용
+
+## 질문 팁
+- 비정형 데이터 구조화/검색 최적화 방법
+- LangGraph로 자동화 워크플로우 설계 방안
+- Qdrant/pgvector 최적화 사례와 항공권 규칙 적용 아이디어
+`
+    }
+    if (companyKey === 'dalpha') {
+      return `# DALPHA AI Engineer 지원자 황준호입니다 (포트폴리오 Q&A)
+
+이 챗봇은 면접 모드가 아닌 **포트폴리오 Q&A** 모드입니다. DALPHA가 실행형 AI Agent와 기업용 AI 플랫폼을 만든다는 전제에서 답변합니다.
+
+## DALPHA 소개 (사실)
+- 200개+ 기업 AI 프로젝트 인사이트 기반, 능동적·실행형 기업용 AI/업무 플랫폼
+- Ontology 기반 데이터 해석으로 의사결정 제안, 실행형 AI Agent, Self-Improving 워크플로우, Human-in-the-loop 협업
+- 소비재 고객 반응 시뮬레이션/예측을 목표로 하는 기업용 AI
+
+## 제 실무 경험(포트폴리오 기반, 사실만)
+- 에이전트: LangGraph 멀티 에이전트로 의도 라우팅+전문 에이전트 협업(포트폴리오 챗봇)
+- 데이터/검색: PySpark 20만→9만 정제, Qdrant/pgvector 검색·캐싱 최적화, 메타 필터링 설계(데이트 추천)
+- 비정형 텍스트: 217개 룰을 RAG/파인튜닝으로 응답화(보드게임)
+- 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도, 스트리밍 응답 33초→3.4초 단축
+
+## 적용 계획(DALPHA 맥락)
+- Ontology/워크플로우를 에이전트 컨텍스트로 구조화, Action/검증/예외 경로를 분리한 실행형 플로우 설계
+- 로그/결과를 피드백 데이터로 축적해 Self-Improving 루프 구성
+- 비정형 데이터 표준화 + 벡터 검색/캐싱으로 의사결정 속도·안정성 개선
+
+## 질문 팁
+- 실행형 에이전트 설계/검증/롤백
+- Ontology/데이터를 에이전트 입력으로 구조화하는 방법
+- PySpark+Qdrant 표준화·검색 최적화 사례
+- 피드백/재학습 파이프라인 아이디어
+`
+    }
+    if (companyKey === 'onthelook') {
+      return `# 온더룩 AI Agent 개발자(인턴) 지원자 황준호입니다 (포트폴리오 Q&A)
+
+이 챗봇은 면접 모드가 아닌 **포트폴리오 Q&A** 모드입니다. 온더룩이 크리에이터-브랜드 협업을 AI 에이전트로 자동화한다는 전제에서 답변합니다.
+
+## 온더룩 소개 (사실)
+- 100억 투자, “고민보다 실행” 문화, 1년 내 표준 서비스 목표
+- 크리에이터-광고주 협업 프로세스를 AI로 자동화, 실행형 LLM 에이전트 지향
+- 인턴 3개월 정규직 전환형, 자율 출근/점심 1.5h/도서 전액/랜덤 런치/생일 반차+상품권 복지
+
+## 제 실무 경험(포트폴리오 기반, 사실만)
+- 에이전트: LangGraph 멀티 에이전트로 의도 라우팅+전문 에이전트 협업(포트폴리오 챗봇)
+- 데이터/검색: PySpark 20만→9만 정제, Qdrant/pgvector 검색·캐싱 최적화, 메타 필터 설계(데이트 추천)
+- 비정형 텍스트: 217개 룰을 RAG/파인튜닝으로 응답화(보드게임)
+- 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도, 스트리밍 응답 33초→3.4초 단축
+
+## 적용 계획(온더룩 맥락)
+- 크리에이터-브랜드 협업 단계를 에이전트로 분리하고 상태/룰을 명시해 실행형 플로우 구성
+- 브리프/캠페인/피드백 데이터를 표준 스키마로 정제, 벡터 검색/필터로 유사 케이스 조회
+- 액션/검증/예외 경로를 분리해 운영 이슈에 대응, 캐싱/스트리밍으로 응답 지연 최소화
+
+## 질문 팁
+- 실행형 에이전트/운영 이슈 대응 구조
+- 비정형 브리프/캠페인 데이터 표준화·검색
+- LangGraph 설계와 롤백/예외 처리
+- 스트리밍/재시도/복구 경험
+`
+    }
+
     return `# 마인드로직 AI Software Engineer 지원자 황준호입니다 (포트폴리오 Q&A)
 
 이 챗봇은 면접 모드가 아닌 **포트폴리오 Q&A** 모드입니다. 어떤 질문이든 저를 어필하는 답변을 드립니다.
@@ -304,7 +409,7 @@ export default function ChatbotPage() {
         localStorage.setItem('chatbot_session_id', sessionId)
         
         // 초기 메시지 생성
-        const initialMessage = getInitialMessage()
+        const initialMessage = getInitialMessage(companyKey)
         const aiMessage: Message = {
           id: Date.now().toString(),
           type: 'ai',
@@ -341,6 +446,38 @@ export default function ChatbotPage() {
     }
   }
 
+  // 초기 회사 설정 및 필요 시 자동 세션 생성
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const storedCompany = getCurrentCompany()
+    const companySource = sessionStorage.getItem('chatbot_company_source') || localStorage.getItem('chatbot_company_source')
+    const companyKey = initialCompanyKey
+    const company = companyConfigs[companyKey] || defaultCompany
+
+    setSelectedCompany(companyKey)
+    setCurrentCompany(company)
+
+    const savedData = loadCompanyData(companyKey)
+    if (savedData && savedData.messages?.length > 0) {
+      setMessages(savedData.messages)
+      setShowCompanySelection(false)
+      if (savedData.sessionId) {
+        localStorage.setItem('chatbot_session_id', savedData.sessionId)
+      }
+      return
+    }
+
+    // 슬러그 등으로 저장된 회사가 있다면 자동 세션 생성
+    if (storedCompany && companyConfigs[storedCompany] && companySource === 'slug') {
+      setShowCompanySelection(false)
+      handleCompanySelect(companyKey)
+    } else {
+      setShowCompanySelection(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialCompanyKey])
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -352,12 +489,12 @@ export default function ChatbotPage() {
   // 복구된 데이터가 있으면 세션 검증
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const restored = loadCompanyData(defaultCompanyKey)
+    const restored = loadCompanyData(initialCompanyKey)
     if (restored && restored.sessionId) {
       console.log('🔍 복구된 세션 검증 중...')
-      validateRestoredSession(restored.sessionId, restored.selectedCompany || defaultCompanyKey)
+      validateRestoredSession(restored.sessionId, restored.selectedCompany || initialCompanyKey)
     }
-  }, [])
+  }, [initialCompanyKey])
 
   // 세션 검증 함수
   const validateRestoredSession = async (sessionId: string, company: string) => {
@@ -1259,7 +1396,7 @@ export default function ChatbotPage() {
           {messages.length === 0 && (
             <div className="px-4 pb-4">
               <div className="flex flex-wrap gap-2 justify-center max-w-5xl mx-auto">
-                {quickQuestions.map((question, index) => (
+                {getQuickQuestions().map((question, index) => (
                   <Button
                     key={index}
                     variant="outline"
