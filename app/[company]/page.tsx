@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { HomePageContent } from '../page'
 
-const allowedCompanies = ['mindlogic', 'nuua']
+const allowedCompanies = ['mindlogic', 'nuua', 'dalpha', 'onthelook']
 
 export default function CompanyShortcutPage() {
   const params = useParams<{ company?: string | string[] }>()
