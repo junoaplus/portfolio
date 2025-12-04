@@ -272,9 +272,9 @@ export default function ChatbotPage() {
 - 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도, 스트리밍 응답 33초→3.4초 단축
 
 ## 질문 팁
-- 실행형 에이전트 설계/검증/롤백 사례
-- 모빌리티/CS·운영 데이터 표준화·검색 최적화 사례
-- Self-Improving/스트리밍/복구 경험
+- 비정형 데이터 구조화/검색 최적화 사례
+- LangGraph로 자동화 워크플로우 설계 사례
+- Qdrant/pgvector 최적화 사례
 `
     }
 
