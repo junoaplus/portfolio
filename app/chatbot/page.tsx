@@ -49,17 +49,11 @@ const companyConfigs: Record<string, CompanyConfig> = {
     focus: ['AI 에이전트', '여행사 업무 자동화', '비정형 데이터 구조화', '항공권 유통'],
     description: 'AI 에이전트 개발자 - 여행 산업 혁신',
   },
-  dalpha: {
-    name: 'DALPHA',
-    color: 'purple-500',
-    focus: ['실행형 AI Agent', 'Ontology/데이터 해석', 'Self-Improving 워크플로우', 'HITL 협업'],
-    description: 'AI Engineer - 실행형 에이전트/기업용 AI',
-  },
-  onthelook: {
-    name: '온더룩',
-    color: 'pink-500',
-    focus: ['크리에이터-브랜드 협업 자동화', '실행형 LLM 에이전트', '빠른 성장'],
-    description: 'AI Agent 개발자 인턴 - 크리에이터 솔루션',
+  teamo2: {
+    name: '팀오투(카모아)',
+    color: 'orange-500',
+    focus: ['모빌리티 CS/운영 자동화', '실행형 에이전트', 'LLM/RAG', '빠른 성장'],
+    description: 'AI Agent 개발자 - 모빌리티/여행',
   },
 }
 
@@ -227,22 +221,13 @@ export default function ChatbotPage() {
         '실시간 API/스트리밍 응답을 어떻게 안정화했나요?',
       ]
     }
-    if (selectedCompany === 'dalpha') {
+    if (selectedCompany === 'teamo2') {
       return [
-        'Ontology/워크플로우를 LangGraph 에이전트로 어떻게 모델링할 수 있나요?',
-        '실행형 에이전트에서 Action/검증/롤백을 어떻게 분리하나요?',
-        'PySpark+Qdrant로 비정형 데이터 표준화·검색 최적화한 사례는?',
+        '모빌리티 CS/운영 플로우를 에이전트로 어떻게 분리하나요?',
+        'Action/검증/롤백을 분리한 실행형 에이전트 설계 사례는?',
+        'PySpark+Qdrant로 비정형 데이터를 표준화·검색 최적화한 사례는?',
         'Self-Improving/피드백 루프를 어떻게 구성했나요?',
         '스트리밍/재시도/복구로 실시간 응답을 어떻게 안정화했나요?',
-      ]
-    }
-    if (selectedCompany === 'onthelook') {
-      return [
-        '크리에이터-브랜드 협업 플로우를 에이전트로 어떻게 분리하나요?',
-        'LLM 에이전트 핵심 로직을 LangGraph로 어떻게 설계했나요?',
-        '비정형 브리프/캠페인 데이터를 표준화하고 검색 최적화한 사례는?',
-        '액션/검증/예외 경로를 어떻게 나눠 운영 이슈에 대응했나요?',
-        '실시간 API/스트리밍 품질을 어떻게 개선했나요?',
       ]
     }
     return [
@@ -275,25 +260,8 @@ export default function ChatbotPage() {
 - Qdrant/pgvector 최적화 사례
 `
     }
-    if (companyKey === 'dalpha') {
-      return `# DALPHA AI Engineer 지원자 황준호입니다 
-
-이 챗봇은 **포트폴리오 Q&A** 모드입니다.
-
-## 제 실무 경험
-- 에이전트: LangGraph 멀티 에이전트로 의도 라우팅+전문 에이전트 협업(포트폴리오 챗봇)
-- 데이터/검색: PySpark 20만→9만 정제, Qdrant/pgvector 검색·캐싱 최적화, 메타 필터링 설계(데이트 추천)
-- 비정형 텍스트: 217개 룰을 RAG/파인튜닝으로 응답화(보드게임)
-- 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도, 스트리밍 응답 33초→3.4초 단축
-
-## 질문 팁
-- 실행형 에이전트 설계/검증/롤백 사례
-- Ontology/데이터를 에이전트 입력으로 구조화한 사례 
-- PySpark+Qdrant 표준화·검색 최적화 사례
-`
-    }
-    if (companyKey === 'onthelook') {
-      return `# 온더룩 AI Agent 개발자(인턴) 지원자 황준호입니다
+    if (companyKey === 'teamo2') {
+      return `# 팀오투(카모아) AI Agent 개발자 지원자 황준호입니다
 
 이 챗봇은 **포트폴리오 Q&A** 모드입니다.
 
@@ -304,9 +272,9 @@ export default function ChatbotPage() {
 - 서빙: FastAPI+Next.js로 실시간 API, 세션 복구·재시도, 스트리밍 응답 33초→3.4초 단축
 
 ## 질문 팁
-- 실행형 에이전트/운영 이슈 대응 구조 사례
-- 비정형 브리프/캠페인 데이터 표준화·검색 사례
-- LangGraph 설계와 롤백/예외 처리 사례
+- 실행형 에이전트 설계/검증/롤백 사례
+- 모빌리티/CS·운영 데이터 표준화·검색 최적화 사례
+- Self-Improving/스트리밍/복구 경험
 `
     }
 

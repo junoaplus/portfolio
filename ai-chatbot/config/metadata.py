@@ -223,6 +223,33 @@ HIDDEN_METADATA: Dict[str, Any] = {
                 "실제 광고 도메인 운영 경험은 없음 → 유사 경험+적용 계획 제시",
                 "관련 프로젝트 링크로 검증 가능성을 높임"
             ]
+        },
+        "teamo2": {
+            "role": "AI Agent 개발자 (신입)",
+            "tone": "포트폴리오 Q&A, 실행형 에이전트/데이터 기반, 없는 경험은 솔직히",
+            "story": {
+                "agent_arch": "LangGraph 멀티 에이전트로 의도 라우팅과 전문 에이전트 협업 설계",
+                "action_agents": "Action/검증/예외를 분리한 실행형 에이전트 플로우 설계 경험",
+                "data_pipeline": "PySpark로 20만→9만 정제, Qdrant/pgvector로 검색 최적화한 경험",
+                "unstructured_rules": "RAG/파인튜닝으로 규칙성 있는 텍스트(보드게임 룰)를 응답화한 사례",
+                "reliability": "세션 복구·재시도·스트리밍 최적화(33초→3.4초)로 실시간 안정성 확보"
+            },
+            "highlight_projects": [
+                {"name": "AI 챗봇 포트폴리오", "keywords": ["LangGraph 멀티 에이전트", "실시간 API", "의도 라우팅"], "link": "/ai-chatbot-portfolio"},
+                {"name": "데이트 코스 추천 AI", "keywords": ["PySpark 20만→9만 정제", "Qdrant/pgvector 검색 최적화", "LangChain 대화형 추천"], "link": "/date-recommendation"},
+                {"name": "보드게임 룰 챗봇", "keywords": ["RAG", "FAISS", "비정형 룰 처리", "EXAONE 파인튜닝"], "link": "/boardgame-chatbot"}
+            ],
+            "strengths": [
+                "실행형 에이전트 설계로 Action/검증/예외를 분리해 안정성 확보",
+                "대규모 비정형 데이터 정제와 검색 최적화 경험",
+                "규칙성 있는 텍스트를 RAG/파인튜닝으로 응답화한 실전 사례",
+                "FastAPI+Next.js로 실시간 서비스와 복구·재시도 로직 구성 경험"
+            ],
+            "what_to_emphasize": [
+                "모빌리티/CS·운영 자동화에 에이전트/정제/검색 최적화를 어떻게 적용할지 구체적 계획",
+                "모빌리티 도메인 실무 경험은 없음 → 유사 경험+적용 계획 제시",
+                "관련 프로젝트 링크를 함께 제공해 검증 가능성을 높임"
+            ]
         }
     }
 }

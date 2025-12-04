@@ -28,6 +28,7 @@ class FormatAgent:
         
         print(f"\n📝 Format Agent 시작")
         print(f"   원본 답변 길이: {len(state.response)}자")
+        print(f"   🧾 최종 답변(포맷 전): {state.response}")
         
         try:
             # 이미 포매팅된 답변이면 스킵 (마크다운 헤더가 있는 경우)
@@ -43,6 +44,7 @@ class FormatAgent:
             
             print(f"   ✅ Format Agent 완료")
             print(f"   📝 포매팅된 답변 길이: {len(formatted_answer)}자")
+            print(f"   🧾 최종 답변(포맷 후): {formatted_answer}")
             
         except Exception as e:
             print(f"   ❌ Format Agent 오류: {str(e)}")

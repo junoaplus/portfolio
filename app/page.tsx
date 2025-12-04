@@ -87,7 +87,14 @@ export function HomePageContent() {
       
       try {
         await callRunpodAPI('/api/health', {})
-        console.log('✅ 백엔드 서버 미리 깨웠음!')
+        let currentCompany = 'none'
+        if (typeof window !== 'undefined') {
+          currentCompany =
+            sessionStorage.getItem('chatbot_current_company') ||
+            localStorage.getItem('chatbot_current_company') ||
+            'none'
+        }
+        console.log(`✅ 백엔드 서버 미리 깨웠음! current_company=${currentCompany}`)
       } catch (error) {
         console.log('⚠️ 백엔드 서버 깨우기 실패:', error)
         // 에러가 발생해도 사용자에게는 알리지 않음 (백그라운드 작업)

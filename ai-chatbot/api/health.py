@@ -62,6 +62,9 @@ async def health_check() -> HealthStatus:
     
     uptime = time.time() - SERVER_START_TIME
     
+    # 현재 회사 컨텍스트 로그 (스토리지 값이 없으므로 health 호출만 기록)
+    print("🩺 /health ping received (no company_context on health)")
+    
     return HealthStatus(
         status="healthy",
         timestamp=datetime.now().isoformat(),

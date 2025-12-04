@@ -39,17 +39,11 @@ class IntentRouter:
                 "focus": "여행사 업무 자동화, 항공권 유통 솔루션, 비정형 데이터 구조화, 글로벌 확장",
                 "culture": "당연해야 할 것들에 도전, IATA 인증·AI 챌린지 수상, 8년 흑자·42% 성장 기반으로 실용적 자동화"
             },
-            "dalpha": {
-                "position": "AI Engineer",
-                "company": "DALPHA",
-                "focus": "실행형 AI Agent, Ontology 기반 데이터 해석, Self-Improving 워크플로우, Human-in-the-loop",
-                "culture": "200개+ 기업 AI 프로젝트 인사이트, 능동적 AI로 비즈니스 임팩트, 실행형 에이전트·데이터 주도"
-            },
-            "onthelook": {
-                "position": "AI Agent 개발자 (인턴)",
-                "company": "온더룩",
-                "focus": "크리에이터-브랜드 협업 자동화, 실행형 LLM 에이전트, 빠른 성장",
-                "culture": "고민보다 실행, 100억 투자 기반, 1년 내 표준 서비스 목표, 응답률/보상 강조"
+            "teamo2": {
+                "position": "AI Agent 개발자",
+                "company": "팀오투(카모아)",
+                "focus": "모빌리티/여행 CS·운영 자동화, 실행형 LLM 에이전트, RAG/MCP 적용",
+                "culture": "솔직한 소통(영어 닉네임), 자유로운 토론, 맞춤 장비·자유 연차, 시차 출퇴근"
             },
             "lbox": {
                 "position": "Machine Learning Engineer",

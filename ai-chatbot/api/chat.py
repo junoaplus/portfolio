@@ -47,7 +47,7 @@ class SessionCreateRequest(BaseModel):
     
     @validator('company_context')
     def validate_company_context(cls, v):
-        valid_companies = ["general", "mindlogic", "nuua", "dalpha", "onthelook"]
+        valid_companies = ["general", "mindlogic", "nuua", "teamo2"]
         if v not in valid_companies:
             return "general"
         return v
