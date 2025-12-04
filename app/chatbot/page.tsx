@@ -755,7 +755,7 @@ export default function ChatbotPage() {
         localStorage.setItem('chatbot_session_id', sessionId)
         
         // 4. 초기 메시지로 리셋
-        const initialMessage = getInitialMessage()
+        const initialMessage = getInitialMessage(selectedCompany)
         const aiMessage: Message = {
           id: Date.now().toString(),
           type: 'ai',
