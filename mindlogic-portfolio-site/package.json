@@ -1,0 +1,13 @@
+{
+  "name": "mindlogic-portfolio-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check api/_demo-contract.js && node --check api/goath-demo.js && node --check api/site.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
