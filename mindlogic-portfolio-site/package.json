@@ -1,0 +1,17 @@
+{
+  "name": "mindlogic-portfolio-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "node --check app.js && node --check api/_demo-contract.js && node --check api/goath-demo.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}
