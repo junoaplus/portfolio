@@ -1,19 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/api/site"
-    },
-    {
-      "source": "/assets/:path*",
-      "destination": "https://hwang-junho-ai-portfolio-o9nphfbrb-junos-projects-281d0d94.vercel.app/assets/:path*"
-    },
-    {
-      "source": "/docs/:path*",
-      "destination": "https://hwang-junho-ai-portfolio-o9nphfbrb-junos-projects-281d0d94.vercel.app/docs/:path*"
-    }
-  ],
   "headers": [
     {
       "source": "/api/goath-demo",

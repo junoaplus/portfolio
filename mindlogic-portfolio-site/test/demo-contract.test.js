@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
   buildExchangeUrl,
   resolveGoathApiBaseUrl,
-  transformPortfolioHtml,
   validateTicketPayload,
 } from '../api/_demo-contract.js'
 
@@ -29,10 +29,8 @@ test('builds only the GOATH exchange URL with the one-time ticket', () => {
   assert.equal(url.searchParams.get('ticket'), 'signed-ticket')
 })
 
-test('replaces only the GOATH service link and keeps navigation in the same tab', () => {
-  const html = '<main><a href="https://goath.ai.kr" target="_blank" rel="noreferrer">서비스 보기 <span>↗</span></a></main>'
-  const transformed = transformPortfolioHtml(html)
-  assert.match(transformed, /href="\/api\/goath-demo"/)
-  assert.doesNotMatch(transformed, /target="_blank"/)
-  assert.throws(() => transformPortfolioHtml('<main>missing</main>'))
+test('routes the GOATH service button through the server-only demo handoff', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
+  assert.match(html, /href="\/api\/goath-demo"[^>]*>서비스 보기/)
+  assert.doesNotMatch(html, /href="https:\/\/goath\.ai\.kr"[^>]*>서비스 보기/)
 })

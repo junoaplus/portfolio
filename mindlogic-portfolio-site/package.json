@@ -4,10 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check api/_demo-contract.js && node --check api/goath-demo.js && node --check api/site.js",
+    "build": "vite build",
+    "check": "node --check app.js && node --check api/_demo-contract.js && node --check api/goath-demo.js",
     "test": "node --test test/*.test.js"
   },
   "engines": {
     "node": ">=20.19"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
   }
 }

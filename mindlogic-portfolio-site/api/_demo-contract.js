@@ -30,12 +30,3 @@ export function buildExchangeUrl(apiBaseUrl, ticket) {
   exchangeUrl.searchParams.set('ticket', ticket)
   return exchangeUrl.toString()
 }
-
-export function transformPortfolioHtml(html) {
-  const original = '<a href="https://goath.ai.kr" target="_blank" rel="noreferrer">서비스 보기 <span>↗</span></a>'
-  const replacement = '<a href="/api/goath-demo" rel="nofollow">서비스 보기 <span>↗</span></a>'
-  if (!html.includes(original)) {
-    throw new Error('GOATH service link was not found in the upstream portfolio HTML')
-  }
-  return html.replace(original, replacement)
-}
