@@ -47,10 +47,11 @@ test('issues a server-to-server ticket and redirects without exposing the fixed 
     }
 
     const response = createResponse()
-    await handler({ method: 'GET' }, response)
+    await handler({ method: 'GET', query: { demo: 'daangn' } }, response)
 
     assert.equal(capturedRequest.url, 'https://api.goath.ai.kr/auth/portfolio-demo/ticket')
     assert.equal(capturedRequest.options.headers['x-portfolio-demo-secret'], SERVER_SECRET)
+    assert.deepEqual(JSON.parse(capturedRequest.options.body), { demo: 'daangn' })
     assert.equal(response.statusCode, 302)
     assert.match(response.redirectLocation, /^https:\/\/api\.goath\.ai\.kr\/auth\/portfolio-demo\/exchange\?ticket=/)
     assert.equal(response.redirectLocation.includes(SERVER_SECRET), false)
@@ -82,4 +83,18 @@ test('rejects non-GET requests', async () => {
   await handler({ method: 'POST' }, response)
   assert.equal(response.statusCode, 405)
   assert.equal(response.headers.allow, 'GET')
+})
+
+test('rejects unsupported demo kinds before calling GOATH', async () => {
+  const originalSecret = process.env.PORTFOLIO_DEMO_SECRET
+  try {
+    process.env.PORTFOLIO_DEMO_SECRET = SERVER_SECRET
+    const response = createResponse()
+    await handler({ method: 'GET', query: { demo: 'unknown' } }, response)
+    assert.equal(response.statusCode, 400)
+    assert.deepEqual(response.body, { error: 'Unsupported portfolio demo' })
+  } finally {
+    if (originalSecret === undefined) delete process.env.PORTFOLIO_DEMO_SECRET
+    else process.env.PORTFOLIO_DEMO_SECRET = originalSecret
+  }
 })

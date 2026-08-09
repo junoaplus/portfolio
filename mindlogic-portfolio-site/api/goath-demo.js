@@ -1,6 +1,7 @@
 import {
   buildExchangeUrl,
   resolveGoathApiBaseUrl,
+  resolvePortfolioDemoKind,
   validateTicketPayload,
 } from './_demo-contract.js'
 
@@ -17,6 +18,13 @@ export default async function handler(request, response) {
     return response.status(503).json({ error: 'Demo login is unavailable' })
   }
 
+  let demoKind
+  try {
+    demoKind = resolvePortfolioDemoKind(request.query?.demo)
+  } catch {
+    return response.status(400).json({ error: 'Unsupported portfolio demo' })
+  }
+
   try {
     const apiBaseUrl = resolveGoathApiBaseUrl(process.env.GOATH_API_BASE_URL)
     const ticketResponse = await fetch(`${apiBaseUrl}/auth/portfolio-demo/ticket`, {
@@ -25,7 +33,7 @@ export default async function handler(request, response) {
         'content-type': 'application/json',
         'x-portfolio-demo-secret': demoSecret,
       },
-      body: '{}',
+      body: JSON.stringify({ demo: demoKind }),
       cache: 'no-store',
       signal: AbortSignal.timeout(TICKET_TIMEOUT_MS),
     })
