@@ -5,6 +5,7 @@ import test from 'node:test'
 import {
   buildExchangeUrl,
   resolveGoathApiBaseUrl,
+  resolvePortfolioDemoKind,
   validateTicketPayload,
 } from '../api/_demo-contract.js'
 
@@ -13,6 +14,14 @@ test('accepts only the fixed GOATH API origin', () => {
   assert.throws(() => resolveGoathApiBaseUrl('http://api.goath.ai.kr'))
   assert.throws(() => resolveGoathApiBaseUrl('https://evil.example'))
   assert.throws(() => resolveGoathApiBaseUrl('https://api.goath.ai.kr/other'))
+})
+
+test('accepts only supported portfolio demo kinds and keeps the legacy default', () => {
+  assert.equal(resolvePortfolioDemoKind(undefined), 'mindlogic')
+  assert.equal(resolvePortfolioDemoKind('daangn'), 'daangn')
+  assert.equal(resolvePortfolioDemoKind('portone'), 'portone')
+  assert.throws(() => resolvePortfolioDemoKind('admin'))
+  assert.throws(() => resolvePortfolioDemoKind(['mindlogic']))
 })
 
 test('validates 60-second ticket contract without exposing service secrets', () => {

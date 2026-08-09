@@ -1,5 +1,14 @@
 export const DEFAULT_GOATH_API_BASE_URL = 'https://api.goath.ai.kr'
 export const PORTFOLIO_DEMO_EXCHANGE_PATH = '/auth/portfolio-demo/exchange'
+export const PORTFOLIO_DEMO_KINDS = ['mindlogic', 'daangn', 'portone']
+
+export function resolvePortfolioDemoKind(rawValue) {
+  const value = rawValue || 'mindlogic'
+  if (typeof value !== 'string' || !PORTFOLIO_DEMO_KINDS.includes(value)) {
+    throw new Error('Unsupported portfolio demo')
+  }
+  return value
+}
 
 export function resolveGoathApiBaseUrl(rawValue) {
   const parsed = new URL(rawValue || DEFAULT_GOATH_API_BASE_URL)
