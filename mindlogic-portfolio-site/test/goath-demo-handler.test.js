@@ -46,16 +46,18 @@ test('issues a server-to-server ticket and redirects without exposing the fixed 
       }), { status: 200, headers: { 'content-type': 'application/json' } })
     }
 
+    for (const demo of ['mindlogic', 'daangn', 'portone', 'dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss']) {
     const response = createResponse()
-    await handler({ method: 'GET', query: { demo: 'daangn' } }, response)
+    await handler({ method: 'GET', query: { demo } }, response)
 
     assert.equal(capturedRequest.url, 'https://api.goath.ai.kr/auth/portfolio-demo/ticket')
     assert.equal(capturedRequest.options.headers['x-portfolio-demo-secret'], SERVER_SECRET)
-    assert.deepEqual(JSON.parse(capturedRequest.options.body), { demo: 'daangn' })
+    assert.deepEqual(JSON.parse(capturedRequest.options.body), { demo })
     assert.equal(response.statusCode, 302)
     assert.match(response.redirectLocation, /^https:\/\/api\.goath\.ai\.kr\/auth\/portfolio-demo\/exchange\?ticket=/)
     assert.equal(response.redirectLocation.includes(SERVER_SECRET), false)
     assert.equal(response.headers['cache-control'], 'no-store')
+    }
   } finally {
     globalThis.fetch = originalFetch
     if (originalSecret === undefined) delete process.env.PORTFOLIO_DEMO_SECRET
