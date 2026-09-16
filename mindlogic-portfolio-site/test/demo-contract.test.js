@@ -43,6 +43,6 @@ test('builds only the GOATH exchange URL with the one-time ticket', () => {
 
 test('routes the GOATH service button through the server-only demo handoff', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
-  assert.match(html, /href="\/api\/goath-demo"[^>]*>서비스 보기/)
+  assert.match(html, /href="https:\/\/hwang-junho-ai-portfolio\.vercel\.app\/api\/goath-demo\?demo=mindlogic"[^>]*>서비스 보기/)
   assert.doesNotMatch(html, /href="https:\/\/goath\.ai\.kr"[^>]*>서비스 보기/)
 })
