@@ -20,6 +20,9 @@ test('accepts only supported portfolio demo kinds and keeps the legacy default',
   assert.equal(resolvePortfolioDemoKind(undefined), 'mindlogic')
   assert.equal(resolvePortfolioDemoKind('daangn'), 'daangn')
   assert.equal(resolvePortfolioDemoKind('portone'), 'portone')
+  for (const kind of ['dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss']) {
+    assert.equal(resolvePortfolioDemoKind(kind), kind)
+  }
   assert.throws(() => resolvePortfolioDemoKind('admin'))
   assert.throws(() => resolvePortfolioDemoKind(['mindlogic']))
 })
@@ -40,6 +43,6 @@ test('builds only the GOATH exchange URL with the one-time ticket', () => {
 
 test('routes the GOATH service button through the server-only demo handoff', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
-  assert.match(html, /href="\/api\/goath-demo"[^>]*>서비스 보기/)
+  assert.match(html, /href="https:\/\/hwang-junho-ai-portfolio\.vercel\.app\/api\/goath-demo\?demo=mindlogic"[^>]*>서비스 보기/)
   assert.doesNotMatch(html, /href="https:\/\/goath\.ai\.kr"[^>]*>서비스 보기/)
 })
