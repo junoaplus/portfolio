@@ -1,6 +1,6 @@
 export const DEFAULT_GOATH_API_BASE_URL = 'https://api.goath.ai.kr'
 export const PORTFOLIO_DEMO_EXCHANGE_PATH = '/auth/portfolio-demo/exchange'
-export const PORTFOLIO_DEMO_KINDS = ['mindlogic', 'daangn', 'portone']
+export const PORTFOLIO_DEMO_KINDS = ['mindlogic', 'daangn', 'portone', 'dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss']
 
 export function resolvePortfolioDemoKind(rawValue) {
   const value = rawValue || 'mindlogic'
