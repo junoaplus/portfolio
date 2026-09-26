@@ -46,7 +46,7 @@ test('issues a server-to-server ticket and redirects without exposing the fixed 
       }), { status: 200, headers: { 'content-type': 'application/json' } })
     }
 
-    for (const demo of ['mindlogic', 'daangn', 'portone', 'dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss']) {
+    for (const demo of ['mindlogic', 'daangn', 'portone', 'dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss', 'allganize']) {
     const response = createResponse()
     await handler({ method: 'GET', query: { demo } }, response)
 

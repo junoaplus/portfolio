@@ -20,7 +20,7 @@ test('accepts only supported portfolio demo kinds and keeps the legacy default',
   assert.equal(resolvePortfolioDemoKind(undefined), 'mindlogic')
   assert.equal(resolvePortfolioDemoKind('daangn'), 'daangn')
   assert.equal(resolvePortfolioDemoKind('portone'), 'portone')
-  for (const kind of ['dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss']) {
+  for (const kind of ['dalpha', 'sionic-ai', 'elice', 'channel-talk', 'toss', 'allganize']) {
     assert.equal(resolvePortfolioDemoKind(kind), kind)
   }
   assert.throws(() => resolvePortfolioDemoKind('admin'))
